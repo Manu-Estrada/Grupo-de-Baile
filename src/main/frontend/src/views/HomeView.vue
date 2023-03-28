@@ -1,9 +1,7 @@
 <script setup>
-
+import SliderComponent from "../components/__tests__/SliderComponent.vue";
 </script>
 
 <template>
-  <main>
-   
-  </main>
+  <SliderComponent />
 </template>
