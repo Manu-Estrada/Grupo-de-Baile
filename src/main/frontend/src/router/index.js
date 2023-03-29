@@ -29,6 +29,21 @@ const router = createRouter({
       name: 'aboutus',
       component: () => import('../views/AboutUsView.vue')
     },
+    {
+      path: '/quienessomos',
+      name: 'whowweare',
+      component: () => import('../views/WhoWeAreView.vue')
+    },
+    {
+      path: '/contacto',
+      name: 'contact',
+      component: () => import('../views/FormContactView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/FormLoginView.vue')
+    },
   ]
 })
 
