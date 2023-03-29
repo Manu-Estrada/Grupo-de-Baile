@@ -18,4 +18,12 @@
     #Btn-see{
       background-color: $background-green;
       width: 160px;
+      border-style: solid;
+    border-color: $background-green;
+    color: $background-UpcomingEvents;
+    transition: all 0.4s;
+    }
+    #Btn-see:hover{
+      background-color: white;
+      color: $background-green;
     }

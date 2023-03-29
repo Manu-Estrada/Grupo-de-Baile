@@ -1,7 +1,7 @@
 <script setup ></script>
 
 <template>
-    <nav class="navbar navbar-expand-lg fixed-top  ">
+    <nav class="navbar navbar-expand-lg fixed-top">
          <div class="container">
            <a href="/" class="navbar-brand">Xareu d´Ochobre</a>
            <i class="bi bi-wechat"></i>

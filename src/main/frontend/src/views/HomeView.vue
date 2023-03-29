@@ -1,10 +1,14 @@
 <script setup>
 import CardAlbum from '../components/gallery/CardAlbum.vue';
 import Pagination from '../components/gallery/Pagination.vue'
+import NavbarComponent from '../components/NavbarComponent.vue';
 
 </script>
 
 <template>
+  <header class="container">
+  <NavbarComponent/>
+</header>
   <main class="container">
     
    <h1>Nuestros viajes</h1>
