@@ -1,0 +1,21 @@
+.card{
+    border-radius: 0%;
+    border-style: none;
+    width: 400px;
+    margin-bottom: 2em;
+    }
+    .card-text{
+      margin: 0%;
+      font-style: italic;
+    }
+    .card-body{
+      background-color: $background-card;
+    }
+    #containerBtn{
+    display: flex;
+    justify-content: end;
+    }
+    #Btn-see{
+      background-color: $background-green;
+      width: 160px;
+    }
