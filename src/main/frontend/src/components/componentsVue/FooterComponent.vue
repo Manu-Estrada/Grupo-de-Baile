@@ -21,7 +21,7 @@
 <style lang = "scss" scoped>
  
  .footer {
-  background-color: #336644;
+  $background-green: #336644;
   display: flex;
   justify-content:space-around;
   flex-wrap: wrap;
@@ -31,6 +31,7 @@
   
   &__container-title{
      display: flex;
+     $font-text:'Libre Baskerville', serif;
      
     &__copyright{
     font-size: 2vh;
