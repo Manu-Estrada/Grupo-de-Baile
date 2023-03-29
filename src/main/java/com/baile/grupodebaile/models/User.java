@@ -28,9 +28,9 @@ public class User {
     private String lastname;
     @Column(nullable = false)
     private java.time.LocalDate dateadmission;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String username;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
 
     @OneToOne 
