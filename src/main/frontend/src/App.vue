@@ -1,8 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import FooterComponent from './components/componentsVue/FooterComponent.vue';
 
 </script>
 <template>
+  
+  <!-- <RouterView /> -->
+  <FooterComponent />
+  
   <router-link to="/">home ||</router-link>
   <router-link to="/calendario">calendario || </router-link>
   <router-link to="/viajes">viajes || </router-link>
