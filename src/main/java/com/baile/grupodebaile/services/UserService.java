@@ -50,4 +50,8 @@ public class UserService {
     public User listOneByName(String userName) {
         return repository.findByUsername(userName).orElse(null);
     }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

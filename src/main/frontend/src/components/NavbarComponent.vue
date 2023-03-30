@@ -13,25 +13,25 @@
              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
            
                <li class="nav-item">
-                 <a href="#" class="nav-link "> inicio </a>
+                <a href="/" class="nav-link ">Inicio </a>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link ">Nuestros eventos </a>
+                 <a href="calendario" class="nav-link ">Nuestros eventos </a>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Nuestros viajes </a>
+                 <a href="viajes" class="nav-link"> Nuestros viajes </a>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Sobre Nosotros </a>
+                 <a href="sobrenosotros" class="nav-link"> Sobre Nosotros </a>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Quienes somos </a>
+                 <a href="quienessomos" class="nav-link"> Quienes somos </a>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Contacto </a>
+                 <a href="contacto" class="nav-link"> Contacto </a>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Login </a>
+                 <a href="login" class="nav-link"> Login </a>
                </li>
              </ul>
            </div>
