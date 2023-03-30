@@ -6,9 +6,9 @@ import NavbarComponent from './components/NavbarComponent.vue';
 
 </script>
 <template>
-  <NavbarComponent />
-  <AboutUs />
+  
+
   <RouterView />
-  <FooterComponent />
+
 </template>
 

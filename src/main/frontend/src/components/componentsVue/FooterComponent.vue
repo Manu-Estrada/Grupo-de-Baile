@@ -4,7 +4,7 @@
 
 <template>
 
-<footer class="footer">
+<footer class="footer position-absolute bottom-0 start-50 translate-middle-x w-100">
     <div class="footer__container-title">
       <h2 class="footer__container-title__copyright">&copy; Xareu D' Ochobre</h2>
     </div>
@@ -21,16 +21,17 @@
 <style lang = "scss" scoped>
  
  .footer {
-  $background-green: #336644;
+  background-color:#336644;
   display: flex;
   justify-content:space-around;
   flex-wrap: wrap;
   color: white;
   align-items: center;
+ 
   
   &__container-title{
      display: flex;
-     $font-text:'Libre Baskerville', serif;
+     font-family:Libre Baskerville, serif;
      
     &__copyright{
     font-size: 2vh;
@@ -60,7 +61,7 @@
 
 @media (min-width: 1024px) {
 .footer {
-  background-color: #336644;
+  background-color:#336644;
   display: flex;
   // justify-content:space-around;
   flex-wrap: wrap;
