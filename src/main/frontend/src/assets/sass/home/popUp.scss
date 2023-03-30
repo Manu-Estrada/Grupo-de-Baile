@@ -1,0 +1,44 @@
+@import "../variables";
+.popUp-button {
+    border: none;
+    border-bottom: 1px solid gray;
+    background-color: $background-upcomingEvents;
+    text-align: start;
+    padding: 0;
+    padding-bottom: 10px;
+}
+.popUp-button-third {
+    border: none;
+    background-color: $background-upcomingEvents;
+    text-align: start;
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+  .modal.show .modal-dialog {
+    margin: 0;
+    transform: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .modal-content {
+      width: 100%;
+      .btn-close {
+      }
+      .event-container {
+        display: flex;
+        img {
+        }
+        .text-container {
+          .span {
+          }
+          .h3 {
+          }
+          p {
+          }
+        }
+      }
+    }
+  }
+

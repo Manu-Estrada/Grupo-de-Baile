@@ -10,7 +10,7 @@
         <img
           src="../../assets/img/xaréu-d’ochobre.jpg"
           width="100%"
-          height="600"
+          height="500"
           alt="..."
         />
       </div>
@@ -18,7 +18,7 @@
         <img
           src="../../assets/img/xaréu-d’ochobre2.jpg"
           width="100%"
-          height="600"
+          height="500"
           alt="..."
         />
       </div>
@@ -26,7 +26,7 @@
         <img
           src="../../assets/img/xaréu-d’ochobre3.jpg"
           width="100%"
-          height="600"
+          height="500"
           alt="..."
         />
       </div>
@@ -56,5 +56,5 @@
   </div>
 </template>
 <style lang="scss" scoped>
-@import "../../assets/sass/slider.scss";
+@import "../../assets/sass/home/slider.scss";
 </style>
