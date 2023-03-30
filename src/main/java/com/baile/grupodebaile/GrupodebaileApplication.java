@@ -9,6 +9,8 @@ public class GrupodebaileApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GrupodebaileApplication.class, args);
+		
 	}
+	
 
 }
