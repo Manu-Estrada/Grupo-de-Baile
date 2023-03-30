@@ -1,32 +1,13 @@
 <script setup>
-import CardAlbum from '../components/gallery/CardAlbum.vue';
-import Pagination from '../components/gallery/Pagination.vue'
-import NavbarComponent from '../components/NavbarComponent.vue';
-
+import SliderComponent from "../components/home-components/SliderComponent.vue";
+import UpcommingEvents from "../components/home-components/UpcommingEvents.vue";
+import Welcome from "../components/home-components/Welcome.vue";
 </script>
 
 <template>
-  <header class="container">
-  <NavbarComponent/>
-</header>
-  <main class="container">
-    
-   <h1>Nuestros viajes</h1>
-   <div id="container-albums">
-   <CardAlbum/>
-   <CardAlbum/>
-   <CardAlbum/>
-   <CardAlbum/>
-   <CardAlbum/>
-   <CardAlbum/>
-   <Pagination/>
+  <SliderComponent />
+  <div class="hero-container">
+    <UpcommingEvents />
+    <Welcome />
   </div>
-  </main>
 </template>
-<style scoped>
-#container-albums{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-</style>
