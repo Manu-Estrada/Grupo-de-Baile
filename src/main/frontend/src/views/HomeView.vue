@@ -11,6 +11,3 @@ import Welcome from "../components/home-components/Welcome.vue";
     <Welcome />
   </div>
 </template>
-<style lang="scss" scoped>
-@import "../assets/sass/home/hero-container.scss";
-</style>
