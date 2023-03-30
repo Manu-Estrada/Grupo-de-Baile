@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +53,7 @@ public class UserControllerTest {
         System.out.println(response.getContentAsString());
 
         assertEquals(response.getStatus(), 200);
-        // assertEquals(response.getContentAsString(), "[{\"user_id\":\"1\"},{\"user_id\":\"2\"}]");
+        
         assertEquals(response.getContentAsString(), mapper.writeValueAsString(users));
     }
 }
