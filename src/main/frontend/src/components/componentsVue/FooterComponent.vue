@@ -27,7 +27,6 @@
   flex-wrap: wrap;
   color: white;
   align-items: center;
-  margin: 1vh;
   
   &__container-title{
      display: flex;
