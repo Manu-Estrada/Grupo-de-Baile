@@ -45,8 +45,9 @@ aside {
     }
   }
 }
-@media (min-width: 376px) and (max-width: 425px) {
+@media (max-width: 425px) {
   aside {
+    margin-top: 15px;
     background-color: #ddbb44;
     font-family: $font-text;
     width: 70%;
@@ -65,10 +66,5 @@ aside {
         font-style: italic;
       }
     }
-  }
-}
-@media (min-width: 319px) and (max-width: 364px) {
-  #nav-container {
-    display: none;
   }
 }
