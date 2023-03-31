@@ -1,10 +1,11 @@
 <script setup>
 import FormLoginView from '../views/FormLoginView.vue';
+
 </script>
 
 <template>
   
-  <main>
+  
     <form class="wrapper">
       <h1>Login</h1>
       <div class="mb-3">
@@ -31,11 +32,60 @@ import FormLoginView from '../views/FormLoginView.vue';
       <button type="submit" id="btn-send" class="btn btn">Enviar</button>
     </div>
     </form>
-  </main>
-  
+
+ 
 </template>
 
 <style lang="scss" scoped>
+@import "../assets/sass/variables";
+
+body {
+  .wrapper {
+    width: 80%;
+    height: 60%;
+    margin: 5em;
+    padding: 5em;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: .5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h1{
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .form-label{
+        color: #336644;
+        font-weight: bold;
+        font-size: 1.5vh;
+    }
+
+    #btn-delete {
+      background-color: #cc0033;
+      width: 20vw;
+      color: #feffd7;
+      font-size: 1.5vh;
+    }
+
+    #btn-send {
+      background-color: #336644;
+      width: 20vw;
+      color: #feffd7;
+      font-size: 1.5vh;
+    }
+    .btn-container{
+        display: flex;
+        justify-content:space-around;
+        gap: 1.5vw;
+        margin-right: 1vw;
+     }
+   }
+ }
+
+
+@media (min-width: 1024px) {
 body {
   .wrapper {
     width: 60%;
@@ -74,9 +124,8 @@ body {
         justify-content:flex-end;
         gap: 1.5vw;
         margin-right: 1vw;
-    }
-  }
-
- 
+     }
+   }
+ }
 }
 </style>
