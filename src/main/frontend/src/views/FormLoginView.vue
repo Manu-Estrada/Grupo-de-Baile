@@ -1,10 +1,12 @@
 <script setup>
  import LoginComponent from '../components/LoginComponent.vue';
 
+
 </script>
 <template>
   <main>
     <LoginComponent />
+    
 </main>
 </template>
 <style lang="scss" scoped>
@@ -18,7 +20,7 @@ main{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-repeat: no-repeat;
+   
 
 }
 
