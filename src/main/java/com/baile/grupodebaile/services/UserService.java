@@ -1,5 +1,6 @@
 package com.baile.grupodebaile.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import com.baile.grupodebaile.models.ImageUser;
 import com.baile.grupodebaile.models.User;
 import com.baile.grupodebaile.repositories.ImageUserRepository;
 import com.baile.grupodebaile.repositories.UserRepository;
+import com.baile.grupodebaile.utils.FileUploadUtil;
 
 @Service
 public class UserService {
@@ -34,13 +36,17 @@ public class UserService {
     }
 
     public void saveImageUser(MultipartFile multipartFile, Long id){
-        User userAddImage = repository.findById(id).orElseThrow();
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-
         ImageUser imageUserNew = new ImageUser();
         imageUserNew.setImage(fileName);
         imageUserRepository.save(imageUserNew);
-        System.out.println(imageUserNew.getId());
+        String uploadDir = "src/main/resources/user-photos/";
+        try {
+            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
     public List<User> listAll() {
