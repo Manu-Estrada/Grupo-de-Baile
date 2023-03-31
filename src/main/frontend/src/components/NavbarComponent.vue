@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg">
          <div class="container">
            <a href="/" class="navbar-brand">Xareu d´Ochobre</a>
            <i class="bi bi-wechat"></i>
