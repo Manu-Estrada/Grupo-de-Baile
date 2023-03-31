@@ -62,6 +62,6 @@ import NavbarComponent from '../components/NavbarComponent.vue';
   position: relative;
   top: 25px;
   background-color: #336644;
-  $btn-close-color: $white;
+  /* $btn-close-color: $white; */
 }
 </style>
