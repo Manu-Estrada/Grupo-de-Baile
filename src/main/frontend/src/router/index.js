@@ -9,20 +9,21 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+    
     {
-      path: '/calendario',
-      name: 'calendar',
-      component: () => import('../views/CalendarUserView.vue')
+      path: '/nuestroseventos',
+      name: 'ourevents',
+      component: () => import('../views/OurEventsView.vue')
     },
     {
-      path: '/viajes',
-      name: 'travels',
-      component: () => import('../views/TravelsView.vue')
+      path: '/nuestrosviajes',
+      name: 'ourtravels',
+      component: () => import('../views/OurTravelsView.vue')
     },
      {
-      path: '/galeria',
-      name: 'gallery',
-      component: () => import('../views/GalleryView.vue')
+      path: '/galeriaviajes',
+      name: 'gallerytravels',
+      component: () => import('../views/GalleryTravelsView.vue')
     },
     {
       path: '/sobrenosotros',

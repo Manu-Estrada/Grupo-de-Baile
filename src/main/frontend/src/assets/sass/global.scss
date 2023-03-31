@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+
+    body {
+        background: $background-component;
+        font-family: $font-text;
+
+        h1, h3 {
+            color: $text-red;
+        }
+    }
+}

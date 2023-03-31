@@ -1,5 +1,7 @@
-<script setup></script>
+<script setup>
+import AboutUsView from '../components/AboutUs.vue'
+</script>
 
 <template>
- <h4>Jonathan, no te metas pa lo jondo, que tú no sabes nadah</h4>
+ <AboutUsView />
 </template>

@@ -1,7 +1,9 @@
-<script setup ></script>
+<script setup >
+import { RouterLink } from 'vue-router'
+</script>
 
 <template>
-    <nav class="navbar navbar-expand-lg fixed-top  ">
+    <nav class="navbar navbar-expand-lg">
          <div class="container">
            <a href="/" class="navbar-brand">Xareu d´Ochobre</a>
            <i class="bi bi-wechat"></i>
@@ -13,36 +15,43 @@
              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
            
                <li class="nav-item">
-                 <a href="#" class="nav-link "> inicio </a>
+                <RouterLink class="nav-link" to="/">Inicio</RouterLink>
+               </li>
+              
+               <li class="nav-item">
+                <RouterLink to="/nuestroseventos"  class="nav-link">Nuestros eventos</RouterLink>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link ">Nuestros eventos </a>
+                <RouterLink to="/nuestrosviajes"  class="nav-link">Nuestros viajes</RouterLink>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Nuestros viajes </a>
+                <RouterLink class="nav-link" to="/sobrenosotros">Sobre nosotros</RouterLink>
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Sobre Nosotros </a>
+                <RouterLink class="nav-link" to="/quienessomos">Quiénes somos</RouterLink>
+
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Quienes somos </a>
+                <RouterLink class="nav-link" to="/contacto">Contacto</RouterLink>
+
                </li>
                <li class="nav-item">
-                 <a href="#" class="nav-link"> Contacto </a>
-               </li>
-               <li class="nav-item">
-                 <a href="#" class="nav-link"> Login </a>
+                <RouterLink class="nav-link" to="/login">Login</RouterLink>
+
                </li>
              </ul>
            </div>
          </div>
        </nav>
        </template>
-       <style scoped>
+       <style lang="scss" scoped>
        .navbar {
          background-color: #336644;
-       
-       }
+         a.router-link-exact-active {
+        color:white
+      }
+        }
+     
        </style>
        
    

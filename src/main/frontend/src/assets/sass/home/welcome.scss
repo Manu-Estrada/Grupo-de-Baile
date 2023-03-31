@@ -1,0 +1,162 @@
+@import "../variables";
+.welcome-container {
+  font-family: $font-text;
+  width: 64%;
+  height: 13rem;
+  display: flex;
+  background-color: white;
+  img {
+    width: 20rem;
+    height: 13rem;
+  }
+  div {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      color: $text-red;
+      margin-left: 10px;
+    }
+    p {
+      font-size: 15px;
+      width: 94%;
+      margin-left: 10px;
+    }
+    div {
+      width: 94%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      button {
+        border-radius: 5px;
+        border: none;
+        background-color: $background-green;
+        color: $background-text;
+        width: 30%;
+        height: 2rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .welcome-container {
+    width: 65%;
+    height: 10rem;
+    img {
+      width: 13rem;
+      height: 10rem;
+    }
+    div {
+      h2 {
+        color: $text-red;
+        margin-left: 10px;
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 13px;
+        margin-bottom: 0;
+      }
+      div {
+        button {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  .welcome-container {
+    width: 68%;
+    height: 9rem;
+    img {
+      width: 12rem;
+      height: 9rem;
+    }
+    div {
+      h2 {
+        color: $text-red;
+        margin-left: 10px;
+        font-size: 1rem;
+      }
+      p {
+        font-size: 10px;
+        margin-bottom: 0;
+      }
+      div {
+        button {
+          font-size: 0.7rem;
+          width: 40%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 33rem;
+    padding: 26px;
+    img {
+      width: 23rem;
+      height: 13rem;
+      align-self: center;
+    }
+    div {
+      width: 95%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h2 {
+        color: $text-red;
+        margin: 0;
+        margin-top: 20px;
+      }
+      p {
+        font-size: 17px;
+        width: 94%;
+        margin-left: 0;
+      }
+      div {
+        display: flex;
+        justify-content: center;
+        button {
+          width: 50%;
+          height: 3rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 375px) {
+  .welcome-container {
+    height: 35rem;
+    img {
+      width: 20rem;
+      height: 13rem;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .welcome-container {
+    height: 36rem;
+    img {
+      width: 17rem;
+      height: 13rem;
+    }
+    div {
+      div {
+        button {
+          width: 65%;
+          height: 3rem;
+        }
+      }
+    }
+  }
+}
