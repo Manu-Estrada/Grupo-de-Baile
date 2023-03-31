@@ -23,7 +23,8 @@
           data-bs-dismiss="modal"
           aria-label="Close"
         ></button>
-        <div class="event-container">
+        <div>
+          <div class="event-container">
           <img src="../../../assets/img/folk.svg" alt="" />
           <div class="text-container">
             <span>01-01-2023</span>
@@ -37,6 +38,7 @@
               dis parturient montes, nascetur ridiculus mus.
             </p>
           </div>
+        </div>
         </div>
       </div>
     </div>
