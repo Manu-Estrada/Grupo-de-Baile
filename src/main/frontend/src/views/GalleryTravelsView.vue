@@ -30,7 +30,7 @@ import NavbarComponent from '../components/NavbarComponent.vue';
         <div class="d-flex justify-content-end">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClosed"></button>
       </div>
-        <img src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" width="1357px" height="650px">
+        <img src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" class="img-thumbnail">
     </div>
   </div>
 </div>
