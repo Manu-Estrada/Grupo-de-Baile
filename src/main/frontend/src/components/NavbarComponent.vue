@@ -3,7 +3,11 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
+<<<<<<< HEAD
     <nav class="navbar navbar-expand-lg">
+=======
+    <nav class="navbar navbar-expand-lg ">
+>>>>>>> caren
          <div class="container">
            <a href="/" class="navbar-brand">Xareu d´Ochobre</a>
            <i class="bi bi-wechat"></i>
