@@ -1,12 +1,13 @@
 <template>
   <main>
     <h2>Sobre nosotros</h2>
+
     <div class="card">
       <div class="row g-0">
         <div class="col-md-6 object-fit-cover">
           <img
             src="../assets/images/imagenquienessomos.png"
-            class="rounded-start"
+            class="img-fluid"
             alt="..."
           />
         </div>
@@ -34,7 +35,7 @@
         <div class="col-md-6 object-fit-cover">
           <img
             src="../assets/images/imagenactividades.jpeg"
-            class="rounded-start"
+            class="img-fluid"
             alt="..."
           />
         </div>
@@ -88,10 +89,10 @@
 
     <div class="card">
       <div class="row g-0">
-        <div class="col-md-6 object-fit-cover">
+        <div class="col-md-6 object-fit-cover mt-2">
           <img
             src="../assets/images/imagentrajes.jpeg"
-            class="rounded-start"
+            class="img-fluid"
             alt="..."
           />
         </div>
@@ -128,7 +129,7 @@
         <div class="col-md-6 object-fit-cover">
           <img
             src="../assets/images/imagenrepertorio.jpg"
-            class="rounded-start"
+            class="img-fluid"
             alt="..."
           />
         </div>
@@ -156,7 +157,7 @@
         <div class="col-md-6 object-fit-cover">
           <img
             src="../assets/images/imagennuestrosviajes.JPG"
-            class="rounded-start"
+            class="img-fluid"
             alt="..."
           />
         </div>
@@ -228,4 +229,15 @@ h5 {
 img {
   width: 100%;
 }
+.card {
+ 
+   --bs-card-border-width: none; 
+   --bs-card-border-color: var(--bs-border-color-translucent); 
+   --bs-card-border-radius: none; 
+   --bs-card-inner-border-radius: calc(none); 
+   border: none; 
+   border-radius:none; 
+}
+
 </style>
+ 
