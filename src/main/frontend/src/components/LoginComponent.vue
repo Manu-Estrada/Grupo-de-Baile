@@ -1,39 +1,28 @@
 <script setup>
-import FormLoginView from '../views/FormLoginView.vue';
-
+import FormLoginView from "../views/FormLoginView.vue";
 </script>
 
 <template>
-  
-  
-    <form class="wrapper">
-      <h1>Login</h1>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Usuario:</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label"
-          >Contraseña:</label
-        >
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-        />
-      </div>
-      <div class="btn-container">
+  <form class="wrapper">
+    <h1>Login</h1>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Usuario:</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" />
+    </div>
+    <div class="btn-container">
       <button type="submit" id="btn-delete" class="btn btn">Borrar</button>
       <button type="submit" id="btn-send" class="btn btn">Enviar</button>
     </div>
-    </form>
-
- 
+  </form>
 </template>
 
 <style lang="scss" scoped>
@@ -41,91 +30,90 @@ import FormLoginView from '../views/FormLoginView.vue';
 
 body {
   .wrapper {
-    width: 80%;
+    width: 92%;
     height: 60%;
     margin: 5em;
     padding: 5em;
     background-color: rgba(255, 255, 255, 0.75);
-    border-radius: .5em;
+    border-radius: 0.5em;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
-    h1{
-        text-align: center;
-        font-weight: bold;
+    h1 {
+      text-align: center;
+      font-weight: bold;
     }
 
-    .form-label{
-        color: #336644;
-        font-weight: bold;
-        font-size: 1.5vh;
+    .form-label {
+      color: $background-green;
+      font-weight: bold;
+      font-size: 2vh;
     }
 
     #btn-delete {
-      background-color: #cc0033;
+      background-color: $text-red;
       width: 20vw;
-      color: #feffd7;
-      font-size: 1.5vh;
+      color: $background-text;
+      font-size: 2vh;
     }
 
     #btn-send {
-      background-color: #336644;
+      background-color: $background-green;
       width: 20vw;
-      color: #feffd7;
-      font-size: 1.5vh;
+      color: $background-text;
+      font-size: 2vh;
     }
-    .btn-container{
-        display: flex;
-        justify-content:space-around;
-        gap: 1.5vw;
-        margin-right: 1vw;
-     }
-   }
- }
-
+    .btn-container {
+      display: flex;
+      justify-content: space-around;
+      gap: 1.5vw;
+      margin-right: 1vw;
+    }
+  }
+}
 
 @media (min-width: 1024px) {
-body {
-  .wrapper {
-    width: 60%;
-    height: 70%;
-    margin: 5em;
-    padding: 5em;
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: .5em;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  body {
+    .wrapper {
+      width: 60%;
+      height: 70%;
+      margin: 5em;
+      padding: 5em;
+      background-color: rgba(255, 255, 255, 0.75);
+      border-radius: 0.5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
 
-    h1{
+      h1 {
         text-align: center;
         font-weight: bold;
-    }
+      }
 
-    .form-label{
-        color: #336644;
+      .form-label {
+        color: $background-green;
         font-weight: bold;
-    }
+      }
 
-    #btn-delete {
-      background-color: #cc0033;
-      width: 10vw;
-      color: #feffd7;
-    }
+      #btn-delete {
+        background-color: $text-red;
+        width: 10vw;
+        color: $background-text;
+      }
 
-    #btn-send {
-      background-color: #336644;
-      width: 10vw;
-      color: #feffd7;
-    }
-    .btn-container{
+      #btn-send {
+        background-color: $background-green;
+        width: 10vw;
+        color: $background-text;
+      }
+      .btn-container {
         display: flex;
-        justify-content:flex-end;
+        justify-content: flex-end;
         gap: 1.5vw;
         margin-right: 1vw;
-     }
-   }
- }
+      }
+    }
+  }
 }
 </style>
