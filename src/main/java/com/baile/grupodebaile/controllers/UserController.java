@@ -1,5 +1,6 @@
 package com.baile.grupodebaile.controllers;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,7 @@ public class UserController {
     }
 
     @PostMapping("/register/{id}/imagesuser")
-    public void storeImageUser(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) {
+    public void storeImageUser(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) throws IOException {
         service.saveImageUser(multipartFile, id);
     }
 
