@@ -58,6 +58,11 @@ public class UserController {
         service.saveImageUser(multipartFile, id);
     }
 
+    @DeleteMapping("/register/{iduser}/imagesuser")
+    public void deleteImageUser(@PathVariable Long iduser) throws IOException {
+        service.deleteImageUser(iduser);
+    }
+
     @GetMapping("/users")
     public List<User> listAll() {
         return service.listAll();
