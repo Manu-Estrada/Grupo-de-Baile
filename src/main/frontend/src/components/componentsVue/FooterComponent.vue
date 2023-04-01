@@ -19,13 +19,15 @@
 </template>
 
 <style lang = "scss" scoped>
+
+@import "../../assets/sass/variables";
  
  .footer {
-  background-color:#336644;
+  background-color:$background-green;
   display: flex;
   justify-content:space-around;
   flex-wrap: wrap;
-  color: white;
+  color: $background-component;
   align-items: center;
  
   
@@ -61,11 +63,11 @@
 
 @media (min-width: 1024px) {
 .footer {
-  background-color:#336644;
+  background-color:$background-green;
   display: flex;
   // justify-content:space-around;
   flex-wrap: wrap;
-  color: white;
+  color: $background-component;
   align-items: center;
  
  
