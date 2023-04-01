@@ -14,6 +14,7 @@ import com.baile.grupodebaile.models.ImageUser;
 import com.baile.grupodebaile.models.User;
 import com.baile.grupodebaile.repositories.ImageUserRepository;
 import com.baile.grupodebaile.repositories.UserRepository;
+// import com.baile.grupodebaile.utils.FileUploadUtil;
 import com.baile.grupodebaile.utils.FileUploadUtil;
 
 @Service
@@ -35,18 +36,18 @@ public class UserService {
         return repository.save(user);
     }
 
-    public void saveImageUser(MultipartFile multipartFile, Long id){
+    public void saveImageUser(MultipartFile multipartFile, Long id) throws IOException{
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        String uploadDir = "src/main/resources/static/user-photos/";
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
         ImageUser imageUserNew = new ImageUser();
         imageUserNew.setImage(fileName);
         imageUserRepository.save(imageUserNew);
-        String uploadDir = "src/main/resources/user-photos/";
-        try {
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+
+        User userToAddImage = repository.findById(id).orElseThrow();
+        userToAddImage.setImageUser(imageUserNew);
+        repository.save(userToAddImage);
     }
     
     public List<User> listAll() {
