@@ -54,14 +54,14 @@ body {
     #btn-delete {
       background-color: $text-red;
       width: 20vw;
-      color: $background-text;
+      color: $background-component;
       font-size: 2vh;
     }
 
     #btn-send {
       background-color: $background-green;
       width: 20vw;
-      color: $background-text;
+      color: $background-component;
       font-size: 2vh;
     }
     .btn-container {
@@ -99,13 +99,13 @@ body {
       #btn-delete {
         background-color: $text-red;
         width: 10vw;
-        color: $background-text;
+        color: $background-component;
       }
 
       #btn-send {
         background-color: $background-green;
         width: 10vw;
-        color: $background-text;
+        color: $background-component;
       }
       .btn-container {
         display: flex;
