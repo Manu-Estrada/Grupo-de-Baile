@@ -8,25 +8,22 @@
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="5000">
         <img
-          src="../../assets/img/xaréu-d’ochobre.jpg"
-          width="100%"
-          height="500"
+          src="../../assets/images/xaréu-d’ochobre.jpg"
+          class="image-slider-3"
           alt="..."
         />
       </div>
       <div class="carousel-item" data-bs-interval="5000">
         <img
-          src="../../assets/img/xaréu-d’ochobre2.jpg"
-          width="100%"
-          height="500"
+          src="../../assets/images/xaréu-d’ochobre2.jpg"
+          class="image-slider"
           alt="..."
         />
       </div>
       <div class="carousel-item" data-bs-interval="5000">
         <img
-          src="../../assets/img/xaréu-d’ochobre3.jpg"
-          width="100%"
-          height="500"
+          src="../../assets/images/xaréu-d’ochobre3.jpg"
+          class="image-slider"
           alt="..."
         />
       </div>

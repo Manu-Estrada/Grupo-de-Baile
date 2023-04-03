@@ -12,7 +12,7 @@
           target="_blank"
           ><img
             class="image-icon"
-            src="../../assets/images/iconFacebook.png"
+            src="../assets/images/iconFacebook.png"
             alt="facebbok-icon"
         /></a>
       </p>
@@ -22,7 +22,7 @@
           target="_blank"
           ><img
             class="image-icon"
-            src="../../assets/images/icon-Instagram.png"
+            src="../assets/images/icon-Instagram.png"
             alt="instagram-icon"
         /></a>
       </p>
@@ -31,7 +31,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/sass/variables";
+@import "../assets/sass/variables";
 
 .footer {
   background-color: $background-green;

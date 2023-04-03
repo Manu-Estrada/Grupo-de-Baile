@@ -24,7 +24,7 @@
             aria-label="Close"
           ></button>
           <div class="event-container">
-            <img src="../../../assets/img/folk.svg" alt="" />
+            <img src="../../../assets/images/folk.svg" alt="" />
             <div class="text-container">
               <span>01-01-2023</span>
               <h3>Evento tercero</h3>

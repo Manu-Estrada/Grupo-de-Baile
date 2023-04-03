@@ -281,6 +281,7 @@
         </div>
       </div>
     </div>
+    -->
   </main>
 </template>
 
@@ -301,7 +302,11 @@ ul.strong li::before {
 h2 {
 
   color: #cc0033;
-  margin-top: 2em;
+}
+
+h6 {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 h6 {
