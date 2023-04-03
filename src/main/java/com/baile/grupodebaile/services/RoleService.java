@@ -32,9 +32,4 @@ public class RoleService {
         Role newRole=repository.save(role);
         return newRole;
     }
-
-    public Role getOne(int i) {
-        return null;
-    }
-
 }

@@ -1,33 +1,37 @@
-package com.baile.grupodebaile.controllers;
+// package com.baile.grupodebaile.controllers;
 
-import java.io.IOException;
+// import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.view.RedirectView;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.stereotype.Controller;
+// import org.springframework.util.StringUtils;
+// import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.multipart.MultipartFile;
+// import org.springframework.web.servlet.view.RedirectView;
 
-import com.baile.grupodebaile.repositories.ImageUserRepository;
+// import com.baile.grupodebaile.repositories.ImageUserRepository;
+// import com.baile.grupodebaile.utils.FileUploadUtil;
 
-@Controller
-public class ImageUserController {
+// import antlr.debug.Event;
 
-    @Autowired
-    private ImageUserRepository repository;
+// @Controller
+// public class ImageUserController {
 
-    @PostMapping("/users/save")
-    public RedirectView saveUser(Event event, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+//     @Autowired
+//     private ImageUserRepository repository;
 
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        event.setPhoto(fileName);
+//     @PostMapping("/users/save")
+//     public RedirectView saveUser(Event event, @RequestParam("image") MultipartFile multipartFile) throws IOException {
 
-        String uploadDir = "src/main/resources/user-photos/";
+//         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//         event.setPhoto(fileName);
 
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+//         String uploadDir = "src/main/resources/user-photos/";
 
-        return new RedirectView("/users", true);
-    }
-}
+//         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+//         return new RedirectView("/users", true);
+//     }
+// }
+
