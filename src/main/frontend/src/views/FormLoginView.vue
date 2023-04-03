@@ -1,12 +1,14 @@
 <script setup>
  import LoginComponent from '../components/LoginComponent.vue';
-
-
+ import FooterComponent from '../components/componentsVue/FooterComponent.vue';
+ 
 </script>
+
 <template>
   
     <div class="view-container">
     <LoginComponent />
+    <FooterComponent />
     </div>
 
 </template>
