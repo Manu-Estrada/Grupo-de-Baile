@@ -30,13 +30,11 @@
   </footer>
 </template>
 
-
-<style lang = "scss" scoped>
-
+<style lang="scss" scoped>
 @import "../../assets/sass/variables";
- 
- .footer {
-  background-color:$background-green;
+
+.footer {
+  background-color: $background-green;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -68,32 +66,30 @@
 }
 
 @media (min-width: 1024px) {
+  .footer {
+    background-color: $background-green;
+    display: flex;
+    // justify-content:space-around;
+    flex-wrap: wrap;
+    color: $background-component;
+    align-items: center;
 
-.footer {
-  background-color:$background-green;
-  display: flex;
-  // justify-content:space-around;
-  flex-wrap: wrap;
-  color: $background-component;
-  align-items: center;
- 
-  &__container-title{
-     
-    &__copyright{
-    font-size: 3vh;
-    
-    }
+    &__container-title {
+      &__copyright {
+        font-size: 3vh;
+      }
 
-    &__container-social-media {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      cursor: pointer;
-      max-height: 50%;
-    }
+      &__container-social-media {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        cursor: pointer;
+        max-height: 50%;
+      }
 
-    .icons {
-      margin: 1vh;
+      .icons {
+        margin: 1vh;
+      }
     }
   }
 }
