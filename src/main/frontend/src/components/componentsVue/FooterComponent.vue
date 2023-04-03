@@ -33,7 +33,7 @@
   
   &__container-title{
      display: flex;
-     font-family:Libre Baskerville, serif;
+     font-family:$font-text;
      
     &__copyright{
     font-size: 2vh;
