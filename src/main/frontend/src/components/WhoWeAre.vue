@@ -5,9 +5,9 @@
 <template>
   <main>
    <div class="card">
-    <div class="modal-dialog modal-fullscreen-sm-down">
-      <img  src="../assets/images/foto3.jpg" alt="Imagen" />
-    </div>
+    
+      <img  src="../assets/images/foto1.webp" alt="Imagen" style="max-width: fit-content;" />
+
     <div class="card-body pt-1">
       <p class="card-text"><small class="text-muted">01-01-2023</small></p>
       <h5 class="card-title">José García</h5>
