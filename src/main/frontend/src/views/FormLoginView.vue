@@ -1,6 +1,6 @@
 <script setup>
  import LoginComponent from '../components/LoginComponent.vue';
- import FooterComponent from '../components/componentsVue/FooterComponent.vue';
+ import FooterComponent from '../components/FooterComponent.vue';
  
 </script>
 
@@ -8,7 +8,6 @@
   
     <div class="view-container">
     <LoginComponent />
-    <FooterComponent />
     </div>
 
 </template>
