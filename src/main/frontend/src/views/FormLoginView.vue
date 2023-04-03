@@ -8,7 +8,7 @@
   
     <div class="view-container">
     <LoginComponent />
-    <FooterComponent />
+   
     </div>
 
 </template>
