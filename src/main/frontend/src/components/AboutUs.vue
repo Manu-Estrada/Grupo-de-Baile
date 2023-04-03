@@ -1,7 +1,6 @@
 <template>
   <main>
     <h2>Sobre nosotros</h2>
-
     <div class="card">
       <div class="row g-0">
         <div class="col-md-6 object-fit-cover">
@@ -24,7 +23,6 @@
               65 años, habiendo pasado por la misma más de 350 personas en el
               transcurso de su historia.
             </p>
-            <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
           </div>
         </div>
       </div>
@@ -81,7 +79,6 @@
               Beltaine Avilés Interceltico, entre los años 2009 y 2011, y de la
               Seronda n’Aviles desde el año 2008 hasta la actualidad.
             </p>
-            <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
           </div>
         </div>
       </div>
@@ -118,7 +115,6 @@
               último la zona costera, con sus modestos trajes de pescador, que
               se repiten a lo largo de todo el litoral cantábrico.
             </p>
-            <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
           </div>
         </div>
       </div>
@@ -146,7 +142,6 @@
               Además, la agrupación pone en escena estampas típicas asturianas,
               como pueden ser la romería o la puya del ramo.
             </p>
-            <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
           </div>
         </div>
       </div>
@@ -202,18 +197,17 @@
               Internacional de Lárnaca, Chipre (1994). Festival CIOFF
               Cantanhede-Portugal 2017
             </p>
-            <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
           </div>
         </div>
       </div>
     </div>
+    -->
   </main>
 </template>
 
 <style scoped lang="scss">
 h2 {
   color: #cc0033;
-  margin-top: 2em;
 }
 main {
   padding: 3em;
@@ -230,14 +224,7 @@ img {
   width: 100%;
 }
 .card {
- 
-   --bs-card-border-width: none; 
-   --bs-card-border-color: var(--bs-border-color-translucent); 
-   --bs-card-border-radius: none; 
-   --bs-card-inner-border-radius: calc(none); 
-   border: none; 
-   border-radius:none; 
+  border: none;
+  border-radius: none;
 }
-
 </style>
- 
