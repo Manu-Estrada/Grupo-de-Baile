@@ -40,7 +40,7 @@ import NavbarComponent from '../components/NavbarComponent.vue';
 <style scoped> 
 @import "../assets/sass/styles.scss";
 #mainImg{
-  width: 400px;
+  /* width: 400px; */
   height: 234px;
   margin-bottom: 1em;
 }
