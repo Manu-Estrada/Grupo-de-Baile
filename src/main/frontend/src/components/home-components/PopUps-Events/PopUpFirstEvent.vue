@@ -25,20 +25,20 @@
         ></button>
         <div>
           <div class="event-container">
-          <img src="../../../assets/img/folk.svg" alt="" />
-          <div class="text-container">
-            <span>01-01-2023</span>
-            <h3>Evento primero</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              laoreet facilisis dapibus. Donec aliquet ligula ipsum, tincidunt
-              viverra risus malesuada ac. Curabitur fringilla sapien sit amet ex
-              mollis finibus. Praesent molestie lectus sit amet tortor
-              condimentum consectetur. Orci varius natoque penatibus et magnis
-              dis parturient montes, nascetur ridiculus mus.
-            </p>
+            <img src="../../../assets/images/folk.svg" alt="" />
+            <div class="text-container">
+              <span>01-01-2023</span>
+              <h3>Evento primero</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                laoreet facilisis dapibus. Donec aliquet ligula ipsum, tincidunt
+                viverra risus malesuada ac. Curabitur fringilla sapien sit amet
+                ex mollis finibus. Praesent molestie lectus sit amet tortor
+                condimentum consectetur. Orci varius natoque penatibus et magnis
+                dis parturient montes, nascetur ridiculus mus.
+              </p>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

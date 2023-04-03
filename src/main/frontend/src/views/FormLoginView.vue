@@ -1,27 +1,27 @@
 <script setup>
  import LoginComponent from '../components/LoginComponent.vue';
-
-
+ import FooterComponent from '../components/FooterComponent.vue';
+ 
 </script>
+
 <template>
-  <main>
+  
+    <div class="view-container">
     <LoginComponent />
-    
-</main>
+    </div>
+
 </template>
 <style lang="scss" scoped>
-main{
+.view-container{
 
     background-image: url("../assets/images/@tittovelusi_087.jpeg");
-    width: 100%;
-    background-position: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-   
-
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
     

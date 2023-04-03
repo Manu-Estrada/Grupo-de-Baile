@@ -1,5 +1,9 @@
 package com.baile.grupodebaile.services;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,8 @@ import com.baile.grupodebaile.models.ImageUser;
 import com.baile.grupodebaile.models.User;
 import com.baile.grupodebaile.repositories.ImageUserRepository;
 import com.baile.grupodebaile.repositories.UserRepository;
+import com.baile.grupodebaile.utils.FileUploadUtil;
+import com.baile.grupodebaile.utils.RouteFileUploadImage;
 
 @Service
 public class UserService {
@@ -33,14 +39,28 @@ public class UserService {
         return repository.save(user);
     }
 
-    public void saveImageUser(MultipartFile multipartFile, Long id){
-        User userAddImage = repository.findById(id).orElseThrow();
+    public void saveImageUser(MultipartFile multipartFile, Long id) throws IOException{
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        String uploadDir = RouteFileUploadImage.pathToSaveImage("imageUser");
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
         ImageUser imageUserNew = new ImageUser();
         imageUserNew.setImage(fileName);
         imageUserRepository.save(imageUserNew);
-        System.out.println(imageUserNew.getId());
+
+        User userToAddImage = repository.findById(id).orElseThrow();
+        userToAddImage.setImageUser(imageUserNew);
+        repository.save(userToAddImage);
+    }
+    
+    public void deleteImageUser(Long iduser) throws IOException{
+        User userToDeleteImage = repository.findById(iduser).orElseThrow();
+        ImageUser imageToDelete = userToDeleteImage.getImageUser();
+        userToDeleteImage.setImageUser(null);
+        imageUserRepository.delete(imageToDelete);
+        String uploadDir = RouteFileUploadImage.pathToSaveImage("imageUser");
+        Path fileToDeletePath = Paths.get(uploadDir + imageToDelete.getImage());
+        Files.delete(fileToDeletePath);
     }
     
     public List<User> listAll() {
