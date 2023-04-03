@@ -19,5 +19,5 @@
 </template>
 <style lang="scss" scoped>
 @import "../../assets/sass/_variables.scss";
-@import "../../assets/sass/galleryStyles/styles.scss"; 
+@import "../../assets/sass/galleryStyles/gallerystyles.scss"; 
 </style>
