@@ -16,6 +16,9 @@ import WhoWeAre from "../components/WhoWeAre.vue";
         <WhoWeAre />
         <WhoWeAre />
         <WhoWeAre />
+        <WhoWeAre />
+        <WhoWeAre />
+
 
       </div>
     </div>
@@ -25,15 +28,24 @@ import WhoWeAre from "../components/WhoWeAre.vue";
 @import "../assets/sass/variables";
 @import "../assets/sass/styles.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss"; 
+.mt-5  {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 #containerAlbums {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  width: 90%;
 }
 #headerH3 {
-  margin: 0px 50px 10px 53px;
+  width: 90%;
+  // margin: 0px 50px 10px 53px;
 }
 h3 {
   font-weight: bold;
+  margin: 0.5em;
 }
 </style>
