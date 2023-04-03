@@ -1,5 +1,6 @@
 package com.baile.grupodebaile.controllers;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.baile.grupodebaile.models.ImageUser;
 import com.baile.grupodebaile.models.User;
 import com.baile.grupodebaile.services.UserService;
 
@@ -54,8 +54,13 @@ public class UserController {
     }
 
     @PostMapping("/register/{id}/imagesuser")
-    public void storeImageUser(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) {
+    public void storeImageUser(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) throws IOException {
         service.saveImageUser(multipartFile, id);
+    }
+
+    @DeleteMapping("/register/{iduser}/imagesuser")
+    public void deleteImageUser(@PathVariable Long iduser) throws IOException {
+        service.deleteImageUser(iduser);
     }
 
     @GetMapping("/users")
@@ -76,16 +81,11 @@ public class UserController {
     @PutMapping("/users/{id}")
     public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody User user) {
         try {
-            User userToUpdate = service.listOne(id);
-            System.out.println(userToUpdate.getName());
-            if (userToUpdate != null) {
-                user.setId(id);
-                service.store(user);
-                return new ResponseEntity<>(HttpStatus.OK);
-            }
+            user.setId(id);
+            service.store(user);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
