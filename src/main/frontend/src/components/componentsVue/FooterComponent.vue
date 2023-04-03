@@ -96,5 +96,6 @@
       margin: 1vh;
     }
   }
-}}
+}
+}
 </style>

@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.baile.grupodebaile.models.User;
 import com.baile.grupodebaile.repositories.UserRepository;
 
+
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
 
