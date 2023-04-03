@@ -8,6 +8,7 @@
   
     <div class="view-container">
     <LoginComponent />
+
     </div>
 
 </template>
