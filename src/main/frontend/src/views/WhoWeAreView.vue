@@ -1,5 +1,19 @@
 <script setup>
 import WhoWeAre from "../components/WhoWeAre.vue";
+import { onBeforeMount, ref } from 'vue';
+import ApiRepository from  './../assets/ApiRepository/ApiRepository.js'
+import { computed } from "@vue/reactivity";
+
+const repository = new ApiRepository("quienesSomos");
+const api = repository.chooseApi();
+
+let membersList = ref([]);
+onBeforeMount(async () => {
+  membersList.value = await api.getAll();
+})
+const showThisMember = computed(() => {
+    return membersList;
+  });
 </script>
 
 <template>
@@ -9,17 +23,8 @@ import WhoWeAre from "../components/WhoWeAre.vue";
         <h3>Quiénes somos</h3>
       </div>
       <div id="containerAlbums">
-        <WhoWeAre />
-        <WhoWeAre />
-        <WhoWeAre />
-        <WhoWeAre />
-        <WhoWeAre />
-        <WhoWeAre />
-        <WhoWeAre />
-        <WhoWeAre />
-        <WhoWeAre />
-
-
+        <WhoWeAre v-for="member in showThisMember.value" :member="member"/>
+     
       </div>
     </div>
   </main>
