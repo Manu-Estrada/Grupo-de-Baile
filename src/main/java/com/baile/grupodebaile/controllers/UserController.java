@@ -68,6 +68,11 @@ public class UserController {
         return service.listAll();
     }
 
+    @GetMapping("/quienessomos")
+    public List<User> listAllPublic() {
+        return service.listAll();
+    }
+
     @GetMapping("/users/{id}")
     public User listOne(@PathVariable Long id) {
         return service.listOne(id);

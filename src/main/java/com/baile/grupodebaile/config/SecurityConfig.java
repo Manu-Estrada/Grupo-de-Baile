@@ -39,9 +39,10 @@ public class SecurityConfig {
                             .logoutUrl("/api/logout")
                             .deleteCookies("JSESSIONID"))
                     .authorizeHttpRequests((auth) -> auth
-                            .antMatchers("/**").permitAll()
+                        //     .antMatchers("/**").permitAll()
                             .antMatchers("/api/register").hasRole("ADMIN")
                             .antMatchers("/api/users").hasRole("ADMIN")
+                            .antMatchers("/api/quienessomos").permitAll()
                             .antMatchers("/api/users/**").hasAnyRole("ADMIN", "USER")
                             .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")
                             .anyRequest()
