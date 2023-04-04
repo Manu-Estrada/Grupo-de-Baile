@@ -50,6 +50,11 @@ const router = createRouter({
       name: 'registeruser',
       component: () => import('../views/RegisterUserView.vue')
     },
+    {
+      path: '/registrofotousuario',
+      name: 'registeruser',
+      component: () => import('../views/RegisterImgUserView.vue')
+    },
   ]
 })
 
