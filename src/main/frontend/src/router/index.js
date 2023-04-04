@@ -9,14 +9,47 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
+    
+    {
+      path: '/nuestroseventos',
+      name: 'ourevents',
+      component: () => import('../views/OurEventsView.vue')
+    },
+    {
+      path: '/nuestrosviajes',
+      name: 'ourtravels',
+      component: () => import('../views/OurTravelsView.vue')
+    },
+     {
+      path: '/galeriaviajes',
+      name: 'gallerytravels',
+      component: () => import('../views/GalleryTravelsView.vue')
+    },
+    {
+      path: '/sobrenosotros',
+      name: 'aboutus',
+      component: () => import('../views/AboutUsView.vue')
+    },
+    {
+      path: '/quienessomos',
+      name: 'whowweare',
+      component: () => import('../views/WhoWeAreView.vue')
+    },
+    {
+      path: '/contacto',
+      name: 'contact',
+      component: () => import('../views/FormContactView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/FormLoginView.vue')
+    },
+    {
+      path: '/registrousuario',
+      name: 'registeruser',
+      component: () => import('../views/RegisterUserView.vue')
+    },
   ]
 })
 

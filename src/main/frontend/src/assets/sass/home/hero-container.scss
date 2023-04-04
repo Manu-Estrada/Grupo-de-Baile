@@ -1,0 +1,18 @@
+@import "../variables";
+.hero-container {
+  background-color: $background-card;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+@media (max-width: 425px) {
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    height: 50rem;
+  }
+}
+
