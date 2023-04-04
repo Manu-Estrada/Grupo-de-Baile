@@ -23,16 +23,6 @@ async function save() {
     return;
   }
 
-  if (member.username == "") {
-    alert("Se necesita añadir un email");
-    return;
-  }
-
-  if (member.password == "") {
-    alert("Se necesita añadir una contraseña");
-    return;
-  }
-
   const payload = JSON.stringify(this.member);
   const url = "http://localhost:8080/api/register";
   const r = await fetch(url, {
@@ -43,10 +33,8 @@ async function save() {
       "Content-type": "application/json",
     }
   });
-  console.log(payload)
 
   const response = r;
-  console.log(response);
 
   if (response.status == 201) {
     alert("Added " + member.name);
