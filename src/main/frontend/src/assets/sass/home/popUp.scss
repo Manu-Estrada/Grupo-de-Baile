@@ -16,18 +16,12 @@
 }
 
 .modal.show .modal-dialog {
-  margin: 70px 0 0 100px;
-  transform: none;
-
   .modal-content {
-    width: 80rem;
-    height: 42rem;
     display: flex;
     align-items: flex-end;
     .btn-close {
       background-color: #336644;
       opacity: 1;
-      color: white;
       margin: 10px 10px 0px 0px;
     }
     div {
@@ -36,8 +30,8 @@
       .event-container {
         background-color: $background-card;
         width: 90%;
-        height: 35rem;
-        margin-top: 20px;
+        height: 30em;
+        margin: 20px 0 54px;
         .text-container {
           display: flex;
           flex-direction: column;
@@ -51,39 +45,27 @@
     }
   }
 }
-@media (min-width: 1471px) and (max-width: 2560px) {
-}
-@media (max-width: 1024px) {
-  .modal.show .modal-dialog {
-    margin: 50px 0 0 50px;
 
-    .modal-content {
-      width: 57.5rem;
-      height: 37rem;
-      div {
-        .event-container {
-          width: 90%;
-          height: 30rem;
-          margin-top: 20px;
-          .text-container {
-            p {
-              width: 100%;
-            }
-          }
-        }
-      }
+@media (max-width: 1024px) {
+  .text-container {
+    p {
+      width: 100%;
     }
   }
 }
+
 @media (max-width: 768px) {
   .modal.show .modal-dialog {
-    margin: 50px 0 0 50px;
-
     .modal-content {
-      width: 42rem;
-      height: 37rem;
       div {
         .event-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 45em;
+          img {
+            width: 17rem;
+          }
           .text-container {
             p {
               width: 100%;
@@ -96,31 +78,12 @@
   }
 }
 @media (max-width: 425px) {
-  .modal.show .modal-dialog {
-    margin: 0 0 0 50px;
-
-    .modal-content {
-      width: 90%;
-      height: 50rem;
-      div {
-        .event-container {
-          height: 45rem;
-          display: flex;
-          flex-direction: column;
-          img {
-            width: 100%;
-          }
-          .text-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding: 10px;
-            p {
-              width: 80%;
-            }
-          }
-        }
-      }
+  .event-container {
+    img {
+      margin-top: 56px;
     }
+  }
+  .text-container {
+    padding-bottom: 0px;
   }
 }

@@ -6,7 +6,7 @@
       <h2>¡Bienvenidos a Xaréu D’Ochobre!</h2>
       <p>
         Nacida en Avilés, Asturias, el 28 de octubre de 1988, la Agrupación
-        Cultural Xaréu d´ Ochobre se dedica a la conservacióny divulgación 
+        Cultural Xaréu d´ Ochobre se dedica a la conservación y divulgación 
         de la música y danza tradicional asturiana. 
       </p>
       <div>
