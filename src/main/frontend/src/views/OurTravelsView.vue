@@ -31,7 +31,7 @@ import CardAlbum from '../components/gallery/CardAlbum.vue';
   justify-content: space-around;
 }
 #headerH3 {
- margin: 0px 50px 10px 53px;
+ width: 90%;
 }
 h3{
   font-weight: bold;
