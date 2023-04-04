@@ -4,7 +4,7 @@
   <footer class="footer w-100">
     <div class="footer__container-log">
       <img
-        src="../assets/images/xareu-d-ochobre-vainilla.png"
+        src="../../assets/images/xareu-d-ochobre-vainilla.png"
         alt="logo Xaréu D´ Ochobre"
       />
     </div>
@@ -55,7 +55,7 @@
         target="_blank"
         ><img
           class="image-icon icons"
-          src="../assets/images/iconFacebook.png"
+          src="../../assets/images/iconFacebook.png"
           alt="facebbok-icon"
       /></a>
 
@@ -64,7 +64,7 @@
         target="_blank"
         ><img
           class="image-icon icons"
-          src="../assets/images/icon-Instagram.png"
+          src="../../assets/images/icon-Instagram.png"
           alt="instagram-icon"
       /></a>
     </div>
@@ -72,7 +72,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../assets/sass/variables";
+@import "../../assets/sass/variables";
 
 .footer {
   background-color: $background-green;
