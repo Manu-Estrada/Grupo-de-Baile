@@ -87,3 +87,17 @@
     padding-bottom: 0px;
   }
 }
+@media (max-width: 320px) {
+  .modal.show .modal-dialog {
+    .modal-content {
+      div {
+        .event-container {
+          img{
+            margin-top: 56px;
+            width: 13rem;
+          }
+        }
+      }
+    }
+  }
+}
