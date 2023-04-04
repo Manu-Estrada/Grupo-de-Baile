@@ -10,7 +10,7 @@
       <div class="row g-0">
         <div class="col-md-6">
           <img
-            src="../assets/images/imagenquienessomos.png"
+            src="../assets/images/imagenLaAsociacion.jpg"
             alt="..."
           />
         </div>
@@ -38,7 +38,7 @@
       <div class="row g-0">
         <div class="col-md-6">
           <img
-            src="../assets/images/imagenactividades.jpeg"
+            src="../assets/images/imagenActividades.jpg"
             alt="..."
           />
         </div>
@@ -120,7 +120,7 @@
       <div class="row g-0">
         <div class="col-md-6">
           <img
-            src="../assets/images/imagentrajes.jpeg"
+            src="../assets/images/imagenIndumentaria.jpg"
             alt="..."
           />
         </div>
@@ -164,7 +164,7 @@
       <div class="row g-0">
         <div class="col-md-6">
           <img
-            src="../assets/images/imagenrepertorio.jpg"
+            src="../assets/images/imagenRepertorio.jpg"
             alt="..."
           />
         </div>
@@ -190,7 +190,7 @@
       <div class="row g-0">
         <div class="col-md-6">
           <img
-            src="../assets/images/imagennuestrosviajes.JPG"
+            src="../assets/images/imagenActuaciones.JPG"
             alt="..."
           />
         </div>
