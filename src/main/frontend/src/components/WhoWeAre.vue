@@ -1,23 +1,37 @@
 <script setup>
-
+const props = defineProps({
+    member: {
+        type: Object,
+      },
+});
 </script>
-
 <template>
   <main>
    <div class="card">
-    <div class="modal-dialog modal-fullscreen-sm-down">
-      <img  src="../assets/images/foto3.jpg" alt="Imagen" />
-    </div>
-    <div class="card-body pt-1">
-      <p class="card-text"><small class="text-muted">01-01-2023</small></p>
-      <h5 class="card-title">José García</h5>
-      <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+      <img class="imgCard" src="../assets/images/foto3.jpg" alt="Imagen"  />
+      <div class="card-body pt-1">
+        <p class="card-text"><small class="text-muted">01-01-2023</small></p>
+        <h5 class="card-title"> {{ member }}</h5>
       <div id="containerBtnMemebrs">
-        <a href="#" class="btn btn-primary" id="Btn-see" >Ampliar</a>
+        <a data-bs-toggle="modal"  data-bs-target="#exampleModal" class="btn btn-primary" id="Btn-see" >Ampliar</a>
       </div>
     </div>
    </div>
   </main>
+
+<!-- ampliar imagen -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modalDialog">
+    <div class="modal-content bg-transparent" id="boxImg">
+        <div class="d-flex justify-content-end">
+        <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClosed" ></button>
+      </div>
+        <img src="../assets/images/foto3.jpg" data-bs-toggle="modal" data-bs-target="#exampleModal"/>
+    </div>
+  </div>
+</div>
+
+
 </template>
 <style lang="scss" scoped>
 @import "../assets/sass/_variables.scss";
@@ -25,6 +39,11 @@
 
 .card  {
 
+.imgCard  {
+  height:10em; 
+  width: 100%;
+  object-fit: cover;
+}
   #containerBtnMemebrs{
       display: flex;
       justify-content: center;

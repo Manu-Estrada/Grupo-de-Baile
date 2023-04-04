@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <section class="welcome-container">
-    <img src="../../assets/img/COVADONGA.jpg" alt="group-image" />
+    <img src="../../assets/images/COVADONGA.jpg" alt="group-image" />
     <div>
       <h2>¡Bienvenidos a Xaréu D’Ochobre!</h2>
       <p>

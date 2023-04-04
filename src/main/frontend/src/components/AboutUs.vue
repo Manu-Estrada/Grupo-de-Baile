@@ -74,7 +74,7 @@
               por parte de la Consejería de Inmigración por el buen trabajo
               realizado en el C. Asturiano de Valladolid.
             </p>
-            <ul>
+            <ul class="strong">
               <li>
                 Colabora con Difac mediante bailes adaptados silla de ruedas.
               </li>
@@ -281,19 +281,43 @@
         </div>
       </div>
     </div>
+    -->
   </main>
 </template>
 
 <style scoped lang="scss">
+@import "../assets/sass/_variables";
+
+.strong {
+  font-weight: bold;
+}
+
+ul li::before {
+  content: "- ";
+}
+
+ul.strong li::before {
+  content: "";
+}
 h2 {
+
   color: #cc0033;
-  margin-top: 2em;
+}
+
+h6 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+h6 {
+  font-weight: bold;
+  text-decoration: underline;
 }
 main {
   padding: 3em;
   .card-body {
     background-color: #ffffff;
-    padding: 4em;
+    padding: 3em 4em 4em 4em;
   }
 }
 
@@ -323,6 +347,8 @@ img {
   height: 44vw;
   scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
   scrollbar-width: thin;
+  margin-right: 15px;
+  margin-top: 15px;
 }
 
 .card-body::-webkit-scrollbar {
@@ -331,5 +357,32 @@ img {
 
 .card-body::-webkit-scrollbar:vertical {
   width:10px;
+}
+
+.card-body::-webkit-scrollbar-button:increment,
+.card-body::-webkit-scrollbar-button {
+  display: none;
+} 
+
+.card-body::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.card-body::-webkit-scrollbar-thumb {
+    background-color: $background-green;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+  }
+  
+  .contenedor::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
+.slogan {
+  background: #ffffff;
+  text-align: center;
+  padding: 3rem;
+  font-size: 2rem;
+  font-style: oblique;
 }
 </style>

@@ -12,6 +12,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.baile.grupodebaile.services.JpaUserDetailsService;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 
 @Configuration
 @EnableWebSecurity
@@ -28,28 +30,27 @@ public class SecurityConfig {
 
         @Bean
         SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-                http
-                                .cors()
-                                .and()
-                                .headers(header -> header.frameOptions().sameOrigin())
-                                .csrf(csrf -> csrf.disable())
-                                .formLogin(form -> form.disable())
-                                .logout(logout -> logout
-                                                .logoutUrl("/api/logout")
-                                                .deleteCookies("JSESSIONID"))
-                                .authorizeRequests((auth) -> auth
-                                                .antMatchers("/**").permitAll()
-                                                .antMatchers("/api/register").hasRole("ADMIN")
-                                                .antMatchers("/api/users").hasRole("ADMIN")
-                                                .antMatchers("/api/users/**").hasAnyRole("ADMIN", "USER")
-                                                .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")
-                                                .anyRequest()
-                                                .authenticated())
-                                .userDetailsService(service)
-                                .sessionManagement(session -> session
-                                                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
-                                .httpBasic(basic -> basic
-                                                 .authenticationEntryPoint(authenticationEntryPoint));
+            http
+                    .cors(withDefaults())
+                    .headers(header -> header.frameOptions().sameOrigin())
+                    .csrf(csrf -> csrf.disable())
+                    .formLogin(form -> form.disable())
+                    .logout(logout -> logout
+                            .logoutUrl("/api/logout")
+                            .deleteCookies("JSESSIONID"))
+                    .authorizeHttpRequests((auth) -> auth
+                            .antMatchers("/**").permitAll()
+                            .antMatchers("/api/register").hasRole("ADMIN")
+                            .antMatchers("/api/users").hasRole("ADMIN")
+                            .antMatchers("/api/users/**").hasAnyRole("ADMIN", "USER")
+                            .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")
+                            .anyRequest()
+                            .authenticated())
+                    .userDetailsService(service)
+                    .sessionManagement(session -> session
+                            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                    .httpBasic(basic -> basic
+                            .authenticationEntryPoint(authenticationEntryPoint));
                 return http.build();
 
         }
