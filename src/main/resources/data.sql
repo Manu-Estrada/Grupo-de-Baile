@@ -9,3 +9,7 @@ INSERT INTO roles (id_role, role) VALUES (default, 'ROLE_USER')
 
 INSERT INTO roles_users (user_id, role_id) VALUES (1, 1)
 INSERT INTO roles_users (user_id, role_id) VALUES (2, 2)
+
+INSERT INTO events (id_event, name, description, dateevent) VALUES (default, "Patata", "Miles y unas de receptas de patatas", "2023-04-05")
+INSERT INTO events (id_event, name, description, dateevent) VALUES (default, "tomates", "Miles y unas de receptas de patatas", "2023-04-05")
+INSERT INTO events (id_event, name, description, dateevent) VALUES (default, "cebollas", "Miles y unas de receptas de patatas", "2023-04-05")
