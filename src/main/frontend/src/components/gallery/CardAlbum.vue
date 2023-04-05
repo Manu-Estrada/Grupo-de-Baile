@@ -5,7 +5,7 @@
 <template>
   <main>
    <div class="card">
-    <img src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" alt="Imagen" id="imgCards" />
+    <img src="../../assets/images/cardAlbum.jpg" alt="Imagen" id="imgCards" />
   <div class="card-body pt-1">
     <p class="card-text"><small class="text-muted">01-01-2023</small></p>
     <h5 class="card-title">Primer Viaje</h5>
@@ -21,7 +21,7 @@
 @import "../../assets/sass/_variables.scss";
 @import "../../assets/sass/galleryStyles/gallerystyles.scss";
 #imgCards{
-  height:13.8em;
+  height:17.2em;
   width: 100%;
   object-fit: cover;
 }
