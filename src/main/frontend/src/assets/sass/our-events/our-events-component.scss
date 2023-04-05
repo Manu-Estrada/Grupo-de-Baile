@@ -1,0 +1,82 @@
+@import "../variables";
+.card-container {
+  display: flex;
+  width: 90%;
+  background-color: $background-card;
+  margin-bottom: 40px;
+  img {
+    width: 25%;
+  }
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 15px;
+    span {
+      font-style: italic;
+      font-size: 14px;
+    }
+    div {
+      display: flex;
+      justify-content: end;
+      width: 100%;
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .card-container {
+  img {
+    width: 30%;
+  }
+  .text-container {
+    p{
+      font-size: 70%;
+    }
+    div {
+      button {
+        width: 12rem;
+        height: 2.5rem;
+      }
+    }
+  }
+}
+}
+@media (max-width: 768px) {
+  .card-container {
+  img {
+    width: 40%;
+  }
+  .text-container {
+    p{
+      font-size: 60%;
+    }
+    div {
+      button {
+        width: 10rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+}
+@media (max-width: 426px) {
+  .card-container {
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 100%;
+  }
+  .text-container {
+    span {
+    }
+    div {
+      button {
+        width: 10rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+}
