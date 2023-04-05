@@ -5,13 +5,14 @@
     <div class="footer__container-log">
       <img
         src="../assets/images/xareu-d-ochobre-vainilla.png"
-        alt="logo Xaréu D´ Ochobre"
+        alt="logo Xaréu D´Ochobre"
       />
     </div>
     <div class="footer__container-title">
       <p class="footer__container-title__slogan">
-        “Danzar es avanzar en la vida, por lo tanto, seguir danzando para seguir
-        avanzando”
+        “Danzar es avanzar en la vida,<br />
+        por lo tanto,<br />
+        seguir danzando para seguir avanzando”
       </p>
       <p class="footer__container-title__copyright">&copy; Xaréu D'Ochobre</p>
     </div>
@@ -77,10 +78,10 @@
 .footer {
   background-color: $background-green;
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
-  color: $background-component;
+  justify-content: space-around;
   align-items: end;
+  color: $background-component;
   padding: 2rem 0;
 
   &__container-log {
@@ -90,6 +91,7 @@
   }
 
   &__container-title {
+    font-family: Libre Baskerville, serif;
     display: flex;
     font-family: $font-text;
     flex-direction: column;
@@ -104,86 +106,37 @@
       font-size: 2vh;
       color: $text-copyright;
     }
-
-    &__container-title {
-      display: flex;
-      font-family: Libre Baskerville, serif;
-
-      &__copyright {
-        font-size: 2vh;
-      }
-    }
-    &__container-navigation {
-      background-color: $background-green;
-      a {
-        color: $background-card;
-        transition: all 0.4s;
-      }
-      a.router-link-exact-active,
-      a:hover {
-        color: $background-upcomingEvents;
-        letter-spacing: 1px;
-      }
-    }
-
-    &__container-social-media {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      cursor: pointer;
-      flex-wrap: nowrap;
-    }
-    .icons {
-      margin: 1vh;
-      opacity: 100%;
-    }
-    .icons a:hover {
-      opacity: 50%;
-    }
   }
-}
 
-@media (min-width: 1024px) {
-  .footer {
+  &__container-navigation {
     background-color: $background-green;
-    display: flex;
-    // justify-content:space-around;
-    flex-wrap: wrap;
-    color: $background-component;
-    align-items: end;
-
-    &__container-title {
-      &__copyright {
-        font-size: 1.25rem;
-        margin-bottom: 0.3rem;
-      }
+    a {
+      color: $background-card;
+      transition: all 0.4s;
     }
-
-    &__container-navigation {
-      background-color: $background-green;
-      a {
-        color: $background-card;
-        transition: all 0.4s;
-      }
-      a.router-link-exact-active,
-      a:hover {
-        color: $background-upcomingEvents;
-        letter-spacing: 1px;
-      }
-    }
-
-    &__container-social-media {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      cursor: pointer;
-      flex-wrap: nowrap;
-      align-items: center;
-
-      .icons {
-        margin: 1vh;
-      }
+    a.router-link-exact-active,
+    a:hover {
+      color: $background-upcomingEvents;
+      letter-spacing: 1px;
     }
   }
+
+  &__container-social-media {
+    align-self: center;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .icons {
+    margin: 1vh;
+    opacity: 100%;
+  }
+  .icons a:hover {
+    opacity: 50%;
+  }
 }
+
 </style>
