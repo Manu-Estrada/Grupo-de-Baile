@@ -8,10 +8,10 @@ const props = defineProps({
 <template>
   <main>
    <div class="card">
-      <img class="imgCard" src="../assets/images/foto3.jpg" alt="Imagen"  />
+      <img class="imgCard" :src="`http://localhost:8080/user-fotos/${member.imageUser.image}`" alt="Imagen"  />
       <div class="card-body pt-1">
-        <p class="card-text"><small class="text-muted">01-01-2023</small></p>
-        <h5 class="card-title"> {{ member }}</h5>
+        <p class="card-text"><small class="text-muted"> {{ member.dateadmission }}</small></p>
+        <h5 class="card-title"> {{ member.name }}  {{ member.lastname }}</h5>
       <div id="containerBtnMemebrs">
         <a data-bs-toggle="modal"  data-bs-target="#exampleModal" class="btn btn-primary" id="Btn-see" >Ampliar</a>
       </div>
