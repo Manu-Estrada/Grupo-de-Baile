@@ -43,7 +43,7 @@ public class SecurityConfig {
                             .antMatchers("/api/register").permitAll()
                             .antMatchers("/api/users").hasRole("ADMIN")
                             .antMatchers("/api/quienessomos").permitAll()
-                            .antMatchers("/user-fotos/**").permitAll()
+                            .antMatchers("/images/user-fotos/**").permitAll()
                             .antMatchers("/api/users/**").hasAnyRole("ADMIN", "USER")
                             .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")
                             .anyRequest()
