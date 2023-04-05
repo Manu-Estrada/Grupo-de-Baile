@@ -8,7 +8,7 @@ const props = defineProps({
 <template>
   <main>
    <div class="card">
-      <img class="imgCard" :src="`http://localhost:8080/user-fotos/${member.imageUser.image}`" alt="Imagen"  />
+      <img class="imgCard" :src="`http://localhost:8080/images/user-fotos/${member.imageUser.image}`" alt="Imagen"  />
       <div class="card-body pt-1">
         <p class="card-text"><small class="text-muted"> {{ member.dateadmission }}</small></p>
         <h5 class="card-title"> {{ member.name }}  {{ member.lastname }}</h5>
