@@ -1,4 +1,5 @@
 <script setup>
+import { useRouter } from 'vue-router';
 
 let member = {
   name: "",
@@ -8,25 +9,27 @@ let member = {
   password: ""
 }
 
+const router = useRouter();
+
 async function save() {
-  if (member.name == "") {
+  if (member.name === "") {
     alert("Se necesita añadir un nombre");
     return;
   }
 
-  if (member.lastname == "") {
+  if (member.lastname === "") {
     alert("Se necesita añadir un apellido");
     return;
   }
-  if (member.dateadmission == "") {
+
+  if (member.dateadmission === "") {
     alert("Se necesita añadir una fecha");
     return;
   }
 
-  const payload = JSON.stringify(this.member);
+  const payload = JSON.stringify(member);
   const url = "http://localhost:8080/api/register";
-  const r = await fetch(url, {
-   
+  const response = await fetch(url, {
     method: "POST",
     body: payload,
     headers: {
@@ -34,48 +37,44 @@ async function save() {
     }
   });
 
-  const response = r;
-
-  if (response.status == 201) {
-    alert("Added " + member.name);
-
+  if (response.status === 201) {
+    router.push('/registrofotousuario');
+    alert("Bienvendid@ " + member.name);
   } else {
-    alert("Ha habido un error. /nPor favor prueba en un ratín");
+    alert("Ha habido un error. \nPor favor prueba en un rato");
   }
 }
-
 </script>
-
 
 <template>
   <form>
     <div class="container mt-2">
       <div class="col-12 col-md-8">
-        <h2 class="mt-2" >Añadir nuevo miembro</h2>
+        <h2 class="mt-2">Añadir nuevo miembro</h2>
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
-          <input v-model="member.name" id="name" class="form-control" type="text" placeholder="Nombre">
+          <input v-model="member.name" id="name" class="form-control" type="text" placeholder="Nombre" />
         </div>
         <div class="mb-3">
           <label for="surname" class="form-label">Apellidos</label>
-          <input v-model="member.lastname" id="surname" class="form-control" type="text" placeholder="Apellidos">
+          <input v-model="member.lastname" id="surname" class="form-control" type="text" placeholder="Apellidos" />
         </div>
         <div class="mb-3">
           <label for="date" class="form-label">Fecha de ingreso</label>
-          <input v-model="member.dateadmission" id="date" class="form-control" type="date" placeholder="Fecha de ingreso">
+          <input v-model="member.dateadmission" id="date" class="form-control" type="date" placeholder="Fecha de ingreso" />
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input v-model="member.username" id="email" class="form-control" type="email" placeholder="Email">
+          <input v-model="member.username" id="email" class="form-control" type="email" placeholder="Email" />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
-          <input v-model="member.password" id="password" class="form-control" type="password" placeholder="Contraseña">
+          <input v-model="member.password" id="password" class="form-control" type="password" placeholder="Contraseña" />
         </div>
       </div>
-      <div class="d-flex  w-80 mb-3   mt-3">
-        <button @click="save()" type="button" class="btn btn-success me-2 w-50">Enviar</button>
-        <button  type="reset" class="btn btn-danger w-50">Borrar</button>
+      <div class="d-flex w-80 mb-3 mt-3">
+        <button @click.prevent="save" type="submit" class="btn btn-success me-2 w-50">Enviar</button>
+        <button type="reset" class="btn btn-danger w-50">Borrar</button>
       </div>
     </div>
   </form>

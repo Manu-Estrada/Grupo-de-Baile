@@ -52,7 +52,7 @@ const router = createRouter({
     },
     {
       path: '/registrofotousuario',
-      name: 'registeruser',
+      name: 'registerimguser',
       component: () => import('../views/RegisterImgUserView.vue')
     },
   ]

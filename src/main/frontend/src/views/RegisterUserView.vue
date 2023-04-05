@@ -1,4 +1,5 @@
 <script setup>
+import { useRouter } from 'vue-router';
 
 import RegisterForm from '../components/FormsComponents/RegisterForm.vue';
 
