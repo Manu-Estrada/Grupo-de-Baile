@@ -40,7 +40,7 @@ public class SecurityConfig {
                             .deleteCookies("JSESSIONID"))
                     .authorizeHttpRequests((auth) -> auth
                         //     .antMatchers("/**").permitAll()
-                            .antMatchers("/api/register").hasRole("ADMIN")
+                            .antMatchers("/api/register").permitAll()
                             .antMatchers("/api/users").hasRole("ADMIN")
                             .antMatchers("/api/quienessomos").permitAll()
                             .antMatchers("/user-fotos/**").permitAll()
