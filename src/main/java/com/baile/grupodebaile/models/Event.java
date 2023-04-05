@@ -18,7 +18,7 @@ public class Event {
     @Column(name = "id_event")
     private Long id;
     @Column(nullable = false)
-    private String title;
+    private String name;
     @Column(nullable = false)
     private java.time.LocalDate dateevent;
     @Column(nullable = false)
@@ -27,9 +27,9 @@ public class Event {
     @OneToOne
     private ImageEvent imageevent;
 
-    public Event(Long id, String title, LocalDate dateevent, String description, ImageEvent imageevent) {
+    public Event(Long id, String name, LocalDate dateevent, String description, ImageEvent imageevent) {
         this.id = id;
-        this.title = title;
+        this.name = name;
         this.dateevent = dateevent;
         this.description = description;
 
@@ -46,12 +46,12 @@ public class Event {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public java.time.LocalDate getDateevent() {
