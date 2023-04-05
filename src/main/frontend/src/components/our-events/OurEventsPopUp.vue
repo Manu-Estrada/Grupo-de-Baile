@@ -5,7 +5,7 @@
     data-bs-target="#exampleModal"
     class="popUp-button"
   >
-    Evento primero
+    Ver más
   </button>
   <!-- Modal -->
   <div
@@ -25,10 +25,10 @@
         ></button>
         <div>
           <div class="event-container">
-            <img src="../../../assets/images/folk.svg" alt="" />
+            <img src="../../assets/images/IMG_20190928_181206.jpg" alt="" />
             <div class="text-container">
               <span>01-01-2023</span>
-              <h3>Evento primero</h3>
+              <h4>Evento primero</h4>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                 laoreet facilisis dapibus. Donec aliquet ligula ipsum, tincidunt
@@ -45,5 +45,5 @@
   </div>
 </template>
 <style lang="scss" scoped>
-@import "../../../assets/sass/home/popUp-Upcoming-events.scss";
+@import "../../assets/sass/our-events/our-events-popUp.scss";
 </style>

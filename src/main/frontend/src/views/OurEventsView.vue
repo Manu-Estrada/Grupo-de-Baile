@@ -1,5 +1,5 @@
 <script setup>
-import OurEventsComponent from "../components/OurEventsComponent.vue";
+import OurEventsComponent from "../components/our-events/OurEventsComponent.vue";
 </script>
 <template>
   <section class="our-events-view">
@@ -12,20 +12,5 @@ import OurEventsComponent from "../components/OurEventsComponent.vue";
   </section>
 </template>
 <style lang="scss" scoped>
-@import "../assets/sass/variables";
-.our-events-view {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h3 {
-    width: 90%;
-    margin: 20px;
-  }
-  .our-events-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
+@import "../assets/sass/our-events/our-events-view.scss";
 </style>
