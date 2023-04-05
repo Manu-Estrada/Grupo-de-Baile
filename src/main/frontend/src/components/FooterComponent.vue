@@ -79,10 +79,11 @@
   background-color: $background-green;
   display: flex;
   flex-wrap: wrap;
+  gap: 3rem;
   justify-content: space-around;
   align-items: end;
   color: $background-component;
-  padding: 2rem 0;
+  padding: 2rem;
 
   &__container-log {
     img {
@@ -91,9 +92,8 @@
   }
 
   &__container-title {
-    font-family: Libre Baskerville, serif;
-    display: flex;
     font-family: $font-text;
+    display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: start;
@@ -105,11 +105,15 @@
     &__copyright {
       font-size: 2vh;
       color: $text-copyright;
+      margin-bottom: 0.2rem;
     }
   }
 
   &__container-navigation {
     background-color: $background-green;
+    ul {
+      padding: 0;
+    }
     a {
       color: $background-card;
       transition: all 0.4s;
