@@ -43,6 +43,6 @@
     </div>
   </template>
   <style lang="scss" scoped>
-  @import "../../../assets/sass/home/popUp.scss";
+  @import "../../../assets/sass/home/popUp-Upcoming-events.scss";
   </style>
   
