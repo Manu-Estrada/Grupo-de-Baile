@@ -3,36 +3,6 @@ import WhoWeAre from "../components/WhoWeAre.vue";
 import { onBeforeMount, ref } from "vue";
 import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
 import { computed } from "@vue/reactivity";
-//Paginacion
-import BlogPost from "./components/BlogPost.vue"
-import PaginatePost from "./components/PaginatePost.vue"
-import LoadingSpinner from "./components/LoadingSpinner.vue"
-
-const posts = ref([])
-const postXPagina = 10
-const inicio = ref(0)
-const fin = ref(postXPagina)
-const loading = ref(true)
- 
-const favorito = ref('')
-
-const cambiarFavorito = (title) => {
-  favorito.value = title
-};
-const next = () => {
-  inicio.value = inicio.value + postXPagina
-  fin.value = fin.value + postXPagina
-}
-const prev = () => {
-  inicio.value = inicio.value - postXPagina
-  fin.value = fin.value - postXPagina
-}
-
-fetch('https://jsonplaceholder.typicode.com/posts')
-.then(respuesta => respuesta.json())
-.then(data => posts.value = data )
-.finally(() => loading.value = false)
-
 
 //Api
 const repository = new ApiRepository("quienesSomos");
@@ -46,7 +16,7 @@ const showThisMember = computed(() => {
   return membersList;
 });
 
-// Xavi
+//Paginacion
 defineProps(['inicio','fin','maxLength'])
 const emit = defineEmits(['next','prev']) 
 
