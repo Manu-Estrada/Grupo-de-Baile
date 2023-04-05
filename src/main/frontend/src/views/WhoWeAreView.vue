@@ -1,7 +1,7 @@
 <script setup>
 import WhoWeAre from "../components/WhoWeAre.vue";
-import { onBeforeMount, ref } from 'vue';
-import ApiRepository from  './../assets/ApiRepository/ApiRepository.js'
+import { onBeforeMount, ref } from "vue";
+import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
 import { computed } from "@vue/reactivity";
 
 const repository = new ApiRepository("quienesSomos");
@@ -10,10 +10,10 @@ const api = repository.chooseApi();
 let membersList = ref([]);
 onBeforeMount(async () => {
   membersList.value = await api.getAll();
-})
+});
 const showThisMember = computed(() => {
-    return membersList;
-  });
+  return membersList;
+});
 </script>
 
 <template>
@@ -23,17 +23,16 @@ const showThisMember = computed(() => {
         <h3>Quiénes somos</h3>
       </div>
       <div id="containerAlbums">
-        <WhoWeAre v-for="member in showThisMember.value" :member="member"/>
-     
+        <WhoWeAre v-for="member in showThisMember.value" :member="member" />
       </div>
     </div>
   </main>
 </template>
-<style scoped lang="scss" >
+<style scoped lang="scss">
 @import "../assets/sass/variables";
 @import "../assets/sass/styles.scss";
-@import "../assets/sass/galleryStyles/gallerystyles.scss"; 
-.mt-5  {
+@import "../assets/sass/galleryStyles/gallerystyles.scss";
+.mt-5 {
   display: flex;
   justify-content: center;
   flex-direction: column;

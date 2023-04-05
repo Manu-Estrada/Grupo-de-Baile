@@ -11,6 +11,8 @@ export default class QuienesSomosPublicRepository {
 
     membersList.push(json);
 
-    return membersList;
+    console.log(json);
+    return json;
   }
 }
+

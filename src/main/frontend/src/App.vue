@@ -1,11 +1,13 @@
 <script setup>
-import {RouterView } from 'vue-router'
-import NavbarComponent from './components/NavbarComponent.vue';
+import {RouterView } from 'vue-router';
 import FooterComponent from './components/FooterComponent.vue';
+import NavbarComponent from './components/NavbarComponent.vue';
+import NavbarAdminComponent from './components/NavbarAdminComponent.vue';
 </script>
 <template>
-  <NavbarComponent />
+  <NavbarComponent/>
+  <NavbarAdminComponent />
   <RouterView />
-  <FooterComponent />
+<FooterComponent/>
 </template>
 
