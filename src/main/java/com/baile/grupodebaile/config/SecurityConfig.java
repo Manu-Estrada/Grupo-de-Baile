@@ -53,6 +53,7 @@ public class SecurityConfig {
                                                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                                 .httpBasic(basic -> basic
                                                 .authenticationEntryPoint(authenticationEntryPoint));
+
                 return http.build();
 
         }
