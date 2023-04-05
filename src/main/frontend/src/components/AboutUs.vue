@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="pruebas">
     <h2>Sobre nosotros</h2>
     <p class="slogan">
       “Danzar es avanzar en la vida, por lo tanto, seguir danzando para seguir
