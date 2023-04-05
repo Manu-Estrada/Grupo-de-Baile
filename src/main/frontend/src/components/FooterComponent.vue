@@ -72,7 +72,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/sass/variables";
+@import "../assets/sass/variables";
 
 .footer {
   background-color: $background-green;
