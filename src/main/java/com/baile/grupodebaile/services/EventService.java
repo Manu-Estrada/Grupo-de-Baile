@@ -56,4 +56,11 @@ public class EventService {
         repository.deleteById(id);
     }
 
+    public Event update(Long id, Event eventNew) {
+        Event eventToUpdate = eventNew;
+        eventToUpdate.setId(id);
+        return repository.save(eventToUpdate);
+    }
+
+
 }

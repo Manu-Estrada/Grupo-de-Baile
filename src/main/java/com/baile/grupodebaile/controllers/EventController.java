@@ -65,15 +65,8 @@ public class EventController {
         service.delete(id);
     }
 
-    // @PutMapping("/events/{id}")
-    // public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody
-    // Event event) {
-    // try {
-    // event.setId(id);
-    // service.store(event);
-    // return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    // } catch (Exception e) {
-    // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    // }
-    // }
+    @PutMapping("/events/{id}")
+    public Event update(@PathVariable Long id, @RequestBody Event eventNew) {
+        return service.update(id, eventNew);
+    }
 }
