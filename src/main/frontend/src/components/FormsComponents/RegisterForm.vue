@@ -1,13 +1,13 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
 let member = {
   name: "",
   lastname: "",
   dateadmission: "",
   username: "",
-  password: ""
-}
+  password: "",
+};
 
 const router = useRouter();
 
@@ -27,6 +27,8 @@ async function save() {
     return;
   }
 
+  let resultados = {};
+
   const payload = JSON.stringify(member);
   const url = "http://localhost:8080/api/register";
   const response = fetch(url, {
@@ -34,21 +36,18 @@ async function save() {
     body: payload,
     headers: {
       "Content-type": "application/json",
-      "Accept": "application/json"
-    }
+      Accept: "application/json",
+    },
   })
-    .then(response => response.json())
-    .then(data => console.log(data));
-
-
-  if (response.user != "") {
-    console.log(" - "+ response);
-    console.log(data);
-    // router.push('/registrofotousuario/1');
-    // alert("Bienvendid@ " + member.name);
-  } else {
-    alert("Ha habido un error. \nPor favor prueba en un rato");
-  }
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.user != "") {
+        router.push('/registrofotousuario/' + data.id);
+        alert("Bienvendid@ " + data.user);
+      } else {
+        alert("Ha habido un error. \nPor favor prueba en un rato");
+      }
+    });
 }
 </script>
 
@@ -59,28 +58,63 @@ async function save() {
         <h2 class="mt-2">Añadir nuevo miembro</h2>
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
-          <input v-model="member.name" id="name" class="form-control" type="text" placeholder="Nombre" />
+          <input
+            v-model="member.name"
+            id="name"
+            class="form-control"
+            type="text"
+            placeholder="Nombre"
+          />
         </div>
         <div class="mb-3">
           <label for="surname" class="form-label">Apellidos</label>
-          <input v-model="member.lastname" id="surname" class="form-control" type="text" placeholder="Apellidos" />
+          <input
+            v-model="member.lastname"
+            id="surname"
+            class="form-control"
+            type="text"
+            placeholder="Apellidos"
+          />
         </div>
         <div class="mb-3">
           <label for="date" class="form-label">Fecha de ingreso</label>
-          <input v-model="member.dateadmission" id="date" class="form-control" type="date"
-            placeholder="Fecha de ingreso" />
+          <input
+            v-model="member.dateadmission"
+            id="date"
+            class="form-control"
+            type="date"
+            placeholder="Fecha de ingreso"
+          />
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input v-model="member.username" id="email" class="form-control" type="email" placeholder="Email" />
+          <input
+            v-model="member.username"
+            id="email"
+            class="form-control"
+            type="email"
+            placeholder="Email"
+          />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
-          <input v-model="member.password" id="password" class="form-control" type="password" placeholder="Contraseña" />
+          <input
+            v-model="member.password"
+            id="password"
+            class="form-control"
+            type="password"
+            placeholder="Contraseña"
+          />
         </div>
       </div>
       <div class="d-flex w-80 mb-3 mt-3">
-        <button @click.prevent="save" type="submit" class="btn btn-success me-2 w-50">Enviar</button>
+        <button
+          @click.prevent="save"
+          type="submit"
+          class="btn btn-success me-2 w-50"
+        >
+          Enviar
+        </button>
         <button type="reset" class="btn btn-danger w-50">Borrar</button>
       </div>
     </div>
@@ -110,12 +144,10 @@ h2 {
 .form-control {
   width: 100%;
   border-radius: 10px;
-
 }
 
 .label {
   font-family: $font-text;
-
 }
 
 input {
