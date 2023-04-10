@@ -1,29 +1,15 @@
 package com.baile.grupodebaile.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "emails")
 public class EmailMessage {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_email")
-    private Long id;
-    @Column(name = "to")
+
     private String to;
-    @Column(name = "from")
+
     private String from;
-    @Column(name = "subject")
+
     private String subject;
-    @Column(name = "message")
+
     private String message;
-    
-    
+
     public EmailMessage() {
     }
 
@@ -65,8 +51,5 @@ public class EmailMessage {
     public void setMessage(String message) {
         this.message = message;
     }
-    
-   
 
-    
 }

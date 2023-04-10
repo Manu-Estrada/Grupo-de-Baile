@@ -24,6 +24,7 @@ public class SendMailServiceImpl implements SendMailService{
        simpleMailMessage.setText(message);
 
        this.mailSender.send(simpleMailMessage);
+     
 
     }
 
