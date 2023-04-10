@@ -1,5 +1,3 @@
-
-
 <script setup>
 import WhoWeAre from "../components/WhoWeAre.vue";
 import Pagination from "../components/gallery/Pagination.vue";
@@ -10,7 +8,7 @@ import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
 const repository = new ApiRepository("quienesSomos");
 const api = repository.chooseApi();
 
-const memberCardxPage = 4;
+const memberCardxPage = 2;
 const start = ref(0);
 const end = computed(() => Math.min(start.value + memberCardxPage, membersList.value.length));
 

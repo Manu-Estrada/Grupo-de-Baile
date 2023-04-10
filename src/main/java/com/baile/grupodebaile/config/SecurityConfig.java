@@ -39,11 +39,11 @@ public class SecurityConfig {
                                                 .deleteCookies("JSESSIONID"))
                                 .authorizeHttpRequests((auth) -> auth
                                                 // .antMatchers("/**").permitAll()
-                                                .antMatchers("/api/register").permitAll()
+                                                .antMatchers("/api/register/**").permitAll()
                                                 .antMatchers("/api/users").hasRole("ADMIN")
                                                 .antMatchers("/api/quienessomos").permitAll()
                                                 .antMatchers("/send-email/**").permitAll()
-                                                .antMatchers("/images/user-fotos/**").permitAll()
+                                                .antMatchers("/images/**").permitAll()
                                                 .antMatchers("/api/events/**").permitAll()
                                                 .antMatchers("/api/users/**").hasAnyRole("ADMIN", "USER")
                                                 .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")
