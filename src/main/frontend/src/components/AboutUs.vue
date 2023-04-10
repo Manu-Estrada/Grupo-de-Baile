@@ -9,10 +9,7 @@
     <div class="card">
       <div class="row g-0">
         <div class="col-md-6">
-          <img
-            src="../assets/images/imagenLaAsociacion.jpg"
-            alt="..."
-          />
+          <img src="../assets/images/imagenLaAsociacion.jpg" alt="..." />
         </div>
         <div class="col-md-6">
           <div class="card-body">
@@ -37,10 +34,7 @@
     <div class="card">
       <div class="row g-0">
         <div class="col-md-6">
-          <img
-            src="../assets/images/imagenActividades.jpg"
-            alt="..."
-          />
+          <img src="../assets/images/imagenActividades.jpg" alt="..." />
         </div>
         <div class="col-md-6">
           <div class="card-body">
@@ -119,10 +113,7 @@
     <div class="card">
       <div class="row g-0">
         <div class="col-md-6">
-          <img
-            src="../assets/images/imagenIndumentaria.jpg"
-            alt="..."
-          />
+          <img src="../assets/images/imagenIndumentaria.jpg" alt="..." />
         </div>
         <div class="col-md-6">
           <div class="card-body">
@@ -163,10 +154,7 @@
     <div class="card">
       <div class="row g-0">
         <div class="col-md-6">
-          <img
-            src="../assets/images/imagenRepertorio.jpg"
-            alt="..."
-          />
+          <img src="../assets/images/imagenRepertorio.jpg" alt="..." />
         </div>
         <div class="col-md-6">
           <div class="card-body">
@@ -189,10 +177,7 @@
     <div class="card">
       <div class="row g-0">
         <div class="col-md-6">
-          <img
-            src="../assets/images/imagenActuaciones.JPG"
-            alt="..."
-          />
+          <img src="../assets/images/imagenActuaciones.JPG" alt="..." />
         </div>
         <div class="col-md-6">
           <div class="card-body">
@@ -300,7 +285,6 @@ ul.strong li::before {
   content: "";
 }
 h2 {
-
   color: #cc0033;
 }
 
@@ -343,9 +327,9 @@ img {
 }
 
 .card-body {
-  overflow:auto;
+  overflow: auto;
   height: 44vw;
-  scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
   scrollbar-width: thin;
   margin-right: 15px;
   margin-top: 15px;
@@ -356,26 +340,26 @@ img {
 }
 
 .card-body::-webkit-scrollbar:vertical {
-  width:10px;
+  width: 10px;
 }
 
 .card-body::-webkit-scrollbar-button:increment,
 .card-body::-webkit-scrollbar-button {
   display: none;
-} 
+}
 
 .card-body::-webkit-scrollbar:horizontal {
   height: 10px;
 }
 
 .card-body::-webkit-scrollbar-thumb {
-    background-color: $background-green;
-    border-radius: 20px;
-    border: 2px solid #f1f2f3;
-  }
-  
-  .contenedor::-webkit-scrollbar-track {
-    border-radius: 10px;  
+  background-color: $background-green;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.contenedor::-webkit-scrollbar-track {
+  border-radius: 10px;
 }
 
 .slogan {
@@ -384,5 +368,10 @@ img {
   padding: 3rem;
   font-size: 2rem;
   font-style: oblique;
+}
+@media (max-width: 768px) {
+  .slogan {
+    font-size: 1rem;
+  }
 }
 </style>
