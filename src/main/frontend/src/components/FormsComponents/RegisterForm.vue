@@ -29,17 +29,23 @@ async function save() {
 
   const payload = JSON.stringify(member);
   const url = "http://localhost:8080/api/register";
-  const response = await fetch(url, {
+  const response = fetch(url, {
     method: "POST",
     body: payload,
     headers: {
       "Content-type": "application/json",
+      "Accept": "application/json"
     }
-  });
+  })
+    .then(response => response.json())
+    .then(data => console.log(data));
 
-  if (response.status === 201) {
-    router.push('/registrofotousuario');
-    alert("Bienvendid@ " + member.name);
+
+  if (response.user != "") {
+    console.log(" - "+ response);
+    console.log(data);
+    // router.push('/registrofotousuario/1');
+    // alert("Bienvendid@ " + member.name);
   } else {
     alert("Ha habido un error. \nPor favor prueba en un rato");
   }
@@ -61,7 +67,8 @@ async function save() {
         </div>
         <div class="mb-3">
           <label for="date" class="form-label">Fecha de ingreso</label>
-          <input v-model="member.dateadmission" id="date" class="form-control" type="date" placeholder="Fecha de ingreso" />
+          <input v-model="member.dateadmission" id="date" class="form-control" type="date"
+            placeholder="Fecha de ingreso" />
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
