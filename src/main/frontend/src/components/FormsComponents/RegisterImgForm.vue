@@ -4,6 +4,8 @@ const props = defineProps({
     type: String,
   }
 })
+
+
 </script>
 
 
@@ -11,7 +13,7 @@ const props = defineProps({
   <div class="container">
     <div class="row">
       <div class="col-12 mt-4 mb-4">
-        <label for="imagen"  class="form-label">Imagen {{ id }}</label>
+        <label for="imagen"  class="form-label">Imagen</label>
         <input type="file" class="form-control" placeholder="añade foto">
       </div>
     </div>
