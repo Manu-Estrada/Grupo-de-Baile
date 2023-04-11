@@ -1,9 +1,43 @@
+<script setup>
+const props = defineProps({
+  id: {
+    type: String,
+  }
+})
+
+async function uploadFile(id) {
+  let formData = new FormData();
+  let url = `http://localhost:8080/api/register/${id}/imagesuser`;
+  alert(url)
+  formData.append("image", image.files[0]);
+  let response = await fetch(url, {
+    method: "POST", 
+    body: formData
+  });
+
+  console.log(response);
+
+  if (response.status == 200) {
+    alert("File successfully uploaded.");
+  }
+}
+
+</script>
+
+
 <template>
   <div class="container">
     <div class="row">
       <div class="col-12 mt-4 mb-4">
-        <label for="imagen" class="form-label">Imagen</label>
-        <input type="file" class="form-control" placeholder="añade foto">
+        <label for="imagen"  class="form-label">Imagen</label>
+        <input type="file" id="image" class="form-control" placeholder="añade foto">
+        <button
+          @click="uploadFile(id)"
+          type="button"
+          class="btn btn-success me-2 w-50"
+        >
+          Enviar
+        </button>
       </div>
     </div>
   </div>

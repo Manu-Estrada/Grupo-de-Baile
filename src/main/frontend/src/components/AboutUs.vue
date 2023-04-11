@@ -301,7 +301,6 @@ main {
   padding: 3em;
   .card-body {
     background-color: #ffffff;
-    padding: 3em 4em 4em 4em;
   }
 }
 
@@ -333,6 +332,7 @@ img {
   scrollbar-width: thin;
   margin-right: 15px;
   margin-top: 15px;
+  padding: 3em 4em 4em 4em;
 }
 
 .card-body::-webkit-scrollbar {
@@ -370,6 +370,14 @@ img {
   font-style: oblique;
 }
 @media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
+  .card-body {
+    height: 100vw;
+    padding: 1rem;
+  }
   .slogan {
     font-size: 1rem;
   }

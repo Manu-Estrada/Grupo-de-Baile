@@ -39,8 +39,10 @@ public class UserController {
                 user.setPassword("1");
             }
             User userDB = service.store(user);
+            String iduser = userDB.getId() + "";
             Map<String, String> json = new HashMap<>();
 
+            json.put("id", iduser);
             json.put("user", userDB.getName());
             json.put("message", "successful sign up");
             return ResponseEntity.status(HttpStatus.CREATED).body(json);
