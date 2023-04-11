@@ -16,11 +16,16 @@ public class SendMailServiceImpl implements SendMailService{
     }
 
     @Override
-    public void SendMail(String to, String subject, String message) {
+    public void SendMail(String to, String from, String subject, String message) {
        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-       simpleMailMessage.setFrom("message");
+
+       //from: debería ser el correo del usuario
+       simpleMailMessage.setFrom(" mail@example");
+       //to: El correo al que va a llegar la información, que será del admin de Xaréu (David)
        simpleMailMessage.setTo(to);
+       //subject: input asunto 
        simpleMailMessage.setSubject(subject);
+       //message: texto del usuario
        simpleMailMessage.setText(message);
 
        this.mailSender.send(simpleMailMessage);
