@@ -113,6 +113,7 @@
     background-color: $background-green;
     ul {
       padding: 0;
+      margin-bottom: 0.2rem;
     }
     a {
       color: $background-card;
