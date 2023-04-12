@@ -5,13 +5,12 @@ const props = defineProps({
   start: { type: Number },
   end: { type: Number },
   maxLength: { type: Number },
-  pageSize: { type: Number, default: 4 },
+  pageSize: { type: Number},
 });
 
-const emit = defineEmits(['next', 'prev', 'change-page']);
+const emit = defineEmits(['next', 'prev', 'change']);
 
 const currentPage = computed(() => Math.ceil(props.start / props.pageSize) + 1);
-
 const lastPage = computed(() => Math.ceil(props.maxLength / props.pageSize));
 
 const pages = computed(() => {
@@ -35,9 +34,8 @@ const next = () => {
 const changePage = (page) => {
   const newStart = (page - 1) * props.pageSize;
   if (newStart >= props.maxLength) return;
-  emit('change-page', newStart);
+  emit('change', newStart);
 };
-
 
 watch(() => props.maxLength, () => {
   lastPage.value = Math.ceil(props.maxLength / props.pageSize);
