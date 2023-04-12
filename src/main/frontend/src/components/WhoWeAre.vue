@@ -43,21 +43,23 @@ const props = defineProps({
           class="modal-content bg-transparent"
           :id="`boxImg${member.imageUser.id}`"
         >
-          <div class="d-flex justify-content-end">
-            <button
-              type="button"
-              class="btn-close"
+        <div class="d-flex justify-content-end">
+        <button
+        type="button"
+        class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
               :id="`btnClosed${member.imageUser.id}`"
             ></button>
           </div>
-          <img
-            :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            :alt="member.name"
-          />
+          <figure>
+            <img
+              :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              :alt="member.name"
+            />
+          </figure>
         </div>
       </div>
     </div>
@@ -67,31 +69,48 @@ const props = defineProps({
 @import "../assets/sass/_variables.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss";
 
-
-.card-container{
+.card-container {
   width: 30%;
-.card {
-  .imgCard {
-    aspect-ratio: 16/9;
-    width: 100%;
-    object-fit: cover;
+  .card {
+    .imgCard {
+      aspect-ratio: 16/9;
+      width: 100%;
+      object-fit: cover;
+    }
+    #containerBtnMemebrs {
+      display: flex;
+      justify-content: center;
+    }
   }
-  #containerBtnMemebrs {
-    display: flex;
-    justify-content: center;
-  }
-}
-.modal {
-  width: 100vw;
-  .modal-dialog {
-    max-width: 60vw;
-    max-height: 60vh;
-    object-fit:fill;
-  }
-}
+  .modal {
+    width: 100vw;
+    .modal-dialog {
+      max-width: none;
+      padding: 15px;
+      border-radius: 10px;
+      .modal-content {
+        justify-content: center;
+        border: none;
+        figure {
+          height: 85vh;
+          object-fit: scale-down;
+          width: 85vw;
+          margin: auto;
+          display: flex;
+          justify-content: center;
 
-button{
-position: absolute;
-}
+          img {
+            object-fit: scale-down;
+            height: 100%;
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+  }
 }
 </style>
