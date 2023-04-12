@@ -5,7 +5,7 @@ import NavbarComponent from "./components/NavbarComponent.vue";
 import NavbarAdminComponent from "./components/NavbarAdminComponent.vue";
 </script>
 <template>
-  <NavbarComponent />
+  <NavbarComponent/>
   <NavbarAdminComponent />
   <RouterView />
   <FooterComponent />
