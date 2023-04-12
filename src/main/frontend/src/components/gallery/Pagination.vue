@@ -8,7 +8,7 @@ const props = defineProps({
   pageSize: { type: Number, default: 4 },
 });
 
-const emit = defineEmits(['next', 'prev', 'change-page']);
+const emit = defineEmits(['next', 'prev', 'changePage']);
 
 const currentPage = computed(() => Math.ceil(props.start / props.pageSize) + 1);
 
@@ -35,7 +35,7 @@ const next = () => {
 const changePage = (page) => {
   const newStart = (page - 1) * props.pageSize;
   if (newStart >= props.maxLength) return;
-  emit('change-page', newStart);
+  emit('changePage', newStart);
 };
 
 
