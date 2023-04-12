@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits, computed, watch } from 'vue';
+import { computed, watch } from 'vue';
 
 const props = defineProps({
   start: { type: Number },
@@ -62,3 +62,18 @@ watch(() => props.maxLength, () => {
     </ul>
   </nav>
 </template>
+<style lang="scss" scoped>
+  .active a,
+  .page-link:hover {
+    background: #336644;
+    border-radius: 3px;
+    color: #DDBB44;
+  }
+  .pagination, 
+  .page-link {
+    background: none;
+    color: #336644;
+    border: none;
+    box-shadow: none;
+  }
+</style>

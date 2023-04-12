@@ -101,7 +101,8 @@ const props = defineProps({
 
           img {
             object-fit: scale-down;
-            height: 100%;
+            width: 100%;
+            max-height: 85vh;
             margin: auto;
           }
         }
