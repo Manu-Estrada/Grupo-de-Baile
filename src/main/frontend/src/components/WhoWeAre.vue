@@ -7,14 +7,14 @@ const props = defineProps({
 });
 </script>
 <template>
-  <div>
+  <div :id="`card-size${member.id}`" class="card-container">
     <div class="card">
       <img
         class="imgCard"
         :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
         alt="Imagen"
       />
-      <div class="card-body pt-1">
+      <div class="card-body pt-1" id="hg-size">
         <p class="card-text">
           <small class="text-muted"> {{ member.dateadmission }}</small>
         </p>
@@ -67,9 +67,12 @@ const props = defineProps({
 @import "../assets/sass/_variables.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss";
 
+
+.card-container{
+  width: 30%;
 .card {
   .imgCard {
-    height: 10em;
+    aspect-ratio: 16/9;
     width: 100%;
     object-fit: cover;
   }
@@ -85,5 +88,10 @@ const props = defineProps({
     max-height: 60vh;
     object-fit:fill;
   }
+}
+
+button{
+position: absolute;
+}
 }
 </style>
