@@ -8,7 +8,7 @@ import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
 const repository = new ApiRepository("quienesSomos");
 const api = repository.chooseApi();
 
-const memberCardxPage = 2;
+const memberCardxPage = 6;
 const start = ref(0);
 const end = computed(() => Math.min(start.value + memberCardxPage, membersList.value.length));
 
@@ -27,8 +27,12 @@ const next = () => {
 
 const prev = () => {
   start.value = Math.max(start.value - memberCardxPage, 0);
-  end.value = Math.min(start.value + memberCardxPage, membersList.value.length);
 };
+
+const page = (algo) => {
+  start.value = algo;
+};
+
 </script>
 <template>
   <main>
@@ -39,7 +43,7 @@ const prev = () => {
       <div id="containerAlbums">
         <WhoWeAre v-for="member in membersToShow" :key="member.id" :member="member" />
       </div>
-      <Pagination :start="start" :end="end" :maxLength="membersList.length" @prev="prev" @next="next" />
+      <Pagination :pageSize="memberCardxPage" :start="start" :end="end" :maxLength="membersList.length" @change="page" @prev="prev" @next="next" />
     </div>
   </main>
 </template>
