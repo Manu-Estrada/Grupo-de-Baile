@@ -30,11 +30,13 @@ onUnmounted(() => {
       <h2>¡Bienvenidos a Xaréu D’Ochobre!</h2>
       <p>
         Nacida en Avilés, Asturias, el 28 de octubre de 1988, la Agrupación
-        Cultural Xaréu d´ Ochobre se dedica a la conservación y divulgación 
-        de la música y danza tradicional asturiana. 
+        Cultural Xaréu d´ Ochobre se dedica a la conservación y divulgación
+        de la música y danza tradicional asturiana.
       </p>
       <div>
-        <button class="ir-arriba" @click="scrollToTop" :class="{ 'ir-arriba--visible': isScrolled }"><RouterLink class="nav-link" to="/sobrenosotros">Sobre nosotros</RouterLink></button>
+        <button class="ir-arriba" @click="scrollToTop" :class="{ 'ir-arriba--visible': isScrolled }">
+          <RouterLink class="nav-link" to="/sobrenosotros">Sobre nosotros</RouterLink>
+        </button>
       </div>
     </div>
   </section>
