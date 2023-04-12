@@ -113,4 +113,16 @@ const props = defineProps({
     position: absolute;
   }
 }
+
+@media (max-width: 768px) {
+  .card-container  {
+    width: 45%;
+  }
+}
+@media (max-width: 576px) {
+  .card-container  {
+    width: 90%;
+  }
+}
+
 </style>
