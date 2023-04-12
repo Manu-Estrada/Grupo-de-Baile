@@ -24,16 +24,16 @@ import { RouterLink } from "vue-router";
             <RouterLink class="nav-link" to="/">Inicio</RouterLink>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <RouterLink to="/nuestroseventos" class="nav-link"
               >Nuestros eventos</RouterLink
-            >
-          </li>
+            > -->
+          <!-- </li>
           <li class="nav-item">
             <RouterLink to="/nuestrosviajes" class="nav-link"
               >Nuestros viajes</RouterLink
             >
-          </li>
+          </li> -->
           <li class="nav-item">
             <RouterLink class="nav-link" to="/sobrenosotros"
               >Sobre nosotros</RouterLink
@@ -44,12 +44,12 @@ import { RouterLink } from "vue-router";
               >Quiénes somos</RouterLink
             >
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <RouterLink class="nav-link" to="/contacto">Contacto</RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink class="nav-link" to="/login">Login</RouterLink>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -61,6 +61,7 @@ nav {
   .container {
     img.logo {
       width: 13vw;
+      min-width: 200px;
     }
   }
 }

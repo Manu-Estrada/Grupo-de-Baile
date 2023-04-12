@@ -1,4 +1,5 @@
-<script setup></script>
+<script setup>
+</script>
 
 <template>
   <footer class="footer w-100">
@@ -22,7 +23,7 @@
           <RouterLink class="nav-link" to="/">Inicio</RouterLink>
         </li>
 
-        <li>
+        <!-- <li>
           <RouterLink to="/nuestroseventos" class="nav-link"
             >Nuestros eventos</RouterLink
           >
@@ -31,7 +32,7 @@
           <RouterLink to="/nuestrosviajes" class="nav-link"
             >Nuestros viajes</RouterLink
           >
-        </li>
+        </li> -->
         <li>
           <RouterLink class="nav-link" to="/sobrenosotros"
             >Sobre nosotros</RouterLink
@@ -42,12 +43,12 @@
             >Quiénes somos</RouterLink
           >
         </li>
-        <li>
+        <!-- <li>
           <RouterLink class="nav-link" to="/contacto">Contacto</RouterLink>
         </li>
         <li>
           <RouterLink class="nav-link" to="/login">Login</RouterLink>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="footer__container-social-media">
