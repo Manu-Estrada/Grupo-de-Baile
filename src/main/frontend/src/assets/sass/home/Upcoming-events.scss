@@ -13,6 +13,10 @@ aside {
     h2 {
       color: $text-red;
       margin-top: 10px;
+      a {
+        color: $background-green;
+        text-decoration: none;
+      }
     }
     span {
       font-size: 15px;
