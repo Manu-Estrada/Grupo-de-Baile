@@ -1,11 +1,17 @@
-<p align="init"><img width="300" alt="nombre" src="https://user-images.githubusercontent.com/116894398/226612808-362bcb2c-5e75-4fd0-aab8-e1f07481318a.png"></p>
+![Home](https://user-images.githubusercontent.com/116894398/231454560-b876019a-dc4c-4573-a960-a484cccdfd87.jpg)
+
+
+![Quienes Somos](https://user-images.githubusercontent.com/116894398/231454579-df337d52-483a-42e9-85b8-d2a39669bea9.jpg)
+
+
+![Sobre nosotros](https://user-images.githubusercontent.com/116894398/231454603-32889907-d3a5-4b47-8368-0e32c5e7ba02.jpg)
+
 
 ## Tabla de Contenido
 1. [Información General](#Info-General)
 2. [Tecnologías](#Tecnologías)
 3. [Instalación](#Instalación)
-4. [Vistas](#Vistas)
-5. [Autoras/es](#Autoras/es)
+4. [Autoras/es](#Autoras/es)
 
 ### Información General
 El grupo de Baile Regional Xaréu D'Ochobre , nos encarga crear una página web con los siguientes requisitos:
@@ -93,23 +99,15 @@ El grupo de Baile Regional Xaréu D'Ochobre , nos encarga crear una página web 
 ### Instalación
 1.Npm Install
 
-###  Vistas
-<p align="center"><img width="400" alt="nombre" src=""></p>
-<p align="center"><img width="400" alt="nombre" src=""></p>
-<p align="center"><img width="400" alt="nombre" src=""></p>
-<p align="center"><img width="400" alt="nombre" src=""></p>
-- [Figma](https://www.figma.com/)
-![Captura de pantalla (198)](https://)
-![Captura de pantalla (199)](https://)
-(656 kB)
-Figma
-Figma: the collaborative interface design tool.
-Build better products as a team. Design, prototype, and gather feedback all in one place with Figma. (83 kB)
-https://user-images.githubusercontent.com/116894398/226612808-362bcb2c-5e75-4fd0-aab8-e1f07481318a.png
 
 ### Diagrama de Flujo
 ![diagrama-xaréu](https://user-images.githubusercontent.com/116894398/227614458-10dd6688-0a68-4eda-8b70-a1e6f0e05129.png)
 (https://app.diagrams.net/#G18XdNdeIutT_JIK9P2zwAQySx-NNoXrXR)
+
+
+![Diagrama DB](https://user-images.githubusercontent.com/116894398/231455794-b45b692d-61f5-4bd5-8fd8-9c34acd75aeb.png)
+
+
 
 ### Autoras/es
 - [Jehisel Ruth] (https://github.com/JehiselRuth)
