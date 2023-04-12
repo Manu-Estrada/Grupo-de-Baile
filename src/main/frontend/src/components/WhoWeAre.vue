@@ -7,56 +7,60 @@ const props = defineProps({
 });
 </script>
 <template>
-  <div class="card">
-    <img
-      class="imgCard"
-      :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
-      alt="Imagen"
-    />
-    <div class="card-body pt-1">
-      <p class="card-text">
-        <small class="text-muted"> {{ member.dateadmission }}</small>
-      </p>
-      <h5 class="card-title">{{ member.name }} {{ member.lastname }}</h5>
-      <div id="containerBtnMemebrs">
-        <a
-          data-bs-toggle="modal"
-          :data-bs-target="`#exampleModal${member.imageUser.id}`"
-          class="btn btn-primary"
-          id="Btn-see"
-          >Ampliar</a
-        >
+  <div :id="`card-size${member.id}`" class="card-container">
+    <div class="card">
+      <img
+        class="imgCard"
+        :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
+        alt="Imagen"
+      />
+      <div class="card-body pt-1" id="hg-size">
+        <p class="card-text">
+          <small class="text-muted"> {{ member.dateadmission }}</small>
+        </p>
+        <h5 class="card-title">{{ member.name }} {{ member.lastname }}</h5>
+        <div id="containerBtnMemebrs">
+          <a
+            data-bs-toggle="modal"
+            :data-bs-target="`#exampleModal${member.imageUser.id}`"
+            class="btn btn-primary"
+            id="Btn-see"
+            >Ampliar</a
+          >
+        </div>
       </div>
     </div>
-  </div>
 
-  <div
-    class="modal fade"
-    :id="`exampleModal${member.imageUser.id}`"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" :id="`modalDialog${member.imageUser.id}`">
-      <div
-        class="modal-content bg-transparent"
-        :id="`boxImg${member.imageUser.id}`"
-      >
+    <div
+      class="modal fade"
+      :id="`exampleModal${member.imageUser.id}`"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" :id="`modalDialog${member.imageUser.id}`">
+        <div
+          class="modal-content bg-transparent"
+          :id="`boxImg${member.imageUser.id}`"
+        >
         <div class="d-flex justify-content-end">
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-            :id="`btnClosed${member.imageUser.id}`"
-          ></button>
+        <button
+        type="button"
+        class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              :id="`btnClosed${member.imageUser.id}`"
+            ></button>
+          </div>
+          <figure>
+            <img
+              :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              :alt="member.name"
+            />
+          </figure>
         </div>
-        <img
-          :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          :alt="member.name"
-        />
       </div>
     </div>
   </div>
@@ -65,21 +69,48 @@ const props = defineProps({
 @import "../assets/sass/_variables.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss";
 
-.card {
-  .imgCard {
-    height: 10em;
-    width: 100%;
-    object-fit: cover;
+.card-container {
+  width: 30%;
+  .card {
+    .imgCard {
+      aspect-ratio: 16/9;
+      width: 100%;
+      object-fit: cover;
+    }
+    #containerBtnMemebrs {
+      display: flex;
+      justify-content: center;
+    }
   }
-  #containerBtnMemebrs {
-    display: flex;
-    justify-content: center;
+  .modal {
+    width: 100vw;
+    .modal-dialog {
+      max-width: none;
+      padding: 15px;
+      border-radius: 10px;
+      .modal-content {
+        justify-content: center;
+        border: none;
+        figure {
+          height: 85vh;
+          object-fit: scale-down;
+          width: 85vw;
+          margin: auto;
+          display: flex;
+          justify-content: center;
+
+          img {
+            object-fit: scale-down;
+            height: 100%;
+            margin: auto;
+          }
+        }
+      }
+    }
   }
-}
-.modal {
-  width: 100vw;
-  .modal-dialog {
-    max-width: 75%;
+
+  button {
+    position: absolute;
   }
 }
 </style>
