@@ -8,17 +8,14 @@ const props = defineProps({
 async function uploadFile(id) {
   let formData = new FormData();
   let url = `http://localhost:8080/api/register/${id}/imagesuser`;
-  alert(url)
   formData.append("image", image.files[0]);
   let response = await fetch(url, {
     method: "POST", 
     body: formData
   });
 
-  console.log(response);
-
   if (response.status == 200) {
-    alert("File successfully uploaded.");
+    alert("Imagen subida satisfactoriamente.");
   }
 }
 
