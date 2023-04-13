@@ -112,9 +112,12 @@ const props = defineProps({
             max-height: 70vh;
             margin: auto;
           }
-          button {
+          .btn-close {
     // position: absolute;
     background-color: $background-green;
+    opacity: 100%;
+    position: absolute;
+    margin: 10px 10px 0 0;
     
   }
         }
