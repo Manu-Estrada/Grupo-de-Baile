@@ -57,9 +57,16 @@ const router = createRouter({
       component: () => import('../views/RegisterImgUserView.vue')
     },
     {
+
       path: '/listausuario',
       name: 'listuser',
-      component: () => import('../views/ListUserView.vue')
+      component: () => import('../views/ListUserView.vue')},
+{
+      path: '/modificarusuario/:id',
+      name: 'edituser',
+      props: true,
+      component: () => import('../views/EditUserView.vue')
+
     },
   ]
 })
