@@ -56,6 +56,12 @@ const router = createRouter({
       props: true,
       component: () => import('../views/RegisterImgUserView.vue')
     },
+    {
+      path: '/modificarusuario/:id',
+      name: 'edituser',
+      props: true,
+      component: () => import('../views/EditUserView.vue')
+    },
   ]
 })
 
