@@ -62,7 +62,7 @@ const router = createRouter({
       name: 'listuser',
       component: () => import('../views/ListUserView.vue')},
 {
-      path: '/modificarusuario/:id',
+      path: '/modificarusuario',
       name: 'edituser',
       props: true,
       component: () => import('../views/EditUserView.vue')
