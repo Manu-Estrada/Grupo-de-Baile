@@ -43,24 +43,23 @@ const props = defineProps({
           class="modal-content bg-transparent"
           :id="`boxImg${member.imageUser.id}`"
         >
-        
           <figure>
             <div class="d-flex justify-content-end">
-        <button
-        type="button"
-        class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-              :id="`btnClosed${member.imageUser.id}`"
-            ></button>
-          </div>
+              <button
+                type="button"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                :id="`btnClosed${member.imageUser.id}`"
+              >
+                X
+              </button>
+            </div>
             <img
               :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               :alt="member.name"
             />
-            
           </figure>
         </div>
       </div>
@@ -94,17 +93,12 @@ const props = defineProps({
         justify-content: center;
         border: none;
         figure {
-          // height: 85vh;
           object-fit: scale-down;
-          width:fit-content;
+          width: fit-content;
           margin: auto;
-          // display: flex;
-          // justify-content: center;
           background-color: $background-card;
-          padding: 2em;
+          padding: 1em;
           border-radius: 8px;
-
-          
 
           img {
             object-fit: scale-down;
@@ -112,31 +106,37 @@ const props = defineProps({
             max-height: 70vh;
             margin: auto;
           }
-          .btn-close {
-    // position: absolute;
-    background-color: $background-green;
-    opacity: 100%;
-    position: absolute;
-    margin: 10px 10px 0 0;
-    
-  }
+
+          button {
+            background-color: $background-green;
+            opacity: 100%;
+            position: absolute;
+            margin: 10px 10px 0 0;
+            color: $background-upcomingEvents;
+            padding: 2px 5px;
+            border-radius: 2px;
+            border: none;
+            transition: all 0.4s;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            &:hover {
+              color: white;
+            }
+          }
         }
       }
     }
   }
-
-  
 }
 
 @media (max-width: 768px) {
-  .card-container  {
+  .card-container {
     width: 45%;
   }
 }
 @media (max-width: 576px) {
-  .card-container  {
+  .card-container {
     width: 90%;
   }
 }
-
 </style>
