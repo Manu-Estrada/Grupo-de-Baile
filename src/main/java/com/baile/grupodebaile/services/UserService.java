@@ -85,6 +85,13 @@ public class UserService {
         return repository.findById(id).orElse(null);
     }
 
+    public ImageUser listOneImage(Long id) {
+        User userImage = repository.findById(id).orElseThrow(null);
+        ImageUser imageUser = userImage.getImageUser();
+        Long idImage = imageUser.getId();
+        return imageUserRepository.findById(idImage).orElseThrow(null);
+    }
+
     public User listOneByName(String userName) {
         return repository.findByUsername(userName).orElse(null);
     }
