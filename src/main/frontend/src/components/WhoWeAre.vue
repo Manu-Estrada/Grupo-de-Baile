@@ -47,11 +47,12 @@ const props = defineProps({
             <div class="d-flex justify-content-end">
               <button
                 type="button"
-                class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 :id="`btnClosed${member.imageUser.id}`"
-              ></button>
+              >
+                X
+              </button>
             </div>
             <img
               :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
@@ -92,14 +93,11 @@ const props = defineProps({
         justify-content: center;
         border: none;
         figure {
-          // height: 85vh;
           object-fit: scale-down;
           width: fit-content;
           margin: auto;
-          // display: flex;
-          // justify-content: center;
           background-color: $background-card;
-          padding: 2em;
+          padding: 1em;
           border-radius: 8px;
 
           img {
@@ -108,12 +106,22 @@ const props = defineProps({
             max-height: 70vh;
             margin: auto;
           }
-          .btn-close {
+
+          button {
             background-color: $background-green;
             opacity: 100%;
             position: absolute;
             margin: 10px 10px 0 0;
-            
+            color: $background-upcomingEvents;
+            padding: 2px 5px;
+            border-radius: 2px;
+            border: none;
+            transition: all 0.4s;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            &:hover {
+              color: white;
+            }
           }
         }
       }
