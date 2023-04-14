@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,8 +41,14 @@ public class UserService {
         return repository.save(user);
     }
 
-    public void saveImageUser(MultipartFile multipartFile, Long id) throws IOException{
+    public  ResponseEntity<Object> saveImageUser(MultipartFile multipartFile, Long id) throws IOException{
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        ImageUser fileNameExist = imageUserRepository.findByImage(fileName);
+        
+        if (fileNameExist!=null) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
         String uploadDir = RouteFileUploadImage.pathToSaveImage("imageUser");
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -51,6 +59,8 @@ public class UserService {
         User userToAddImage = repository.findById(id).orElseThrow();
         userToAddImage.setImageUser(imageUserNew);
         repository.save(userToAddImage);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     
     public void deleteImageUser(Long iduser) throws IOException{
@@ -81,5 +91,6 @@ public class UserService {
 
     public void delete(Long id) {
         repository.deleteById(id);
+    
     }
 }

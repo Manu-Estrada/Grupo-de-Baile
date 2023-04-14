@@ -6,7 +6,7 @@ import PopUpThirdEvent from "./PopUps-Events/PopUpThirdEvent.vue";
 <template>
   <aside>
     <div class="event-container">
-      <h2>Próximos eventos</h2>
+      <h2><RouterLink to="/nuestroseventos">Próximos eventos</RouterLink></h2>
       <span>01-01-2023</span>
       <PopUpFirstEvent />
       <span>01-01-2023</span>

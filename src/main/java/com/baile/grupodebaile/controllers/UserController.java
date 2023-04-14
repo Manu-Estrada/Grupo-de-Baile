@@ -56,8 +56,8 @@ public class UserController {
     }
 
     @PostMapping("/register/{id}/imagesuser")
-    public void storeImageUser(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) throws IOException {
-        service.saveImageUser(multipartFile, id);
+    public ResponseEntity<Object> storeImageUser(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) throws IOException {
+        return service.saveImageUser(multipartFile, id);
     }
 
     @DeleteMapping("/register/{iduser}/imagesuser")
@@ -81,7 +81,8 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) throws IOException {
+        service.deleteImageUser(id);
         service.delete(id);
     }
 
