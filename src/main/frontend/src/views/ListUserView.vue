@@ -2,7 +2,15 @@
 import Pagination from "../components/gallery/Pagination.vue";
 import { onBeforeMount, ref, computed } from "vue";
 import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
-import router from "../router";
+import { user } from "../stores/user"
+import router from "../router/index"
+
+const userItem = user();
+
+function update(user) {
+  userItem.userObject = user;
+  router.push("/modificarusuario")
+}
 
 // Api
 const repository = new ApiRepository("quienesSomos");
@@ -38,7 +46,7 @@ function deletePost(id) {
         fetch(`http://localhost:8080/api/users/${id}`, { method: 'DELETE' , headers: {
             'Content-Type' : 'application/json'
         }});
-        alert('Delete successful');
+        alert('Usuario borrado correctamente.');
        location.reload();
     }
 </script>
@@ -62,7 +70,7 @@ function deletePost(id) {
         <tr v-for="member in membersToShow" :key="member.id" :member="member">
           <td>
             <p><img
-        class="imgCard"
+        class="imgCard" v-if="member.imageUser"
         :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
         alt="Imagen"
       /></p>
@@ -71,7 +79,7 @@ function deletePost(id) {
             <p>{{ member.dateadmission }}</p>
             <p class="d-flex row">
                 <button type="button" class="btn btn-danger" @click="deletePost(member.id)">Borrar</button>
-                <button type="button" class="btn btn-warning">Modificar</button>
+                <button type="button" class="btn btn-warning" @click="update(member)">Modificar</button>
                 <button type="button" class="btn btn-success">Imagen</button>
             </p>
           </td>
