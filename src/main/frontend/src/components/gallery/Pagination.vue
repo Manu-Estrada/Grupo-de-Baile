@@ -51,7 +51,7 @@ watch(() => props.maxLength, () => {
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li v-for="page in pages" :key="page" class="page-item" :class="{ 'active': currentPage === page }">
+      <li v-for="page in pages" v-bind:key="page" class="page-item" v-bind:class="{ 'active': currentPage === page }">
         <a class="page-link" href="#" @click.prevent="changePage(page)">{{ page }}</a>
       </li>
       <li class="page-item" :class="{ 'disabled': currentPage === lastPage }">

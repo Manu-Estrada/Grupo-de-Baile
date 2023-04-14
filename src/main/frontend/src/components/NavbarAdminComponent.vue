@@ -20,7 +20,7 @@ import { RouterLink } from "vue-router";
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/registrousuario">Listado de Usuarios</RouterLink>
+            <RouterLink class="nav-link" to="/listausuario">Listado de Usuarios</RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink class="nav-link" to="/registrousuario">Alta de Usuarios</RouterLink>
