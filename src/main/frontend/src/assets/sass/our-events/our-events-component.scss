@@ -3,23 +3,29 @@
   display: flex;
   width: 90%;
   background-color: $background-card;
-  margin-bottom: 40px;
+  margin-bottom: 2em;
   img {
-    width: 25%;
+    width: 45%;
+    object-fit: cover;
+  }
+  h4{
+    font-weight: bold;
   }
   .text-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 15px;
+    padding: 1em;
     span {
       font-style: italic;
-      font-size: 14px;
+      font-size: 1.2em;
+      
     }
     div {
       display: flex;
       justify-content: end;
       width: 100%;
+      
     }
   }
 }
@@ -29,6 +35,7 @@
   .card-container {
   img {
     width: 30%;
+    
   }
   .text-container {
     p{
@@ -45,12 +52,14 @@
 }
 @media (max-width: 768px) {
   .card-container {
+    display: flex;
+    flex-direction: column;
   img {
-    width: 40%;
+    width: 100%;
   }
   .text-container {
     p{
-      font-size: 60%;
+      font-size: 70%;
     }
     div {
       button {
