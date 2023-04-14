@@ -43,7 +43,9 @@ const props = defineProps({
           class="modal-content bg-transparent"
           :id="`boxImg${member.imageUser.id}`"
         >
-        <div class="d-flex justify-content-end">
+        
+          <figure>
+            <div class="d-flex justify-content-end">
         <button
         type="button"
         class="btn-close"
@@ -52,13 +54,13 @@ const props = defineProps({
               :id="`btnClosed${member.imageUser.id}`"
             ></button>
           </div>
-          <figure>
             <img
               :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               :alt="member.name"
             />
+            
           </figure>
         </div>
       </div>
@@ -92,27 +94,38 @@ const props = defineProps({
         justify-content: center;
         border: none;
         figure {
-          height: 85vh;
+          // height: 85vh;
           object-fit: scale-down;
-          width: 85vw;
+          width:fit-content;
           margin: auto;
-          display: flex;
-          justify-content: center;
+          // display: flex;
+          // justify-content: center;
+          background-color: $background-card;
+          padding: 2em;
+          border-radius: 8px;
+
+          
 
           img {
             object-fit: scale-down;
             width: 100%;
-            max-height: 85vh;
+            max-height: 70vh;
             margin: auto;
           }
+          .btn-close {
+    // position: absolute;
+    background-color: $background-green;
+    opacity: 100%;
+    position: absolute;
+    margin: 10px 10px 0 0;
+    
+  }
         }
       }
     }
   }
 
-  button {
-    position: absolute;
-  }
+  
 }
 
 @media (max-width: 768px) {
