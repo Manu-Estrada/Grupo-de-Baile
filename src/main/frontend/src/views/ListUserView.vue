@@ -2,14 +2,14 @@
 import Pagination from "../components/gallery/Pagination.vue";
 import { onBeforeMount, ref, computed } from "vue";
 import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
-import { user } from "../stores/user"
-import router from "../router/index"
+import { user } from "../stores/user";
+import router from "../router/index";
 
 const userItem = user();
 
 function update(user) {
   userItem.userObject = user;
-  router.push("/modificarusuario")
+  router.push("/modificarusuario");
 }
 
 // Api
@@ -44,14 +44,16 @@ const page = (algo) => {
 };
 
 function deletePost(id) {
-  fetch(`http://localhost:8080/api/users/${id}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  alert("Delete successful");
-  location.reload();
+  if (confirm("¿Está seguro de que quiere borrar a este usuario?") == true) {
+    fetch(`http://localhost:8080/api/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    alert("Delete successful");
+    location.reload();
+  }
 }
 </script>
 <template>
@@ -117,5 +119,4 @@ img {
   margin: 0.3em;
   width: 5.4em;
 }
-
 </style>
