@@ -13,17 +13,17 @@ const router = useRouter();
 
 async function save() {
   if (member.name === "") {
-    alert("Se necesita añadir un nombre");
+    alert("Se necesita añadir el nombre.");
     return;
   }
 
   if (member.lastname === "") {
-    alert("Se necesita añadir un apellido");
+    alert("Se necesita añadir los apellidos.");
     return;
   }
 
   if (member.dateadmission === "") {
-    alert("Se necesita añadir una fecha");
+    alert("Se necesita añadir la fecha de ingreso.");
     return;
   }
 
@@ -43,9 +43,9 @@ async function save() {
     .then((data) => {
       if (data.user != "") {
         router.push('/registrofotousuario/' + data.id);
-        alert("Bienvendid@ " + data.user);
+        alert(data.user + " añadido correctamente.");
       } else {
-        alert("Ha habido un error. \nPor favor prueba en un rato");
+        alert("Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos.");
       }
     });
 }
@@ -55,7 +55,7 @@ async function save() {
   <form>
     <div class="container mt-2">
       <div class="col-12 col-md-8">
-        <h2 class="mt-2">Añadir nuevo miembro</h2>
+        <h2 class="mt-2">Añadir un nuevo miembro</h2>
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input

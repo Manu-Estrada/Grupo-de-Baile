@@ -86,7 +86,7 @@ function deletePost(id) {
               >
                 Borrar
               </button>
-              <button type="button" class="btn btn-warning">Modificar</button>
+              <button type="button" class="btn btn-warning" @click="update(member)">Modificar</button>
               <button type="button" class="btn btn-success">Imagen</button>
             </p>
           </div>

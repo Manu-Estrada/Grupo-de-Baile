@@ -31,7 +31,7 @@ async function uploadFile(id) {
         <button
           @click="uploadFile(id)"
           type="button"
-          class="btn btn-success me-2 w-50"
+          class="btn btn-success me-2 w-50 mt-3"
         >
           Enviar
         </button>
@@ -59,11 +59,4 @@ async function uploadFile(id) {
 .form-control {
   border-radius: 10px;
 }
-
-// @media (min-width: 576px) { 
-//   .container {
-//     height: 60vh;
-//   }
-// }
-
 </style>

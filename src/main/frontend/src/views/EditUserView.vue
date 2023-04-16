@@ -1,22 +1,7 @@
 <script setup>
-import { useRouter } from 'vue-router';
-
-import EditForm from '../components/FormsComponents/EditForm.vue';
-
+import EditForm from "../components/FormsComponents/EditForm.vue";
 </script>
 
 <template>
-
-
-<EditForm/>
-
-
-
-
+  <EditForm />
 </template>
-
-
-<style scoped lang="scss">
-
-
-</style>
