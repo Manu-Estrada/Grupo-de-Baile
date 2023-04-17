@@ -21,3 +21,6 @@ INSERT INTO roles_users (user_id, role_id) VALUES (2, 2)
 INSERT INTO events (id_event, name, description, dateevent) VALUES (default, "Patata", "Miles y unas de receptas de patatas", "2023-04-05")
 INSERT INTO events (id_event, name, description, dateevent) VALUES (default, "tomates", "Miles y unas de receptas de patatas", "2023-04-05")
 INSERT INTO events (id_event, name, description, dateevent) VALUES (default, "cebollas", "Miles y unas de receptas de patatas", "2023-04-05")
+
+INSERT INTO aboutus (id_aboutus, name, description, image_about_us_id_imageaboutus) VALUES (default, "Patata", "La más deseada.", null)
+INSERT INTO aboutus (id_aboutus, name, description, image_about_us_id_imageaboutus) VALUES (default, "Tomate", "Rojo pasión.", null)

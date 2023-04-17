@@ -30,20 +30,20 @@ public class AboutUsController {
     }
 
     @PostMapping(path = "/aboutus")
-    public void store(@RequestBody AboutUs aboutUs) {
-        service.save(aboutUs);
+    public AboutUs store(@RequestBody AboutUs aboutUs) {
+        return service.save(aboutUs);
 
     }
 
     @PostMapping("/aboutus/{id}/imagesaboutus")
-    public void storeImageEvent(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id)
+    public void saveImageAboutUs(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id)
             throws IOException {
         service.saveImageAboutUs(multipartFile, id);
     }
 
     @DeleteMapping("/aboutus/{id}/imagesaboutus")
     public void deleteImageAboutUs(@PathVariable Long id) throws IOException {
-        // service.deleteImageEvent(idevent);
+        service.deleteImageAboutUs(id);
     }
 
     @GetMapping("/aboutus")
@@ -57,7 +57,8 @@ public class AboutUsController {
     }
 
     @DeleteMapping("/aboutus/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) throws IOException {
+        service.deleteImageAboutUs(id);
         service.delete(id);
     }
 
