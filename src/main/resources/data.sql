@@ -26,3 +26,6 @@ INSERT INTO imageevent (id_imageevent, image) VALUES (default,  'image-03.jpg')
 INSERT INTO events (id_event, name, description, dateevent, imageevent_id_imageevent) VALUES (default, "Patata", "Miles y unas de receptas de patatas", "2023-04-05", 1)
 INSERT INTO events (id_event, name, description, dateevent, imageevent_id_imageevent) VALUES (default, "tomates", "Miles y unas de receptas de patatas", "2023-04-05", 2)
 INSERT INTO events (id_event, name, description, dateevent, imageevent_id_imageevent) VALUES (default, "cebollas", "Miles y unas de receptas de patatas", "2023-04-05", 3)
+
+INSERT INTO aboutus (id_aboutus, name, description, image_about_us_id_imageaboutus) VALUES (default, "Patata", "La más deseada.", null)
+INSERT INTO aboutus (id_aboutus, name, description, image_about_us_id_imageaboutus) VALUES (default, "Tomate", "Rojo pasión.", null)

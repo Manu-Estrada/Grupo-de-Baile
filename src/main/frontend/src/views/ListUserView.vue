@@ -3,6 +3,7 @@ import Pagination from "../components/gallery/Pagination.vue";
 import { onBeforeMount, ref, computed } from "vue";
 import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
 import { user } from "../stores/user";
+import { imageUser } from "../stores/imageUser";
 import router from "../router/index";
 
 const userItem = user();
@@ -12,11 +13,19 @@ function update(user) {
   router.push("/modificarusuario");
 }
 
+const imageUserItem = imageUser();
+
+function updateImage(imageUser){
+  imageUserItem.userImageObject = imageUser;
+  router.push("/modificarimagenusuario")
+
+}
+
 // Api
 const repository = new ApiRepository("quienesSomos");
 const api = repository.chooseApi();
 
-const memberCardxPage = 3;
+const memberCardxPage = 2;
 const start = ref(0);
 const end = computed(() =>
   Math.min(start.value + memberCardxPage, membersList.value.length)
@@ -65,7 +74,7 @@ function deletePost(id) {
       :member="member"
     >
       <div class="row g-0">
-        <div class="col-md-1">
+        <div class="col-md-1" v-if="member.imageUser.image">
           <img
             :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
             class="img-fluid rounded-start"
@@ -73,12 +82,15 @@ function deletePost(id) {
           />
         </div>
 
-        <div class="p-3 gap-3 d-flex col-md-11">
-          <p class="font-italic">{{ member.dateadmission }}</p>
-          <p>{{ member.lastname }}, {{ member.name }}</p>
+        <div class="gap-3 col-md-9">
+          <div class="text-name">
+          <p class="font-name" ><b>{{ member.lastname }}</b>, {{ member.name }}</p>
+            
+          <p class="font-italic">Fecha admisión: {{ member.dateadmission }}</p>
 
+          </div>
           <div class="card-body">
-            <p class="d-flex row">
+            <p class="btnsUser">
               <button
                 type="button"
                 class="btn btn-danger"
@@ -87,7 +99,7 @@ function deletePost(id) {
                 Borrar
               </button>
               <button type="button" class="btn btn-warning" @click="update(member)">Modificar</button>
-              <button type="button" class="btn btn-success">Imagen</button>
+              <button type="button" class="btn btn-success" @click="updateImage(member.imageUser)">Imagen</button>
             </p>
           </div>
         </div>
@@ -107,10 +119,14 @@ function deletePost(id) {
 </template>
 
 <style scoped lang="scss">
-@import "../assets/sass/variables";
 @import "../assets/sass/styles.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss";
 
+.row{
+  width: 90%;
+  margin: auto;
+  margin-top: 5vw;
+}
 img {
   aspect-ratio: 16/9;
   object-fit: cover;
@@ -118,5 +134,49 @@ img {
 .btn {
   margin: 0.3em;
   width: 5.4em;
+}
+.card-body{
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+}
+.col-md-1{
+  display: flex;
+  justify-content: center;
+}
+.gap-3{
+  display: flex;
+  padding: 0.7rem;
+  background-color: $background-card;
+}
+
+@media (max-width: 767px) {
+  img {
+    width: 90%;
+    margin-top: 5vw;
+    aspect-ratio: 16/9;
+  object-fit: cover;
+  }
+  .btnsUser{
+    display: flex;
+    justify-content: space-around;
+    // width: 100%;
+    // justify-content: center;
+  }
+  .font-name{
+    font-size: 1rem;
+    
+  }
+  .gap-3{
+    display: block;
+    width: 90%;
+    margin: auto;
+    margin-top: 1rem;
+  }
+  .card-body{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.7rem;
+  }
 }
 </style>

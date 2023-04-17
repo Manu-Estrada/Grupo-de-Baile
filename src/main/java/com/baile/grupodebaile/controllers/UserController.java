@@ -61,9 +61,9 @@ public class UserController {
         return service.saveImageUser(multipartFile, id);
     }
 
-    @DeleteMapping("/register/{iduser}/imagesuser")
-    public void deleteImageUser(@PathVariable Long iduser) throws IOException {
-        service.deleteImageUser(iduser);
+    @GetMapping("/quienessomos")
+    public List<User> listAllPublic() {
+        return service.listAll();
     }
 
     @GetMapping("/users")
@@ -71,10 +71,6 @@ public class UserController {
         return service.listAll();
     }
 
-    @GetMapping("/quienessomos")
-    public List<User> listAllPublic() {
-        return service.listAll();
-    }
 
     @GetMapping("/users/{id}")
     public User listOne(@PathVariable Long id) {
@@ -90,6 +86,11 @@ public class UserController {
     public void delete(@PathVariable Long id) throws IOException {
         service.deleteImageUser(id);
         service.delete(id);
+    }
+
+    @DeleteMapping("/register/{iduser}/imagesuser")
+    public void deleteImageUser(@PathVariable Long iduser) throws IOException {
+        service.deleteImageUser(iduser);
     }
 
     @PutMapping("/users/{id}")

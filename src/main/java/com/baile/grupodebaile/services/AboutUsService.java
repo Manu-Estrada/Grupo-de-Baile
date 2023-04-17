@@ -1,6 +1,9 @@
 package com.baile.grupodebaile.services;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,20 +31,20 @@ public class AboutUsService {
 
     public void saveImageAboutUs(MultipartFile multipartFile, Long id) throws IOException {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        String uploadDir = RouteFileUploadImage.pathToSaveImage("imageaboutus");
+        String uploadDir = RouteFileUploadImage.pathToSaveImage("imageAboutUs");
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
         ImageAboutUs imageAboutUsNew = new ImageAboutUs();
         imageAboutUsNew.setImage(fileName);
         imageAboutUsRepository.save(imageAboutUsNew);
 
-   AboutUs aboutUsToAddImage = repository.findById(id).orElseThrow();
+        AboutUs aboutUsToAddImage = repository.findById(id).orElseThrow();
         aboutUsToAddImage.setImageAboutUs(imageAboutUsNew);
         repository.save(aboutUsToAddImage);
     }
 
-    public void save(AboutUs aboutUsNew) {
-        repository.save(aboutUsNew);
+    public AboutUs save(AboutUs aboutUsNew) {
+        return repository.save(aboutUsNew);
     }
 
     public List<AboutUs> listAll() {
@@ -60,6 +63,16 @@ public class AboutUsService {
         AboutUs aboutUsToUpdate = aboutUsNew;
         aboutUsToUpdate.setId(id);
         return repository.save(aboutUsToUpdate);
+    }
+
+    public void deleteImageAboutUs(Long idaboutus) throws IOException{
+        AboutUs aboutUsToDeleteImage = repository.findById(idaboutus).orElseThrow();
+        ImageAboutUs imageToDelete = aboutUsToDeleteImage.getImageAboutUs();
+        aboutUsToDeleteImage.setImageAboutUs(null);
+        imageAboutUsRepository.delete(imageToDelete);
+        String uploadDir = RouteFileUploadImage.pathToSaveImage("imageAboutUs");
+        Path fileToDeletePath = Paths.get(uploadDir + imageToDelete.getImage());
+        Files.delete(fileToDeletePath);
     }
 
 
