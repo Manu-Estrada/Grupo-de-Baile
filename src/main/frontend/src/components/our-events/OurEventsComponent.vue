@@ -1,9 +1,20 @@
 <script setup>
 import OurEventsPopUp from "./OurEventsPopUp.vue";
+const props = defineProps({
+  event: {
+    type: Object,
+    required: true,
+  },
+});
+
+
+
 </script>
 <template>
-  <div class="card-container">
-    <img src="../../assets/images/IMG_20190928_181206.jpg" alt="" />
+  <div :id="`${event}`" class="card-container">
+    <img 
+    :src="`http://localhost:8080/images/event-photos/${event.imageEvent.event}`"
+ alt="Imagen Evento" />
     <div class="text-container">
       <span>01-01-2023</span>
       <h4>Evento Primero</h4>
