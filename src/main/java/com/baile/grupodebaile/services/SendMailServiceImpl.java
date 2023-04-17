@@ -20,7 +20,7 @@ public class SendMailServiceImpl implements SendMailService{
        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
        //from: debería ser el correo del usuario
-       simpleMailMessage.setFrom(" mail@example");
+       simpleMailMessage.setFrom(from);
        //to: El correo al que va a llegar la información, que será del admin de Xaréu (David)
        simpleMailMessage.setTo(to);
        //subject: input asunto 
