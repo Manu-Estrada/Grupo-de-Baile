@@ -3,6 +3,7 @@ package com.baile.grupodebaile.utils;
 public class RouteFileUploadImage {
     private static String pathImageUser = "src/main/resources/static/images/user-photos/";
     private static String pathImageEvent = "src/main/resources/static/images/event-photos/";
+    private static String pathImageAboutUsEvent = "src/main/resources/static/images/aboutus-photos/";
 
     public static String pathToSaveImage(String typeOfImage) {
         if (typeOfImage == "imageUser") {
@@ -12,6 +13,11 @@ public class RouteFileUploadImage {
         if (typeOfImage == "imageEvent") {
             return pathImageEvent;
         }
+
+        if (typeOfImage == "imageAboutUs") {
+            return pathImageAboutUsEvent;
+        }
+        
         return null;
     }
 }
