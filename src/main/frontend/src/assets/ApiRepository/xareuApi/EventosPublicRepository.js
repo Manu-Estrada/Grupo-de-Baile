@@ -11,8 +11,6 @@ export default class EventosPublicRepository {
 
     eventsList.push(json);
 
-    console.log(json);
     return json;
   }
 }
-
