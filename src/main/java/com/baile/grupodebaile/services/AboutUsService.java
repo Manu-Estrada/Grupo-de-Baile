@@ -30,6 +30,12 @@ public class AboutUsService {
     }
 
     public void saveImageAboutUs(MultipartFile multipartFile, Long id) throws IOException {
+
+        ImageAboutUs imageExist = listOneImage(id);
+        if(imageExist!=null) {
+            deleteImageAboutUs(id);
+        }
+        
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         String uploadDir = RouteFileUploadImage.pathToSaveImage("imageAboutUs");
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
@@ -75,5 +81,14 @@ public class AboutUsService {
         Files.delete(fileToDeletePath);
     }
 
+    public ImageAboutUs listOneImage(Long id) {
+        AboutUs aboutUsImage = repository.findById(id).orElseThrow(null);
+        ImageAboutUs imageaboutUs = aboutUsImage.getImageAboutUs();
+        if(imageaboutUs==null) {
+            return null;
+        }
+        Long idImage = imageaboutUs.getId();
+        return imageAboutUsRepository.findById(idImage).orElseThrow(null);
+    }
 
 }
