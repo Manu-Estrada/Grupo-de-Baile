@@ -1,6 +1,6 @@
 <script setup>
  import LoginComponent from '../components/LoginComponent.vue';
- import FooterComponent from '../components/FooterComponent.vue';
+ 
  
 </script>
 
