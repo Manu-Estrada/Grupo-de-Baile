@@ -57,16 +57,5 @@ const page = (algo) => {
 </template>
 <style lang="scss" scoped>
 @import "../assets/sass/our-events/our-events-view.scss";
-.our-events-view {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-.our-events-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 90%;
-}
+
 </style>
