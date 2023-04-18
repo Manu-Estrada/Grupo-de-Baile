@@ -72,6 +72,30 @@ const router = createRouter({
       name: "editimageuser",
       props: true,
       component: () => import("../views/EditUserImage.vue")
+    },
+    {
+      path: "/listasobrenosotros",
+      name: "listaboutus",
+      props: true,
+      component: () => import("../views/ListAboutUsView.vue")
+    },
+    {
+      path: "/registrosobrenosotros",
+      name: "registeraboutus",
+      props: true,
+      component: () => import("../views/RegisterAboutUsView.vue")
+    },
+    {
+      path: "/registrofotosobrenosotros/:id",
+      name: "registerimgaboutus",
+      props: true,
+      component: () => import("../views/RegisterImgAboutUsView.vue"),
+    },
+    {
+      path: "/modificarsobrenosotros",
+      name: "editaboutus",
+      props: true,
+      component: () => import("../views/EditAboutUsView.vue")
     }
   ],
 });
