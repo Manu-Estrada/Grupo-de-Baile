@@ -9,7 +9,9 @@ const api = repository.chooseApi();
 
 const eventCardxPage = 6;
 const start = ref(0);
-const end = computed(() => Math.min(start.value + eventCardxPage, eventsList.value.length));
+const end = computed(() =>
+  Math.min(start.value + eventCardxPage, eventsList.value.length)
+);
 
 let eventsList = ref([]);
 onBeforeMount(async () => {
@@ -31,19 +33,40 @@ const prev = () => {
 const page = (algo) => {
   start.value = algo;
 };
-
 </script>
 <template>
   <section class="our-events-view">
     <h3>Nuestros Eventos</h3>
     <div class="our-events-container">
-      <OurEventsComponent v-for="event in eventsToShow" :key="event.id" :event="event" />
-      
-      
+      <OurEventsComponent
+        v-for="event in eventsToShow"
+        :key="event.id"
+        :event="event"
+      />
     </div>
-    <Pagination :pageSize="eventCardxPage" :start="start" :end="end" :maxLength="eventsList.length" @change="page" @prev="prev" @next="next" />
+    <Pagination
+      :pageSize="eventCardxPage"
+      :start="start"
+      :end="end"
+      :maxLength="eventsList.length"
+      @change="page"
+      @prev="prev"
+      @next="next"
+    />
   </section>
 </template>
 <style lang="scss" scoped>
 @import "../assets/sass/our-events/our-events-view.scss";
+.our-events-view {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.our-events-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90%;
+}
 </style>
