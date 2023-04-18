@@ -11,7 +11,7 @@ const props = defineProps({
   <div :id="`card-size${event.id}`" class="card-container">
     <figure v-if="event.imageevent">
       <img
-      class="imgCardEvent"
+        class="imgCardEvent"
         :src="`http://localhost:8080/images/event-photos/${event.imageevent.image}`"
         alt="Imagen Evento"
       />
@@ -31,14 +31,4 @@ const props = defineProps({
 </template>
 <style lang="scss" scoped>
 @import "../../assets/sass/our-events/our-events-component.scss";
-
-.card-container {
-  width: 70%;
-    .imgCardEvent {
-      aspect-ratio: 16/9;
-      width: 100%;
-      object-fit: cover;
-    
-  }
-}
 </style>
