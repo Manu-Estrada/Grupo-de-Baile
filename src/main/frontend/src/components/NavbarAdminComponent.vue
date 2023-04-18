@@ -21,9 +21,13 @@ import { RouterLink } from "vue-router";
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <RouterLink class="nav-link" to="/listausuario">Listado de Usuarios</RouterLink>
+          <br />
+            <RouterLink class="nav-link" to="/registrousuario">Alta de Usuarios</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/registrousuario">Alta de Usuarios</RouterLink>
+            <RouterLink class="nav-link" to="/listasobrenosotros">Listado de secciones Sobre nosotros</RouterLink>
+          <br />
+            <RouterLink class="nav-link" to="/registrosobrenosotros">Alta de sección Sobre nosotros</RouterLink>
           </li>
         </ul>
       </div>
@@ -44,6 +48,7 @@ nav {
   a {
     color: $background-card;
     transition: all 0.4s;
+    line-height: 0px;
   }
   a.router-link-exact-active,
   a:hover {

@@ -19,7 +19,7 @@ public class AboutUs {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition="TEXT")
     private String description;
 
     @OneToOne
