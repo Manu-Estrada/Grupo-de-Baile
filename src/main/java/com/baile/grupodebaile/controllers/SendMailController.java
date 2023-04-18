@@ -17,9 +17,9 @@ public class SendMailController {
         this.sendMailService = sendMailService;
     }
 
-    @PostMapping(path = "/send-email")
+    @PostMapping(path = "/sendemail")
     public ResponseEntity<?> sendMail(@RequestBody EmailMessage emailMessage) {
-        this.sendMailService.SendMail(emailMessage.getTo(), emailMessage.getFrom(), emailMessage.getSubject(), emailMessage.getMessage());
+        this.sendMailService.SendMail(emailMessage.getInputName(), emailMessage.getInputPhone(), emailMessage.getTo(), emailMessage.getFrom(), emailMessage.getSubject(), emailMessage.getMessage());
         return ResponseEntity.ok("Success");
     }
 
