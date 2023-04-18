@@ -74,15 +74,15 @@ function deletePost(id) {
       :member="member"
     >
       <div class="row g-0">
-        <div class="col-md-1" v-if="member.imageUser.image">
+        <div v-if="member.imageUser.image">
           <img
             :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
-            class="img-fluid rounded-start"
+            class="img-fluid"
             alt="..."
           />
         </div>
 
-        <div class="gap-3 col-md-9">
+        <div class="gap-3">
           <div class="text-name">
           <p class="font-name" ><b>{{ member.lastname }}</b>, {{ member.name }}</p>
             
@@ -126,10 +126,13 @@ function deletePost(id) {
   width: 90%;
   margin: auto;
   margin-top: 5vw;
+  display: grid;
+  grid-template-columns: 2fr 8fr;
 }
 img {
   aspect-ratio: 16/9;
   object-fit: cover;
+  width: 200px;
 }
 .btn {
   margin: 0.3em;
@@ -145,14 +148,18 @@ img {
   justify-content: center;
 }
 .gap-3{
+  width: 90%;
   display: flex;
   padding: 0.7rem;
   background-color: $background-card;
 }
 
 @media (max-width: 767px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
   img {
-    width: 90%;
+    width: 100%;
     margin-top: 5vw;
     aspect-ratio: 16/9;
   object-fit: cover;
@@ -169,7 +176,7 @@ img {
   }
   .gap-3{
     display: block;
-    width: 90%;
+    width: 100%;
     margin: auto;
     margin-top: 1rem;
   }
@@ -178,5 +185,8 @@ img {
     justify-content: center;
     margin-top: 0.7rem;
   }
+}
+.card{
+  background-color:$background-component
 }
 </style>
