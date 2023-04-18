@@ -74,7 +74,7 @@ function deletePost(id) {
       :member="member"
     >
       <div class="row g-0">
-        <div v-if="member.imageUser.image">
+        <div v-if="member.imageUser">
           <img
             :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
             class="img-fluid"
