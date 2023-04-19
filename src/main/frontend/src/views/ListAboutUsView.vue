@@ -7,18 +7,18 @@ import { imageAboutUs } from "../stores/imageAboutUs";
 import router from "../router/index";
 
 const aboutUsItem = aboutUs();
-
-function update(aboutUs) {
-  aboutUsItem.aboutUsObject = aboutUs;
-  router.push("/modificarsobrenosotros");
-}
-
 const imageAboutUsItem = imageAboutUs();
 
-function updateImage(imageAboutUs){
+function update(id, aboutUs, imageAboutUs) {
+  aboutUsItem.aboutUsObject = aboutUs;
   imageAboutUsItem.AboutUsImageObject = imageAboutUs;
-  router.push("/registrofotosobrenosotros")
+  router.push("/modificarsobrenosotros" + "/" + id);
+}
 
+function updateImage(imageAboutUs, aboutUs, id) {
+  imageAboutUsItem.AboutUsImageObject = imageAboutUs;
+  aboutUsItem.aboutUsObject = aboutUs;
+  router.push("/registrofotosobrenosotros" + "/" + id);
 }
 
 // Api
@@ -52,17 +52,30 @@ const page = (algo) => {
   start.value = algo;
 };
 
-function deletePost(id) {
+async function deletePost(id) {
   if (confirm("¿Está seguro de que quiere borrar esta sección?") == true) {
-    fetch(`http://localhost:8080/api/aboutus/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    alert("Sección borrada correctamente.");
-    location.reload();
+    deleteThis(id);
   }
+}
+
+async function deleteThis(id) {
+  console.log(id)
+  const response = fetch(`http://localhost:8080/api/aboutus/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.status == 200) {
+        alert("Sección borrada correctamente.");
+        location.reload();
+      } else {
+        alert(
+          "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
+        );
+      }
+    });
 }
 </script>
 <template>
@@ -83,8 +96,10 @@ function deletePost(id) {
         </div>
         <div class="gap-3 col-md-9">
           <div class="text-name">
-          <p class="font-name" ><b>{{ aboutUs.name }}</b></p>
-          <p class="font-italic">{{ aboutUs.description }}</p>
+            <p class="font-name">
+              <b>{{ aboutUs.name }}</b>
+            </p>
+            <p class="font-italic">{{ aboutUs.description }}</p>
           </div>
           <div class="card-body">
             <p class="btnsUser">
@@ -95,8 +110,20 @@ function deletePost(id) {
               >
                 Borrar
               </button>
-              <button type="button" class="btn btn-warning" @click="update(aboutUs)">Modificar</button>
-              <button type="button" class="btn btn-success" @click="updateImage(aboutUs.imageAboutUs)">Imagen</button>
+              <button
+                type="button"
+                class="btn btn-warning"
+                @click="update(aboutUs.id, aboutUs, aboutUs.imageAboutUs)"
+              >
+                Modificar
+              </button>
+              <button
+                type="button"
+                class="btn btn-success"
+                @click="updateImage(aboutUs.imageAboutUs, aboutUs, aboutUs.id)"
+              >
+                Imagen
+              </button>
             </p>
           </div>
         </div>
@@ -119,7 +146,7 @@ function deletePost(id) {
 @import "../assets/sass/styles.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss";
 
-.row{
+.row {
   width: 90%;
   margin: auto;
   margin-top: 5vw;
@@ -132,16 +159,16 @@ img {
   margin: 0.3em;
   width: 5.4em;
 }
-.card-body{
+.card-body {
   display: flex;
   justify-content: end;
   align-items: flex-end;
 }
-.col-md-1{
+.col-md-1 {
   display: flex;
   justify-content: center;
 }
-.gap-3{
+.gap-3 {
   display: flex;
   padding: 0.7rem;
   background-color: $background-card;
@@ -152,25 +179,24 @@ img {
     width: 90%;
     margin-top: 5vw;
     aspect-ratio: 16/9;
-  object-fit: cover;
+    object-fit: cover;
   }
-  .btnsUser{
+  .btnsUser {
     display: flex;
     justify-content: space-around;
     // width: 100%;
     // justify-content: center;
   }
-  .font-name{
+  .font-name {
     font-size: 1rem;
-    
   }
-  .gap-3{
+  .gap-3 {
     display: block;
     width: 90%;
     margin: auto;
     margin-top: 1rem;
   }
-  .card-body{
+  .card-body {
     display: flex;
     justify-content: center;
     margin-top: 0.7rem;

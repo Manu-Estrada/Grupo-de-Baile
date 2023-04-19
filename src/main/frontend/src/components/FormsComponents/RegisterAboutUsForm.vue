@@ -1,25 +1,31 @@
 <script setup>
+import { aboutUs } from "../../stores/aboutUs";
+// import { computed } from "@vue/reactivity";
 import router from '../../router';
-let aboutUs = {
+
+const aboutUsToAdd = aboutUs();
+
+// const aboutData = computed(() => {
+//   return aboutUsToAdd.aboutUsObject;
+// });
+
+let aboutUsAdd = {
   name: "",
   description: ""
 };
 
-
 async function save() {
-  if (aboutUs.name === "") {
+  if (aboutUsAdd.name === "") {
     alert("Se necesita añadir el nombre.");
     return;
   }
 
-  if (aboutUs.description  === "") {
+  if (aboutUsAdd.description  === "") {
     alert("Se necesita añadir una desccripción.");
     return;
   }
 
-  let resultados = {};
-
-  const payload = JSON.stringify(aboutUs);
+  const payload = JSON.stringify(aboutUsAdd);
   const url = "http://localhost:8080/api/aboutus";
   const response = fetch(url, {
     method: "POST",
@@ -31,9 +37,12 @@ async function save() {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.aboutUs != "") {
-        router.push('/registrofotosobrenosotros/' + data.id);
+      console.log("Data: " + data.name)
+      if (data.name) {
+        aboutUsToAdd.aboutUsObject = data;
+        console.log("Pinia :" + aboutUsToAdd.aboutUsObject.name)
         alert("Sección " + data.name + " añadida correctamente.");
+        router.push('/registrofotosobrenosotros/' + data.id);
       } else {
         alert("Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos.");
       }
@@ -49,7 +58,7 @@ async function save() {
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input
-            v-model="aboutUs.name"
+            v-model="aboutUsAdd.name"
             id="name"
             class="form-control"
             type="text"
@@ -58,12 +67,11 @@ async function save() {
         </div>
         <div class="mb-3">
           <label for="surname" class="form-label">Descripción</label>
-          <input
-            v-model="aboutUs.description"
+          <textarea
+            v-model="aboutUsAdd.description"
             id="description"
             class="form-control"
-            type="rextarea"
-            placeholder="description"
+            placeholder="Descripción"
           />
         </div>
       </div>
@@ -117,6 +125,10 @@ input {
 
 .btn {
   width: 100%;
+}
+
+textarea {
+  height: 250px;
 }
 
 @media (min-width: 768px) {

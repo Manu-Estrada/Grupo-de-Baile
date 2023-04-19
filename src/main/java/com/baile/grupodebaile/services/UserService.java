@@ -74,11 +74,11 @@ public class UserService {
     }
     
     public List<User> listAll() {
-        return repository.findAll();
+        return repository.findAllByOrderByLastnameAsc();
     }
 
     public List<User> listAllPublic() {
-        return repository.findAll();
+        return repository.findAllByOrderByLastnameAsc();
     }
 
     public User listOne(Long id) {

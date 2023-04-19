@@ -63,7 +63,6 @@ public class AboutUsController {
 
     @DeleteMapping("/aboutus/{id}")
     public void delete(@PathVariable Long id) throws IOException {
-        service.deleteImageAboutUs(id);
         service.delete(id);
     }
 
