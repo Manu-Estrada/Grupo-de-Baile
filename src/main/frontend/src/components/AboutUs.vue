@@ -36,7 +36,6 @@ const page = (algo) => {
   start.value = algo;
 };
 
-
 </script>
 
 <template>

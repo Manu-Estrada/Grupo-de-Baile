@@ -92,7 +92,7 @@ const router = createRouter({
       component: () => import("../views/RegisterImgAboutUsView.vue"),
     },
     {
-      path: "/modificarsobrenosotros",
+      path: "/modificarsobrenosotros/:id",
       name: "editaboutus",
       props: true,
       component: () => import("../views/EditAboutUsView.vue")

@@ -11,19 +11,8 @@ const props = defineProps({
             </div>
             <div class="col-md-6">
                 <div class="card-body">
-                    <h5 class="card-title">Xaréu D'Ochobre</h5>
-                    <p class="card-text">
-                        Nacida en Avilés, Asturias, el 28 de octubre de 1988, la
-                        Agrupación Cultural Xaréu d´ Ochobre se dedica a la conservación y
-                        divulgación de la música y danza tradicional asturiana.
-                    </p>
-                    <p class="card-text">
-                        La agrupación, fundada y dirigida desde sus inicios por D. José
-                        Federico Álvarez Palacios, cuenta en la actualidad con 35
-                        componentes de ambos sexos con edades comprendidas entre los 10 y
-                        65 años, habiendo pasado por la misma más de 350 personas en el
-                        transcurso de su historia.
-                    </p>
+                    <h5 class="card-title">{{ item.name}}</h5>
+                    <pre class="card-text">{{ item.description }}</pre>
                 </div>
             </div>
         </div>
@@ -119,6 +108,11 @@ img {
     border-radius: 10px;
 }
 
+pre {
+    white-space:pre-line;
+    font-family: $font-text;
+    font-size: 1rem;
+}
 
 @media (max-width: 768px) {
     .card-body {

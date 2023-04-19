@@ -2,7 +2,6 @@
 import { computed } from "@vue/reactivity";
 import { aboutUs } from "../../stores/aboutUs";
 
-
 const aboutUsToModify = aboutUs();
 const aboutUsData = computed(() => {
   return aboutUsToModify.aboutUsObject;

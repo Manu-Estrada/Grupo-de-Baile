@@ -32,10 +32,10 @@ public class AboutUsService {
     public void saveImageAboutUs(MultipartFile multipartFile, Long id) throws IOException {
 
         ImageAboutUs imageExist = listOneImage(id);
-        if(imageExist!=null) {
+        if (imageExist != null) {
             deleteImageAboutUs(id);
         }
-        
+
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         String uploadDir = RouteFileUploadImage.pathToSaveImage("imageAboutUs");
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
@@ -61,7 +61,11 @@ public class AboutUsService {
         return repository.findById(id).orElseThrow(null);
     }
 
-    public void delete(Long id) {
+    public void delete(Long id) throws IOException {
+        ImageAboutUs imageExist = listOneImage(id);
+        if (imageExist != null) {
+            deleteImageAboutUs(id);
+        }
         repository.deleteById(id);
     }
 
@@ -71,8 +75,8 @@ public class AboutUsService {
         return repository.save(aboutUsToUpdate);
     }
 
-    public void deleteImageAboutUs(Long idaboutus) throws IOException{
-        AboutUs aboutUsToDeleteImage = repository.findById(idaboutus).orElseThrow();
+    public void deleteImageAboutUs(Long idaboutus) throws IOException {
+        AboutUs aboutUsToDeleteImage = repository.findById(idaboutus).orElseThrow(null);
         ImageAboutUs imageToDelete = aboutUsToDeleteImage.getImageAboutUs();
         aboutUsToDeleteImage.setImageAboutUs(null);
         imageAboutUsRepository.delete(imageToDelete);
@@ -84,7 +88,7 @@ public class AboutUsService {
     public ImageAboutUs listOneImage(Long id) {
         AboutUs aboutUsImage = repository.findById(id).orElseThrow(null);
         ImageAboutUs imageaboutUs = aboutUsImage.getImageAboutUs();
-        if(imageaboutUs==null) {
+        if (imageaboutUs == null) {
             return null;
         }
         Long idImage = imageaboutUs.getId();
