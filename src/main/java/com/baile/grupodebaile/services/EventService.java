@@ -45,7 +45,7 @@ public class EventService {
     }
 
     public List<Event> listAll() {
-        return repository.findAll();
+        return repository.findAllByOrderByDateeventAsc();
     }
 
     public Event listOne(Long id) {
