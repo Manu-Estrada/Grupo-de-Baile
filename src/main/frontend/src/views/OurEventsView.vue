@@ -9,8 +9,7 @@ const api = repository.chooseApi();
 
 const eventCardxPage = 6;
 const start = ref(0);
-const end = computed(() =>
-  Math.min(start.value + eventCardxPage, eventsList.value.length)
+const end = computed(() => Math.min(start.value + eventCardxPage, eventsList.value.length)
 );
 
 let eventsList = ref([]);
