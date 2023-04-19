@@ -3,10 +3,9 @@ import { useRouter } from "vue-router";
 
 let usercontact = {
   inputName: "",
-  inputEmail: "",
+  from: "",
   inputPhone: "",
-  inputSubject: "",
-  inputMessage: "",
+  message: "",
 };
 
 const router = useRouter();
@@ -17,7 +16,7 @@ async function save() {
     return;
   }
 
-  if (usercontact.inputEmail === "") {
+  if (usercontact.from === "") {
     alert("Se necesita añadir un correo electrónico válido.");
     return;
   }
@@ -26,11 +25,8 @@ async function save() {
     alert("Se necesita añadir un teléfono.");
     return;
   }
-  if (usercontact.inputSubject === "") {
-    alert("Se necesita añadir un asunto.");
-    return;
-  }
-  if (usercontact.inputMessage === "") {
+ 
+  if (usercontact.message === "") {
     alert("Se necesita añadir un mensaje.");
     return;
   }
@@ -47,20 +43,16 @@ const payload = JSON.stringify(usercontact);
       Accept: "application/json",
     },
   })
-    .then((response) => response.json())
-    // .then((data) => {
-    //   if (data.user != "") {
-    //     router.push('/contacto' + data.id);
-    //     alert("Mensaje enviado.");
-    //   } else {
-    //     alert("Se ha producido un error. \nPor favor, revise la información introducida en los campos.");
-    //   }
-    // });
+    .then((response) =>  {
+    
     if (response.status == 200) {
     alert("Mensaje enviado satisfactoriamente.");
+    
   }  else {
         alert("Se ha producido un error. \nPor favor, revise la información introducida en los campos.");
       }
+    }
+      )
 }
 // }
 
@@ -79,20 +71,16 @@ const payload = JSON.stringify(usercontact);
     <input v-model="usercontact.inputName" type="text" class="form-control" id="inputName">
   </div>
   <div class="col-12">
-    <label for="inputEmail" class="form-label">Email:</label>
-    <input v-model="usercontact.inputEmail" type="email" class="form-control" id="inputEmail">
+    <label for="from" class="form-label">Email:</label>
+    <input v-model="usercontact.from" type="email" class="form-control" id="from">
   </div>
   <div class="col-12">
     <label for="inputPhone" class="form-label">Teléfono:</label>
     <input v-model="usercontact.inputPhone" type="text" class="form-control" id="inputPhone">
   </div>
   <div class="col-12">
-    <label for="inputSubject" class="form-label">Asunto:</label>
-    <input v-model="usercontact.inputSubject" type="text" class="form-control" id="inputSubject">
-  </div>
-  <div class="col-12">
-  <label for="inputMessage" class="form-label">Tu consulta o comentario:</label>
-  <textarea v-model="usercontact.inputMessage" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
+  <label for="message" class="form-label">Tu consulta o comentario:</label>
+  <textarea v-model="usercontact.message" class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
 </div>
 <div class="col-12 d-flex justify-content-end">
     <button type="reset" class="btn btn-danger">Borrar</button>

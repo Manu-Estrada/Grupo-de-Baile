@@ -42,7 +42,7 @@ public class SecurityConfig {
                                                 .antMatchers("/api/register/**").permitAll()
                                                 // .antMatchers("/api/users").hasRole("ADMIN")
                                                 .antMatchers("/api/quienessomos").permitAll()
-                                                .antMatchers("/sendemail/**").permitAll()
+                                                .antMatchers("/api/sendemail/**").permitAll()
                                                 .antMatchers("/ContactoPublicRepository/**").permitAll()
                                                 .antMatchers("/images/**").permitAll()
                                                 .antMatchers("/api/events/**").permitAll()

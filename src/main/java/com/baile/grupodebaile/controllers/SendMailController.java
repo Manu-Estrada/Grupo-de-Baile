@@ -1,5 +1,6 @@
 package com.baile.grupodebaile.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +18,13 @@ public class SendMailController {
         this.sendMailService = sendMailService;
     }
 
-    @PostMapping(path = "/sendemail")
+    @PostMapping(path = "/api/sendemail")
     public ResponseEntity<?> sendMail(@RequestBody EmailMessage emailMessage) {
-        this.sendMailService.SendMail(emailMessage.getInputName(), emailMessage.getInputPhone(), emailMessage.getTo(), emailMessage.getFrom(), emailMessage.getSubject(), emailMessage.getMessage());
-        return ResponseEntity.ok("Success");
+        emailMessage.setTo("info@johnnyramirez.es");
+        emailMessage.setSubject("Mensaje para Xaréu D´Ochobre");
+
+        this.sendMailService.SendMail(emailMessage.getTo(), emailMessage.getSubject(), emailMessage.getInputName(), emailMessage.getInputPhone(), emailMessage.getFrom(), emailMessage.getMessage());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

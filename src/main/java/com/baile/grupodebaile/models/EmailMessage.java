@@ -30,6 +30,15 @@ public class EmailMessage {
         this.message = message;
     }
 
+    
+
+    public EmailMessage(String inputName, String inputPhone, String from, String message) {
+        this.inputName = inputName;
+        this.inputPhone = inputPhone;
+        this.from = from;
+        this.message = message;
+    }
+
     public String getInputName() {
         return inputName;
     }

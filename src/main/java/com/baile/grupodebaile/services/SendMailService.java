@@ -2,6 +2,6 @@ package com.baile.grupodebaile.services;
 
 
 public interface SendMailService {
-    void SendMail (String inputName,  String inputPhone, String to, String from, String subject, String message);
+    void SendMail (String to, String subject,  String inputName,  String inputPhone,  String from,  String message);
  
 }
