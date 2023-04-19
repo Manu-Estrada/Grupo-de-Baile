@@ -16,7 +16,7 @@ public class SendMailServiceImpl implements SendMailService{
     }
 
     @Override
-    public void SendMail(String inputName, int inputPhone, String to, String from, String subject, String message) {
+    public void SendMail(String inputName, String inputPhone, String to, String from, String subject, String message) {
        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         
       

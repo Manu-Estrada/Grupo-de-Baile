@@ -4,7 +4,7 @@ public class EmailMessage {
 
     private String inputName;
 
-    private int inputPhone;
+    private String inputPhone;
 
     // el to es el correo del admin de la página (David)
     private String to;
@@ -21,7 +21,7 @@ public class EmailMessage {
     public EmailMessage() {
     }
 
-    public EmailMessage(String inputName, int inputPhone, String to, String from, String subject, String message) {
+    public EmailMessage(String inputName, String inputPhone, String to, String from, String subject, String message) {
         this.inputName = inputName;
         this.inputPhone = inputPhone;
         this.to = to;
@@ -38,11 +38,11 @@ public class EmailMessage {
         this.inputName = inputName;
     }
 
-    public int getInputPhone() {
+    public String getInputPhone() {
         return inputPhone;
     }
 
-    public void setInputPhone(int inputPhone) {
+    public void setInputPhone(String inputPhone) {
         this.inputPhone = inputPhone;
     }
 
