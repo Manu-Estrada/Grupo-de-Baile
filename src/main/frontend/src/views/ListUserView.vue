@@ -2,14 +2,14 @@
 import Pagination from "../components/gallery/Pagination.vue";
 import { onBeforeMount, ref, computed } from "vue";
 import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
-import { user } from "../stores/user";
+import { userStore } from "../stores/userStore";
 import { imageUser } from "../stores/imageUser";
 import router from "../router/index";
 
-const userItem = user();
+const userItem = userStore();
 
-function update(user) {
-  userItem.userObject = user;
+function update(member) {
+  userItem.userObject = member;
   router.push("/modificarusuario");
 }
 

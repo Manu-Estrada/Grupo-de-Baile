@@ -11,7 +11,6 @@ export default class SobreNosotrosPublicRepository {
 
     membersList.push(json);
 
-    console.log(json);
     return json;
   }
 }

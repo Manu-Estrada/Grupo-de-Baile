@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,14 +31,19 @@ public class AboutUsService {
         this.repository = repository;
     }
 
-    public void saveImageAboutUs(MultipartFile multipartFile, Long id) throws IOException {
-
+    public ResponseEntity<Object> saveImageAboutUs(MultipartFile multipartFile, Long id) throws IOException {
         ImageAboutUs imageExist = listOneImage(id);
         if (imageExist != null) {
             deleteImageAboutUs(id);
         }
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        // ImageAboutUs fileNameExist = imageAboutUsRepository.findByImage(fileName);
+
+        // if (fileNameExist != null) {
+        //     return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        // }
+
         String uploadDir = RouteFileUploadImage.pathToSaveImage("imageAboutUs");
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -47,6 +54,9 @@ public class AboutUsService {
         AboutUs aboutUsToAddImage = repository.findById(id).orElseThrow();
         aboutUsToAddImage.setImageAboutUs(imageAboutUsNew);
         repository.save(aboutUsToAddImage);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
     public AboutUs save(AboutUs aboutUsNew) {
