@@ -20,11 +20,12 @@ public class SendMailController {
 
     @PostMapping(path = "/api/sendemail")
     public ResponseEntity<?> sendMail(@RequestBody EmailMessage emailMessage) {
-        emailMessage.setTo("info@johnnyramirez.es");
+        emailMessage.setTo("jehisel.rrp@gmail.com");
         emailMessage.setSubject("Mensaje para Xaréu D´Ochobre");
 
         this.sendMailService.SendMail(emailMessage.getTo(), emailMessage.getSubject(), emailMessage.getInputName(), emailMessage.getInputPhone(), emailMessage.getFrom(), emailMessage.getMessage());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    
 
 }
