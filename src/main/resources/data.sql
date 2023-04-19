@@ -4,6 +4,7 @@ INSERT INTO imageuser (id_imageuser, image) VALUES (default, "image-03.jpg")
 INSERT INTO imageuser (id_imageuser, image) VALUES (default, "image-04.jpg")
 INSERT INTO imageuser (id_imageuser, image) VALUES (default, "image-05.jpg")
 INSERT INTO imageuser (id_imageuser, image) VALUES (default, "image-06.jpg")
+INSERT INTO imageuser (id_imageuser, image) VALUES (default, "image-07.jpg")
 
 INSERT INTO users (id_user, name, lastname, dateadmission, username, password, imageuser_id_imageuser) VALUES (default, '1', 'Primérez', '2023-01-31', 'admin@esto.es', '$2a$10$6wDeb3wqewh/nSWKVyIh5.0D4XjqyktJ5afuca0aBXDo1sUUIPDAO', 1)
 INSERT INTO users (id_user, name, lastname, dateadmission, username, password, imageuser_id_imageuser) VALUES (default, '2', 'Segúndez', '2023-02-01', 'user@esto.es' ,'$2a$10$6wDeb3wqewh/nSWKVyIh5.0D4XjqyktJ5afuca0aBXDo1sUUIPDAO', 2)
