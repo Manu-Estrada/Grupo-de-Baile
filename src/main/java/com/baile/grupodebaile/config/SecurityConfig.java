@@ -46,6 +46,7 @@ public class SecurityConfig {
                                                 .antMatchers("/send-email/**").permitAll()
                                                 .antMatchers("/images/**").permitAll()
                                                 .antMatchers("/api/events/**").permitAll()
+                                                .antMatchers("/api/travels/**").permitAll()
                                                 // .antMatchers("/api/users/**").hasAnyRole("ADMIN", "USER")
                                                 .antMatchers("/api/users/**").permitAll()
                                                 .antMatchers("/api/login").hasAnyRole("ADMIN", "USER")

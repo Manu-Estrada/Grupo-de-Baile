@@ -37,6 +37,18 @@ INSERT INTO events (id_event, name, description, dateevent, imageevent_id_imagee
 INSERT INTO events (id_event, name, description, dateevent, imageevent_id_imageevent) VALUES (default, "Lechuga", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-05-06", 7)
 INSERT INTO events (id_event, name, description, dateevent, imageevent_id_imageevent) VALUES (default, "Morcilla", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-05-05", 8)
 
+INSERT INTO travels (id_travel, name, description, datetravel) VALUES (default, "Patata", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-04-05")
+INSERT INTO travels (id_travel, name, description, datetravel) VALUES (default, "Tomates", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-04-06")
+INSERT INTO travels (id_travel, name, description, datetravel) VALUES (default, "Cebollas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-04-07")
+INSERT INTO travels (id_travel, name, description, datetravel) VALUES (default, "Berenjenas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-04-08")
+INSERT INTO travels (id_travel, name, description, datetravel) VALUES (default, "Alcachofas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-05-09")
+INSERT INTO travels (id_travel, name, description, datetravel) VALUES (default, "Nabos", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-05-10")
+INSERT INTO travels (id_travel, name, description, datetravel) VALUES (default, "Lechuga", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-05-11")
+INSERT INTO travels (id_travel, name, description, datetravel) VALUES (default, "Morcilla", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", "2023-05-12")
+
+
+
+
 INSERT INTO imageaboutus (id_imageaboutus, image) VALUES (default, "image-01.jpg")
 INSERT INTO imageaboutus (id_imageaboutus, image) VALUES (default, "image-02.jpg")
 
