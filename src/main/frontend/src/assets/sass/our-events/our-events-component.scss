@@ -4,9 +4,16 @@
   width: 90%;
   background-color: $background-card;
   margin-bottom: 2em;
+  max-height: 15em;
+
   img {
-    width: 45%;
+    
+    height: 15em;
+    width: 20em;
     object-fit: cover;
+    aspect-ratio: 16/9;
+
+      
   }
   h4{
     font-weight: bold;
@@ -14,14 +21,15 @@
   .text-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content:flex-start;
     padding: 1em;
+  
     span {
       font-style: italic;
       font-size: 1.2em;
       
     }
-    div {
+    .event-popup {
       display: flex;
       justify-content: end;
       width: 100%;
@@ -34,7 +42,7 @@
 @media (max-width: 1024px) {
   .card-container {
   img {
-    width: 30%;
+    width: 100%;
     
   }
   .text-container {
@@ -50,18 +58,24 @@
   }
 }
 }
+
+
 @media (max-width: 768px) {
   .card-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    
   img {
-    width: 100%;
+    width:12em;
+   
   }
   .text-container {
+   
     p{
-      font-size: 70%;
+      font-size: 60%;
     }
     div {
+     
       button {
         width: 10rem;
         height: 2rem;
@@ -74,15 +88,17 @@
   .card-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   img {
     width: 100%;
   }
   .text-container {
-    span {
+    p{
+      font-size: 60%;
     }
     div {
       button {
-        width: 10rem;
+        width: 6rem;
         height: 2rem;
       }
     }

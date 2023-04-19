@@ -9,8 +9,7 @@ const api = repository.chooseApi();
 
 const eventCardxPage = 6;
 const start = ref(0);
-const end = computed(() =>
-  Math.min(start.value + eventCardxPage, eventsList.value.length)
+const end = computed(() => Math.min(start.value + eventCardxPage, eventsList.value.length)
 );
 
 let eventsList = ref([]);
@@ -57,16 +56,5 @@ const page = (algo) => {
 </template>
 <style lang="scss" scoped>
 @import "../assets/sass/our-events/our-events-view.scss";
-.our-events-view {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-.our-events-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 90%;
-}
+
 </style>

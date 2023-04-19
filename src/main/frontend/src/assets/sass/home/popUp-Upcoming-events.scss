@@ -1,4 +1,13 @@
 @import "../variables";
+
+.modal {
+  --bs-modal-width: 100%;
+}
+
+.modal-dialog {
+  width: 90%;
+}
+
 .popUp-button {
   border: none;
   border-bottom: 1px solid gray;
@@ -6,6 +15,12 @@
   text-align: start;
   padding: 0;
   padding-bottom: 10px;
+  margin-bottom: 10px;
+  transition: all 0.4s;
+  &:hover {
+    text-decoration: underline;
+    letter-spacing: 1px;
+  }
 }
 .popUp-button-third {
   border: none;
@@ -13,6 +28,22 @@
   text-align: start;
   padding: 0;
   padding-bottom: 10px;
+}
+
+.close {
+  background-color: $background-green;
+  opacity: 100%;
+  color: $background-upcomingEvents;
+  margin: 10px 10px 0 0 ;
+  padding: 0px 5px 2px 5px;
+  border-radius: 2px;
+  border: none;
+  transition: all 0.4s;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  &:hover {
+    color: white;
+  }
 }
 
 .modal.show .modal-dialog {
@@ -27,11 +58,16 @@
     div {
       display: flex;
       justify-content: center;
+      align-items: start;
       .event-container {
         background-color: $background-card;
         width: 90%;
-        height: 30em;
         margin: 20px 0 54px;
+        img {
+          width: 35%;
+          object-fit:scale-down;
+          margin: 40px 0 40px 40px;
+        }
         .text-container {
           display: flex;
           flex-direction: column;
@@ -47,6 +83,7 @@
 }
 
 @media (max-width: 1024px) {
+ 
   .text-container {
     p {
       width: 100%;
@@ -55,6 +92,7 @@
 }
 
 @media (max-width: 768px) {
+  
   .modal.show .modal-dialog {
     .modal-content {
       div {
@@ -62,9 +100,10 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          height: 45em;
+          justify-content: start;
           img {
-            width: 17rem;
+            width: 50%;
+            margin: 40px 0 0 0 ;
           }
           .text-container {
             p {
@@ -78,9 +117,10 @@
   }
 }
 @media (max-width: 425px) {
+  
   .event-container {
     img {
-      margin-top: 56px;
+      margin-top: 40px;
     }
   }
   .text-container {
@@ -88,13 +128,14 @@
   }
 }
 @media (max-width: 320px) {
+  
   .modal.show .modal-dialog {
     .modal-content {
       div {
         .event-container {
-          img{
-            margin-top: 56px;
-            width: 13rem;
+          img {
+            margin-top: 40px;
+            width: 100%;
           }
         }
       }

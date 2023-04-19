@@ -1,8 +1,12 @@
 package com.baile.grupodebaile.controllers;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.baile.grupodebaile.models.AboutUs;
+import com.baile.grupodebaile.models.ImageAboutUs;
 import com.baile.grupodebaile.services.AboutUsService;
 
 
@@ -63,7 +68,19 @@ public class AboutUsController {
     }
 
     @PutMapping("/aboutus/{id}")
-    public AboutUs update(@PathVariable Long id, @RequestBody AboutUs aboutUsNew) {
-        return service.update(id, aboutUsNew);
+    public ResponseEntity<Map<String, String>> update(@PathVariable Long id, @RequestBody AboutUs aboutus) {
+        try {
+            ImageAboutUs imageActual = service.listOneImage(id);
+            aboutus.setId(id);
+            aboutus.setImageAboutUs(imageActual);
+            AboutUs aboutUsDB = service.save(aboutus);
+
+            Map<String, String> json = new HashMap<>();
+            json.put("user", aboutUsDB.getName());
+            json.put("message", "successful sign up");
+            return ResponseEntity.status(HttpStatus.OK).body(json);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

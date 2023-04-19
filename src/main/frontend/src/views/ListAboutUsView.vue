@@ -1,51 +1,51 @@
 <script setup>
 import Pagination from "../components/gallery/Pagination.vue";
 import { onBeforeMount, ref, computed } from "vue";
-import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
-import { user } from "../stores/user";
-import { imageUser } from "../stores/imageUser";
+import ApiRepository from "../assets/ApiRepository/ApiRepository.js";
+import { aboutUs } from "../stores/aboutUs";
+import { imageAboutUs } from "../stores/imageAboutUs";
 import router from "../router/index";
 
-const userItem = user();
+const aboutUsItem = aboutUs();
 
-function update(user) {
-  userItem.userObject = user;
-  router.push("/modificarusuario");
+function update(aboutUs) {
+  aboutUsItem.aboutUsObject = aboutUs;
+  router.push("/modificarsobrenosotros");
 }
 
-const imageUserItem = imageUser();
+const imageAboutUsItem = imageAboutUs();
 
-function updateImage(imageUser){
-  imageUserItem.userImageObject = imageUser;
-  router.push("/modificarimagenusuario")
+function updateImage(imageAboutUs){
+  imageAboutUsItem.AboutUsImageObject = imageAboutUs;
+  router.push("/registrofotosobrenosotros")
 
 }
 
 // Api
-const repository = new ApiRepository("quienesSomos");
+const repository = new ApiRepository("sobreNosotros");
 const api = repository.chooseApi();
 
-const memberCardxPage = 2;
+const aboutUsCardxPage = 2;
 const start = ref(0);
 const end = computed(() =>
-  Math.min(start.value + memberCardxPage, membersList.value.length)
+  Math.min(start.value + aboutUsCardxPage, aboutUsList.value.length)
 );
 
-let membersList = ref([]);
+let aboutUsList = ref([]);
 onBeforeMount(async () => {
-  membersList.value = await api.getAll();
+  aboutUsList.value = await api.getAll();
 });
 
-const membersToShow = computed(() => {
-  return membersList.value.slice(start.value, end.value);
+const aboutUsToShow = computed(() => {
+  return aboutUsList.value.slice(start.value, end.value);
 });
 
 const next = () => {
-  start.value += memberCardxPage;
+  start.value += aboutUsCardxPage;
 };
 
 const prev = () => {
-  start.value = Math.max(start.value - memberCardxPage, 0);
+  start.value = Math.max(start.value - aboutUsCardxPage, 0);
 };
 
 const page = (algo) => {
@@ -53,14 +53,14 @@ const page = (algo) => {
 };
 
 function deletePost(id) {
-  if (confirm("¿Está seguro de que quiere borrar a este usuario?") == true) {
-    fetch(`http://localhost:8080/api/users/${id}`, {
+  if (confirm("¿Está seguro de que quiere borrar esta sección?") == true) {
+    fetch(`http://localhost:8080/api/aboutus/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    alert("Delete successful");
+    alert("Sección borrada correctamente.");
     location.reload();
   }
 }
@@ -69,37 +69,34 @@ function deletePost(id) {
   <main>
     <div
       class="card mb-3"
-      v-for="member in membersToShow"
-      :key="member.id"
-      :member="member"
+      v-for="aboutUs in aboutUsToShow"
+      :key="aboutUs.id"
+      :member="aboutUs"
     >
       <div class="row g-0">
-        <div v-if="member.imageUser">
+        <div class="col-md-1" v-if="aboutUs.imageAboutUs">
           <img
-            :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
-            class="img-fluid"
+            :src="`http://localhost:8080/images/aboutus-photos/${aboutUs.imageAboutUs.image}`"
+            class="img-fluid rounded-start"
             alt="..."
           />
         </div>
-
-        <div class="gap-3">
+        <div class="gap-3 col-md-9">
           <div class="text-name">
-          <p class="font-name" ><b>{{ member.lastname }}</b>, {{ member.name }}</p>
-            
-          <p class="font-italic">Fecha admisión: {{ member.dateadmission }}</p>
-
+          <p class="font-name" ><b>{{ aboutUs.name }}</b></p>
+          <p class="font-italic">{{ aboutUs.description }}</p>
           </div>
           <div class="card-body">
             <p class="btnsUser">
               <button
                 type="button"
                 class="btn btn-danger"
-                @click="deletePost(member.id)"
+                @click="deletePost(aboutUs.id)"
               >
                 Borrar
               </button>
-              <button type="button" class="btn btn-warning" @click="update(member)">Modificar</button>
-              <button type="button" class="btn btn-success" @click="updateImage(member.imageUser)">Imagen</button>
+              <button type="button" class="btn btn-warning" @click="update(aboutUs)">Modificar</button>
+              <button type="button" class="btn btn-success" @click="updateImage(aboutUs.imageAboutUs)">Imagen</button>
             </p>
           </div>
         </div>
@@ -107,10 +104,10 @@ function deletePost(id) {
     </div>
 
     <Pagination
-      :pageSize="memberCardxPage"
+      :pageSize="aboutUsCardxPage"
       :start="start"
       :end="end"
-      :maxLength="membersList.length"
+      :maxLength="aboutUsList.length"
       @change="page"
       @prev="prev"
       @next="next"
@@ -126,13 +123,10 @@ function deletePost(id) {
   width: 90%;
   margin: auto;
   margin-top: 5vw;
-  display: grid;
-  grid-template-columns: 2fr 8fr;
 }
 img {
   aspect-ratio: 16/9;
   object-fit: cover;
-  width: 200px;
 }
 .btn {
   margin: 0.3em;
@@ -148,18 +142,14 @@ img {
   justify-content: center;
 }
 .gap-3{
-  width: 90%;
   display: flex;
   padding: 0.7rem;
   background-color: $background-card;
 }
 
 @media (max-width: 767px) {
-  .row {
-    grid-template-columns: 1fr;
-  }
   img {
-    width: 100%;
+    width: 90%;
     margin-top: 5vw;
     aspect-ratio: 16/9;
   object-fit: cover;
@@ -176,7 +166,7 @@ img {
   }
   .gap-3{
     display: block;
-    width: 100%;
+    width: 90%;
     margin: auto;
     margin-top: 1rem;
   }
@@ -185,8 +175,5 @@ img {
     justify-content: center;
     margin-top: 0.7rem;
   }
-}
-.card{
-  background-color:$background-component
 }
 </style>

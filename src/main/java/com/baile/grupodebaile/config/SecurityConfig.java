@@ -40,6 +40,7 @@ public class SecurityConfig {
                                 .authorizeHttpRequests((auth) -> auth
                                                 // .antMatchers("/**").permitAll()
                                                 .antMatchers("/api/register/**").permitAll()
+                                                .antMatchers("/api/aboutus", "/api/aboutus/**").permitAll()
                                                 // .antMatchers("/api/users").hasRole("ADMIN")
                                                 .antMatchers("/api/quienessomos").permitAll()
                                                 .antMatchers("/api/sendemail/**").permitAll()
