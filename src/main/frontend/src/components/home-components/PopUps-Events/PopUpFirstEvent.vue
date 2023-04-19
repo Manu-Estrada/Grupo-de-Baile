@@ -7,7 +7,7 @@ const props = defineProps({
 });
 </script>
 <template>
-  <p> {{ event.dateevent }}</p>
+  <p class="m-0">{{ event.dateevent }}</p>
   <button
     type="button"
     data-bs-toggle="modal"
@@ -24,17 +24,20 @@ const props = defineProps({
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog modal-xl" >
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <button
           type="button"
-          class="btn-close"
+          class="close p-2"
           data-bs-dismiss="modal"
           aria-label="Close"
-        ></button>
+        >X</button>
         <div>
           <div class="event-container">
-            <img :src="`http://localhost:8080/images/event-photos/${event.imageevent.image}`" alt="" />
+            <img
+              :src="`http://localhost:8080/images/event-photos/${event.imageevent.image}`"
+              alt=""
+            />
             <div class="text-container">
               <span> {{ event.dateevent }}</span>
               <h3>{{ event.name }}</h3>
