@@ -1,15 +1,17 @@
 <script setup>
-import { useRouter } from "vue-router";
+import router from "../../router";
+import { userStore } from "../../stores/userStore";
+
+const userToAdd = userStore();
 
 let member = {
   name: "",
   lastname: "",
   dateadmission: "",
-  username: "",
+  userStorename: "",
   password: "",
 };
 
-const router = useRouter();
 
 async function save() {
   if (member.name === "") {
@@ -27,8 +29,6 @@ async function save() {
     return;
   }
 
-  let resultados = {};
-
   const payload = JSON.stringify(member);
   const url = "http://localhost:8080/api/register";
   const response = fetch(url, {
@@ -41,9 +41,10 @@ async function save() {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.user != "") {
+      if (data.name) {
+        userToAdd.userObject = data;
+        alert(data.name + " añadido correctamente.");
         router.push('/registrofotousuario/' + data.id);
-        alert(data.user + " añadido correctamente.");
       } else {
         alert("Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos.");
       }

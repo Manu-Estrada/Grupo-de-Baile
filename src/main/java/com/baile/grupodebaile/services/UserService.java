@@ -42,6 +42,11 @@ public class UserService {
     }
 
     public  ResponseEntity<Object> saveImageUser(MultipartFile multipartFile, Long id) throws IOException{
+        ImageUser imageExist = listOneImage(id);
+        if (imageExist != null) {
+            deleteImageUser(id);
+        }
+        
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         ImageUser fileNameExist = imageUserRepository.findByImage(fileName);
         

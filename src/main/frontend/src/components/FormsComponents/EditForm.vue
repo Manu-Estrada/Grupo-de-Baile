@@ -1,9 +1,9 @@
 <script setup>
 import { useRouter } from "vue-router";
-import { user } from "../../stores/user"
+import { userStore } from "../../stores/userStore"
 import { computed } from "@vue/reactivity";
 
-const userToModify = user();
+const userToModify = userStore();
 const userData = computed(() => {
   return userToModify.userObject;
 });

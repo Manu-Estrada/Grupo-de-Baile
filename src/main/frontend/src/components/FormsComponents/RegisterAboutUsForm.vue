@@ -1,17 +1,12 @@
 <script setup>
 import { aboutUs } from "../../stores/aboutUs";
-// import { computed } from "@vue/reactivity";
-import router from '../../router';
+import router from "../../router";
 
 const aboutUsToAdd = aboutUs();
 
-// const aboutData = computed(() => {
-//   return aboutUsToAdd.aboutUsObject;
-// });
-
 let aboutUsAdd = {
   name: "",
-  description: ""
+  description: "",
 };
 
 async function save() {
@@ -20,7 +15,7 @@ async function save() {
     return;
   }
 
-  if (aboutUsAdd.description  === "") {
+  if (aboutUsAdd.description === "") {
     alert("Se necesita añadir una desccripción.");
     return;
   }
@@ -37,14 +32,14 @@ async function save() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Data: " + data.name)
       if (data.name) {
         aboutUsToAdd.aboutUsObject = data;
-        console.log("Pinia :" + aboutUsToAdd.aboutUsObject.name)
         alert("Sección " + data.name + " añadida correctamente.");
-        router.push('/registrofotosobrenosotros/' + data.id);
+        router.push("/registrofotosobrenosotros/" + data.id);
       } else {
-        alert("Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos.");
+        alert(
+          "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
+        );
       }
     });
 }

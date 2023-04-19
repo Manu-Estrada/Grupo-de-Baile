@@ -6,7 +6,6 @@ import router from "../../router";
 const aboutUsToModify = aboutUs();
 
 const aboutUsData = computed(() => {
-  console.log(aboutUsToModify)
   return aboutUsToModify.aboutUsObject;
 });
 
