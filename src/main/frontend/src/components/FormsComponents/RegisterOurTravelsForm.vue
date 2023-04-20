@@ -1,72 +1,99 @@
 <script setup>
-import { aboutUs } from "../../stores/aboutUs";
 import router from "../../router";
+import {ourTravels} from "../.././stores/ourTravels";
 
-const aboutUsToAdd = aboutUs();
+const ourTravelsToAdd = ourTravels();
 
-let aboutUsAdd = {
+let OurTravelsAdd = {
   name: "",
+  date: "",
   description: "",
 };
 
+
 async function save() {
-  if (aboutUsAdd.name === "") {
+  if (OurTravelsAdd.name === "") {
     alert("Se necesita añadir el nombre.");
     return;
   }
 
-  if (aboutUsAdd.description === "") {
-    alert("Se necesita añadir una desccripción.");
+  if (OurTravelsAdd.date === "") {
+    alert("Se necesita añadir la fecha.");
     return;
   }
 
-  const payload = JSON.stringify(aboutUsAdd);
-  const url = "http://localhost:8080/api/aboutus";
+  if (OurTravelsAdd.description === "") {
+    alert("Se necesita añadir una descripción.");
+    return;
+  }
+
+  let resultados = {};
+
+  const payload = JSON.stringify(OurTravelsAdd);
+  const url = "http://localhost:8080/api/travels";
   const response = fetch(url, {
     method: "POST",
     body: payload,
     headers: {
       "Content-type": "application/json",
       Accept: "application/json",
+    
     },
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.name) {
-        aboutUsToAdd.aboutUsObject = data;
+
+      if (data.name != "") {
+        ourTravelsToAdd.ourTravelsObject = data;
         alert("Sección " + data.name + " añadida correctamente.");
-        router.push("/registrofotosobrenosotros/" + data.id);
+        router.push("/registrofotosviajes/" + data.id );
+
       } else {
         alert(
           "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
         );
+     
       }
+
     });
 }
+
 </script>
 
 <template>
   <form>
     <div class="container mt-2">
       <div class="col-12 col-md-8">
-        <h2 class="mt-2">Añadir un nueva sección a Sobre nosotros</h2>
+        <h2 class="mt-2">Añadir un nuevo viaje</h2>
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input
-            v-model="aboutUsAdd.name"
+            v-model="OurTravelsAdd.name"
             id="name"
             class="form-control"
             type="text"
             placeholder="Nombre"
           />
         </div>
+
+        <div class="mb-3">
+          <label for="Date" class="form-label">Fecha del viaje </label>
+          <input
+            v-model="OurTravelsAdd.date"
+            id="date"
+            class="form-control"
+            type="date"
+            placeholder="Fecha del viaje"
+          />
+        </div>
         <div class="mb-3">
           <label for="surname" class="form-label">Descripción</label>
-          <textarea
-            v-model="aboutUsAdd.description"
+          <input
+            v-model="OurTravelsAdd.description"
             id="description"
             class="form-control"
-            placeholder="Descripción"
+            type="rextarea"
+            placeholder="description"
           />
         </div>
       </div>
@@ -122,13 +149,9 @@ input {
   width: 100%;
 }
 
-textarea {
-  height: 250px;
-}
-
 @media (min-width: 768px) {
   .w-10 {
     width: 10%;
   }
 }
-</style>
+</style>s

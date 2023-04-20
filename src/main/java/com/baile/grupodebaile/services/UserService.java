@@ -24,7 +24,7 @@ import com.baile.grupodebaile.utils.RouteFileUploadImage;
 
 @Service
 public class UserService {
-    
+
     private UserRepository repository;
 
     @Autowired
@@ -41,11 +41,16 @@ public class UserService {
         return repository.save(user);
     }
 
-    public  ResponseEntity<Object> saveImageUser(MultipartFile multipartFile, Long id) throws IOException{
+    public ResponseEntity<Object> saveImageUser(MultipartFile multipartFile, Long id) throws IOException {
+        ImageUser imageExist = listOneImage(id);
+        if (imageExist != null) {
+            deleteImageUser(id);
+        }
+
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         ImageUser fileNameExist = imageUserRepository.findByImage(fileName);
-        
-        if (fileNameExist!=null) {
+
+        if (fileNameExist != null) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
 
@@ -62,8 +67,8 @@ public class UserService {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    
-    public void deleteImageUser(Long iduser) throws IOException{
+
+    public void deleteImageUser(Long iduser) throws IOException {
         User userToDeleteImage = repository.findById(iduser).orElseThrow();
         ImageUser imageToDelete = userToDeleteImage.getImageUser();
         userToDeleteImage.setImageUser(null);
@@ -72,13 +77,13 @@ public class UserService {
         Path fileToDeletePath = Paths.get(uploadDir + imageToDelete.getImage());
         Files.delete(fileToDeletePath);
     }
-    
+
     public List<User> listAll() {
-        return repository.findAll();
+        return repository.findAllByOrderByLastnameAsc();
     }
 
     public List<User> listAllPublic() {
-        return repository.findAll();
+        return repository.findAllByOrderByLastnameAsc();
     }
 
     public User listOne(Long id) {
@@ -88,6 +93,9 @@ public class UserService {
     public ImageUser listOneImage(Long id) {
         User userImage = repository.findById(id).orElseThrow(null);
         ImageUser imageUser = userImage.getImageUser();
+        if (imageUser == null) {
+            return null;
+        }
         Long idImage = imageUser.getId();
         return imageUserRepository.findById(idImage).orElseThrow(null);
     }
@@ -96,8 +104,11 @@ public class UserService {
         return repository.findByUsername(userName).orElse(null);
     }
 
-    public void delete(Long id) {
+    public void delete(Long id) throws IOException {
+        ImageUser imageExist = listOneImage(id);
+        if (imageExist != null) {
+            deleteImageUser(id);
+        }
         repository.deleteById(id);
-    
     }
 }

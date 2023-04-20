@@ -62,7 +62,7 @@ const router = createRouter({
       component: () => import("../views/ListUserView.vue"),
     },
     {
-      path: "/modificarusuario",
+      path: "/modificarusuario/:id",
       name: "edituser",
       props: true,
       component: () => import("../views/EditUserView.vue"),
@@ -92,10 +92,24 @@ const router = createRouter({
       component: () => import("../views/RegisterImgAboutUsView.vue"),
     },
     {
-      path: "/modificarsobrenosotros",
+      path: "/modificarsobrenosotros/:id",
       name: "editaboutus",
       props: true,
       component: () => import("../views/EditAboutUsView.vue")
+    },
+
+    {
+      path: "/registronuestrosviajes",
+      name: "registerourtravels",
+      props: true,
+      component: () => import("../views/RegisterOurTravelsView.vue")
+    },
+
+    {
+      path: "/registrofotosviajes",
+      name: "registerourtravelsimg",
+      props: true,
+      component: () => import("../views/RegisterOurTravelsImgView.vue")
     }
   ],
 });

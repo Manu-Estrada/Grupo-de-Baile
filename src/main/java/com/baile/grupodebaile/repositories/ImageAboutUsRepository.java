@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.baile.grupodebaile.models.ImageAboutUs;
 
 public interface ImageAboutUsRepository extends JpaRepository <ImageAboutUs, Long> {
-    
+    public ImageAboutUs findByImage(String image);
 }

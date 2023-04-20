@@ -2,7 +2,6 @@
 import { computed } from "@vue/reactivity";
 import { aboutUs } from "../../stores/aboutUs";
 
-
 const aboutUsToModify = aboutUs();
 const aboutUsData = computed(() => {
   return aboutUsToModify.aboutUsObject;
@@ -11,16 +10,17 @@ const aboutUsData = computed(() => {
 let aboutUsEdit = {
   name: aboutUsToModify.aboutUsObject.name,
   description: aboutUsToModify.aboutUsObject.description,
+  id: aboutUsToModify.aboutUsObject.id,
 };
 
 async function update(id) {
   if (aboutUsEdit.name === "") {
-    alert("Se necesita añadir un nombre");
+    alert("Se necesita añadir un nombre da la sección.");
     return;
   }
 
   if (aboutUsEdit.description === "") {
-    alert("Se necesita añadir un apellido");
+    alert("Se necesita añadir una descripción a la sección.");
     return;
   }
 
@@ -37,9 +37,9 @@ async function update(id) {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.name != "") {
+      if (data.name) {
         aboutUsToModify.aboutUsObject = aboutUsEdit;
-        alert(data.name + " actualizado correctamente.");
+        alert("Sección " + data.name + " actualizada correctamente.");
       } else {
         alert("Se ha producido un error. \nPor favor, inténtalo más tarde.");
       }
@@ -51,14 +51,14 @@ async function update(id) {
   <form>
     <div class="container mt-2">
       <div class="col-12 col-md-8">
-        <h2 class="mt-2">Modificar sección {{ aboutUs.name }}</h2>
+        <h2 class="mt-2">Modificar sección {{ aboutUsData.name }}</h2>
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input v-model="aboutUsEdit.name" id="name" class="form-control" type="text" placeholder="Nombre" />
         </div>
         <div class="mb-3">
           <label for="surname" class="form-label">Apellidos</label>
-          <input v-model="aboutUsEdit.description" id="description" class="form-control" type="textarea" placeholder="Descripción" />
+          <textarea v-model="aboutUsEdit.description" id="description" class="form-control" placeholder="Descripción" />
         </div>
       </div>
       <div class="d-flex mb-3 mt-3">
@@ -107,6 +107,10 @@ input {
 
 .btn {
   width: 100%;
+}
+
+textarea {
+  height: 250px;
 }
 
 @media (min-width: 768px) {

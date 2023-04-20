@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from "@vue/reactivity";
-import { aboutUs } from "../../stores/aboutUs";
+import {ourTravels}  from "../.././stores/ourTravels";
 import router from "../../router";
 
-const aboutUsToModify = aboutUs();
+const ourTravelsToModify = ourTravels();
 
-const aboutUsData = computed(() => {
-  return aboutUsToModify.aboutUsObject;
+const ourTravelsData = computed(() => {
+  return ourTravelsToModify.ourTravelsObject;
 });
 
 const props = defineProps({
@@ -48,7 +48,7 @@ async function deleteFile(id) {
   <div class="container">
     <div class="row">
       <div class="col-12 mt-4 mb-4">
-        <div v-if="aboutUsData.imageAboutUs">
+        <div v-if="OurTravelsData.imageOurTravels">
         <img :src="`http://localhost:8080/images/aboutus-photos/${aboutUsData.imageAboutUs.image}`" alt="..." />
         <button
           @click="deleteFile(id)"

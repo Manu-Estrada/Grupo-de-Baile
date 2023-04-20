@@ -41,9 +41,8 @@ public class AboutUsController {
     }
 
     @PostMapping("/aboutus/{id}/imagesaboutus")
-    public void saveImageAboutUs(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id)
-            throws IOException {
-        service.saveImageAboutUs(multipartFile, id);
+    public ResponseEntity<Object> saveImageAboutUs(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) throws IOException {
+        return service.saveImageAboutUs(multipartFile, id);
     }
 
     @DeleteMapping("/aboutus/{id}/imagesaboutus")
@@ -63,7 +62,6 @@ public class AboutUsController {
 
     @DeleteMapping("/aboutus/{id}")
     public void delete(@PathVariable Long id) throws IOException {
-        service.deleteImageAboutUs(id);
         service.delete(id);
     }
 
@@ -74,9 +72,12 @@ public class AboutUsController {
             aboutus.setId(id);
             aboutus.setImageAboutUs(imageActual);
             AboutUs aboutUsDB = service.save(aboutus);
+            String idNew =  aboutUsDB.getId() + "";
 
             Map<String, String> json = new HashMap<>();
-            json.put("user", aboutUsDB.getName());
+            json.put("id", idNew);
+            json.put("name", aboutUsDB.getName());
+            json.put("description", aboutUsDB.getDescription());
             json.put("message", "successful sign up");
             return ResponseEntity.status(HttpStatus.OK).body(json);
         } catch (Exception e) {
