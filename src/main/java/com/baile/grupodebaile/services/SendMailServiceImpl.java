@@ -5,35 +5,41 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.baile.grupodebaile.models.EmailMessage;
+import com.baile.grupodebaile.repositories.EmailRepository;
+
 @Service
-public class SendMailServiceImpl implements SendMailService{
+public class SendMailServiceImpl implements SendMailService {
 
     @Autowired
     private final JavaMailSender mailSender;
+
+    @Autowired
+    private EmailRepository emailRepository;
 
     public SendMailServiceImpl(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 
     @Override
-    public void SendMail(String to, String from, String subject, String message) {
-       SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+    public void SendMail(String from, String to, String subject, String inputName, String inputPhone, String message) {
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-       //from: debería ser el correo del usuario
-       simpleMailMessage.setFrom(from);
-       //to: El correo al que va a llegar la información, que será del admin de Xaréu (David)
-       simpleMailMessage.setTo(to);
-       //subject: input asunto 
-       simpleMailMessage.setSubject(subject);
-       //message: texto del usuario
-       simpleMailMessage.setText(message);
+        simpleMailMessage.setFrom(from);
+        simpleMailMessage.setTo(to);
+        simpleMailMessage.setSubject(subject);
 
-       this.mailSender.send(simpleMailMessage);
-     
+        // message: texto del usuario
+        String body = ("Email:  " + from) + "\n" + "\n" + ("Nombre:  " + inputName) + "\n" + "\n"
+                + ("Teléfono:  " + inputPhone) + "\n" + "\n" + ("Consulta o comentario:  " + message);
+        simpleMailMessage.setText(body);
+
+        this.mailSender.send(simpleMailMessage);
 
     }
 
-    
+    public void save(EmailMessage emailNew) {
+        emailRepository.save(emailNew);
+    }
 
-    
 }
