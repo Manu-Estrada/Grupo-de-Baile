@@ -9,27 +9,24 @@
 }
 .modal.show .modal-dialog {
   .modal-content {
-    display: flex;
-    align-items: flex-end;
+    padding-bottom: 30px;
     .btn-close {
       background-color: #336644;
       opacity: 1;
-      margin: 10px 10px 0px 0px;
+      align-self: flex-end;
+      margin: 10px 10px 0 0;
     }
     div {
-      display: flex;
-      justify-content: center;
       .event-container {
         background-color: $background-card;
         display: flex;
         flex-direction: column;
-        align-items: center;
         width: 90%;
-        height: 40em;
-        margin: 20px 0 54px;
+        margin: auto;
         img {
-          margin-top: 40px;
+          margin: 30px auto 0 auto;
           width: 50%;
+          object-fit: scale-down;
         }
         .text-container {
           display: flex;
@@ -60,13 +57,6 @@
     .modal-content {
       div {
         .event-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          height: 45em;
-          img {
-            width: 17rem;
-          }
           .text-container {
             p {
               width: 100%;
@@ -98,7 +88,6 @@
         .event-container {
           img {
             margin-top: 56px;
-            width: 13rem;
           }
         }
       }

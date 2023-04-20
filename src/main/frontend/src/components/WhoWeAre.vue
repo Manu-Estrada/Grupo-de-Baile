@@ -13,6 +13,13 @@ const props = defineProps({
         class="imgCard"
         :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
         alt="Imagen"
+        v-if="member.imageUser"
+      />
+      <img
+        class="imgCard"
+        src="http://localhost:8080/images/xareu-d-ochobre-logo.jpg"
+        alt="Imagen"
+        v-else
       />
       <div class="card-body pt-1" id="hg-size">
         <p class="card-text">
@@ -22,7 +29,7 @@ const props = defineProps({
         <div id="containerBtnMemebrs">
           <a
             data-bs-toggle="modal"
-            :data-bs-target="`#exampleModal${member.imageUser.id}`"
+            :data-bs-target="`#exampleModal${member.id}`"
             class="btn btn-primary"
             id="Btn-see"
             >Ampliar</a
@@ -33,23 +40,20 @@ const props = defineProps({
 
     <div
       class="modal fade"
-      :id="`exampleModal${member.imageUser.id}`"
+      :id="`exampleModal${member.id}`"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" :id="`modalDialog${member.imageUser.id}`">
-        <div
-          class="modal-content bg-transparent"
-          :id="`boxImg${member.imageUser.id}`"
-        >
+      <div class="modal-dialog" :id="`modalDialog${member.id}`">
+        <div class="modal-content bg-transparent" :id="`boxImg${member.id}`">
           <figure>
             <div class="d-flex justify-content-end">
               <button
                 type="button"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                :id="`btnClosed${member.imageUser.id}`"
+                :id="`btnClosed${member.id}`"
               >
                 X
               </button>
@@ -59,6 +63,13 @@ const props = defineProps({
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               :alt="member.name"
+              v-if="member.imageUser"
+            />
+            <img
+              class="imgCard"
+              src="http://localhost:8080/images/xareu-d-ochobre-logo.jpg"
+              alt="Imagen"
+              v-else
             />
           </figure>
         </div>

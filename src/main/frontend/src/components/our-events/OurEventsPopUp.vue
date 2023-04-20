@@ -1,8 +1,16 @@
+<script setup>
+const props = defineProps({
+  eventThis: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
 <template>
   <button
     type="button"
     data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
+    :data-bs-target="`#exampleModal${eventThis.id}`"
     class="popUp-button"
   >
     Ver más
@@ -10,7 +18,7 @@
   <!-- Modal -->
   <div
     class="modal fade"
-    id="exampleModal"
+    :id="`exampleModal${eventThis.id}`"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -22,20 +30,27 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          :id="`btnClosed${eventThis.id}`"
         ></button>
         <div>
           <div class="event-container">
-            <img src="../../assets/images/IMG_20190928_181206.jpg" alt="" />
+              <img
+                class="imgCardEvent"
+                :src="`http://localhost:8080/images/event-photos/${eventThis.imageevent.image}`"
+                alt="Imagen Evento"
+                v-if="eventThis.imageevent"
+              />
+              <img
+                class="imgCard"
+                src="http://localhost:8080/images/xareu-d-ochobre-logo.jpg"
+                alt="Imagen"
+                v-else
+              />
             <div class="text-container">
-              <span>01-01-2023</span>
-              <h4>Evento primero</h4>
+              <span> {{ eventThis.dateevent }}</span>
+              <h4>{{ eventThis.name }}</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                laoreet facilisis dapibus. Donec aliquet ligula ipsum, tincidunt
-                viverra risus malesuada ac. Curabitur fringilla sapien sit amet
-                ex mollis finibus. Praesent molestie lectus sit amet tortor
-                condimentum consectetur. Orci varius natoque penatibus et magnis
-                dis parturient montes, nascetur ridiculus mus.
+                {{ eventThis.description }}
               </p>
             </div>
           </div>
