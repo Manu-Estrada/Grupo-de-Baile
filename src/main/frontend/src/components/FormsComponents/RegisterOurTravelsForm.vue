@@ -30,7 +30,7 @@ async function save() {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.Ourtravels != "") {
+      if (data.OurTravels != "") {
         router.push("/registrofotosobrenosotros/" + data.id);
         alert("Sección " + data.name + " añadida correctamente.");
       } else {
@@ -40,8 +40,7 @@ async function save() {
       }
     });
 }
-console.clear()
-console.log(OurTravels.name);
+
 </script>
 
 <template>
@@ -52,7 +51,7 @@ console.log(OurTravels.name);
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input
-            v-model="Ourtravels.name"
+            v-model="OurTravels.name"
             id="name"
             class="form-control"
             type="text"
@@ -62,7 +61,7 @@ console.log(OurTravels.name);
         <div class="mb-3">
           <label for="surname" class="form-label">Descripción</label>
           <input
-            v-model="Ourtravels.description"
+            v-model="OurTravels.description"
             id="description"
             class="form-control"
             type="rextarea"
@@ -127,4 +126,4 @@ input {
     width: 10%;
   }
 }
-</style>
+</style>s
