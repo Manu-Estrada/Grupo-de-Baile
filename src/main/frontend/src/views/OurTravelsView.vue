@@ -38,9 +38,5 @@ h3{
   margin-left: 7%;
   font-weight: bold;
 }
-@media (max-width: 872px) {
-  #containerAlbums {
- display:block;
-  }
-}
+
 </style>
