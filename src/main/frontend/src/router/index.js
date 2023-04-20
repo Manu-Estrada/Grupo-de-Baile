@@ -110,6 +110,12 @@ const router = createRouter({
       name: "registerourtravelsimg",
       props: true,
       component: () => import("../views/RegisterOurTravelsImgView.vue")
+    },
+    {
+      path: "/listaviajes",
+      name: "travellist",
+      props: true,
+      component: () => import("../views/ListOurTravelsView.vue")
     }
   ],
 });

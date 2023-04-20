@@ -21,30 +21,30 @@ function updateImage(imageOurTravels, ourTravels, id) {
   router.push("/registrofotosViajes" + "/" + id);
 }
 
-const repository = new ApiRepository("sobreNosotros");
+const repository = new ApiRepository("viajes");
 const api = repository.chooseApi();
 
-const aboutUsCardxPage = 2;
+const travelsCardxPage = 2;
 const start = ref(0);
 const end = computed(() =>
-  Math.min(start.value + aboutUsCardxPage, aboutUsList.value.length)
+  Math.min(start.value + travelsCardxPage, ourTravelsList.value.length)
 );
 
-let aboutUsList = ref([]);
+let ourTravelsList = ref([]);
 onBeforeMount(async () => {
-  aboutUsList.value = await api.getAll();
+  ourTravelsList.value = await api.getAll();
 });
 
-const aboutUsToShow = computed(() => {
-  return aboutUsList.value.slice(start.value, end.value);
+const ourTravelsToShow = computed(() => {
+  return ourTravelsList.value.slice(start.value, end.value);
 });
 
 const next = () => {
-  start.value += aboutUsCardxPage;
+  start.value += ourTravelsCardxPage;
 };
 
 const prev = () => {
-  start.value = Math.max(start.value - aboutUsCardxPage, 0);
+  start.value = Math.max(start.value - ourTravelsCardxPage, 0);
 };
 
 const page = (algo) => {
@@ -52,13 +52,13 @@ const page = (algo) => {
 };
 
 async function deletePost(id) {
-  if (confirm("¿Está seguro de que quiere borrar esta sección?") == true) {
+  if (confirm("¿Está seguro de que quiere borrar este viaje ?") == true) {
     deleteThis(id);
   }
 }
 
 async function deleteThis(id) {
-  const response = fetch(`http://localhost:8080/api/aboutus/${id}`, {
+  const response = fetch(`http://localhost:8080/api/travels/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -66,7 +66,7 @@ async function deleteThis(id) {
   })
     .then((response) => {
       if (response.status == 200) {
-        alert("Sección borrada correctamente.");
+        alert("Viaje borrado correctamente.");
         location.reload();
       } else {
         alert(
@@ -78,29 +78,36 @@ async function deleteThis(id) {
 </script>
 <template>
   <main>
-    <div class="card mb-3" v-for="aboutUs in aboutUsToShow" :key="aboutUs.id" :member="aboutUs">
+    <div class="card mb-3" v-for="ourTravels in ourTravelsToShow" :key="ourTravels.id" :member="ourTravels">
       <div class="row g-0">
-        <div class="col-md-1" v-if="aboutUs.imageAboutUs">
-          <img :src="`http://localhost:8080/images/aboutus-photos/${aboutUs.imageAboutUs.image}`"
+        <div class="col-md-1" v-if="ourTravels.imageourTravels">
+          <img :src="`http://localhost:8080/images/ourTravels-photos/${ourTravels.imageourTravels.image}`"
             class="img-fluid rounded-start" alt="..." />
         </div>
         <div class="gap-3 col-md-9">
           <div class="text-name">
             <p class="font-name">
-              <b>{{ aboutUs.name }}</b>
+              <b>{{ ourTravels.name }}</b>
             </p>
-            <p class="font-italic">{{ aboutUs.description }}</p>
+            <p class="font-italic">{{ ourTravels.description }}</p>
           </div>
+          <div class="gap-3 col-md-9">
+            <div class="text-date">
+              <p class="font-date">
+                <b>{{ ourTravels.date }}</b>
+              </p>
+              <p class="font-italic">{{ ourTravels.description }}</p>
+            </div>
           <div class="card-body">
             <p class="btnsUser">
-              <button type="button" class="btn btn-danger" @click="deletePost(aboutUs.id)">
+              <button type="button" class="btn btn-danger" @click="deletePost(ourTravels.id)">
                 Borrar
               </button>
-              <button type="button" class="btn btn-warning" @click="update(aboutUs.id, aboutUs, aboutUs.imageAboutUs)">
+              <button type="button" class="btn btn-warning" @click="update(ourTravels.id, ourTravels, ourTravels.imageOurTravels)">
                 Modificar
               </button>
               <button type="button" class="btn btn-success"
-                @click="updateImage(aboutUs.id, aboutUs, aboutUs.imageAboutUs)">
+                @click="updateImage(ourTravels.id, ourTravels, ourTravels.imageourTravels)">
                 Imagen
               </button>
             </p>
@@ -108,8 +115,9 @@ async function deleteThis(id) {
         </div>
       </div>
     </div>
+    </div>
 
-    <Pagination :pageSize="aboutUsCardxPage" :start="start" :end="end" :maxLength="aboutUsList.length" @change="page"
+    <Pagination :pageSize="ourTravelsCardxPage" :start="start" :end="end" :maxLength="ourTravelsList.length" @change="page"
       @prev="prev" @next="next" />
   </main>
 </template>
@@ -166,7 +174,7 @@ img {
     // justify-content: center;
   }
 
-  .font-name {
+  .font-date {
     font-size: 1rem;
   }
 
