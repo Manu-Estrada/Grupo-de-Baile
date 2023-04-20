@@ -16,6 +16,13 @@ const props = defineProps({
         alt="Imagen Evento"
       />
     </figure>
+    <figure v-else>
+      <img
+        class="imgCard"
+        src="http://localhost:8080/images/xareu-d-ochobre-logo.jpg"
+        alt="Imagen"
+      />
+    </figure>
     <div class="text-container">
       <span> {{ event.dateevent }}</span>
       <h4>{{ event.name }}</h4>
@@ -24,7 +31,7 @@ const props = defineProps({
       </p>
 
       <div class="event-popup">
-        <OurEventsPopUp />
+        <OurEventsPopUp :eventThis="event" />
       </div>
     </div>
   </div>
