@@ -1,30 +1,35 @@
 <script setup>
 import router from "../../router";
-let OurTravels = {
+import {ourTravels} from "../.././stores/ourTravels";
+
+const ourTravelsToAdd = ourTravels();
+
+let OurTravelsAdd = {
   name: "",
   date: "",
   description: "",
 };
 
+
 async function save() {
-  if (OurTravels.name === "") {
+  if (OurTravelsAdd.name === "") {
     alert("Se necesita añadir el nombre.");
     return;
   }
 
-  if (OurTravels.date === "") {
+  if (OurTravelsAdd.date === "") {
     alert("Se necesita añadir la fecha.");
     return;
   }
 
-  if (OurTravels.description === "") {
+  if (OurTravelsAdd.description === "") {
     alert("Se necesita añadir una descripción.");
     return;
   }
 
   let resultados = {};
 
-  const payload = JSON.stringify(Ourtravels);
+  const payload = JSON.stringify(OurTravelsAdd);
   const url = "http://localhost:8080/api/travels";
   const response = fetch(url, {
     method: "POST",
@@ -32,20 +37,24 @@ async function save() {
     headers: {
       "Content-type": "application/json",
       Accept: "application/json",
+    
     },
-  
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.OurTravels != "") {
-        router.push("/registrofotosviajes" + data.id);
+
+      if (data.name != "") {
+        ourTravelsToAdd.ourTravelsObject = data;
         alert("Sección " + data.name + " añadida correctamente.");
+        router.push("/registrofotosviajes/" + data.id );
+
       } else {
         alert(
           "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
         );
      
       }
+
     });
 }
 
@@ -59,7 +68,7 @@ async function save() {
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input
-            v-model="OurTravels.name"
+            v-model="OurTravelsAdd.name"
             id="name"
             class="form-control"
             type="text"
@@ -70,7 +79,7 @@ async function save() {
         <div class="mb-3">
           <label for="Date" class="form-label">Fecha del viaje </label>
           <input
-            v-model="OurTravels.date"
+            v-model="OurTravelsAdd.date"
             id="date"
             class="form-control"
             type="date"
@@ -80,7 +89,7 @@ async function save() {
         <div class="mb-3">
           <label for="surname" class="form-label">Descripción</label>
           <input
-            v-model="OurTravels.description"
+            v-model="OurTravelsAdd.description"
             id="description"
             class="form-control"
             type="rextarea"
