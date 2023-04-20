@@ -29,6 +29,12 @@ import { RouterLink } from "vue-router";
           <br />
             <RouterLink class="nav-link" to="/registrosobrenosotros">Alta de sección Sobre nosotros</RouterLink>
           </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" to="/registronuestrosviajes">Alta de sección Nuestros viajes</RouterLink>
+          <br />
+          </li>
+       
+
         </ul>
       </div>
     </div>
