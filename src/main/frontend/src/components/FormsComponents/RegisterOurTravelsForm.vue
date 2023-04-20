@@ -2,12 +2,18 @@
 import router from "../../router";
 let OurTravels = {
   name: "",
+  date: "",
   description: "",
 };
 
 async function save() {
   if (OurTravels.name === "") {
     alert("Se necesita añadir el nombre.");
+    return;
+  }
+
+  if (OurTravels.date === "") {
+    alert("Se necesita añadir la fecha.");
     return;
   }
 
@@ -56,6 +62,17 @@ async function save() {
             class="form-control"
             type="text"
             placeholder="Nombre"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="Date" class="form-label">Fecha del viaje </label>
+          <input
+            v-model="OurTravels.date"
+            id="date"
+            class="form-control"
+            type="date"
+            placeholder="Fecha del viaje"
           />
         </div>
         <div class="mb-3">
