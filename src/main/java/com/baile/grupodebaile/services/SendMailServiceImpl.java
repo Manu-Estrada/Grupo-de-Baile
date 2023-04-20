@@ -5,38 +5,41 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.baile.grupodebaile.models.EmailMessage;
+import com.baile.grupodebaile.repositories.EmailRepository;
+
 @Service
-public class SendMailServiceImpl implements SendMailService{
+public class SendMailServiceImpl implements SendMailService {
 
     @Autowired
     private final JavaMailSender mailSender;
+
+    @Autowired
+    private EmailRepository emailRepository;
 
     public SendMailServiceImpl(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 
     @Override
-    public void SendMail(String to, String subject, String inputName, String inputPhone,  String from,  String message) {
-       SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        
-      
-        // simpleMailMessage.getFrom();
-       //from: debería ser el correo del usuario
-       simpleMailMessage.setFrom(from);
-       simpleMailMessage.setTo(to);
-       simpleMailMessage.setSubject(subject);
+    public void SendMail(String from, String to, String subject, String inputName, String inputPhone, String message) {
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-       //message: texto del usuario
-       String body = ("Email:  " + from) + "\n" + "\n" + ("Nombre:  " + inputName) + "\n" + "\n" + ("Teléfono:  " + inputPhone) + "\n" + "\n" + ("Consulta o comentario:  " + message);
-       simpleMailMessage.setText(body);
+        simpleMailMessage.setFrom(from);
+        simpleMailMessage.setTo(to);
+        simpleMailMessage.setSubject(subject);
 
+        // message: texto del usuario
+        String body = ("Email:  " + from) + "\n" + "\n" + ("Nombre:  " + inputName) + "\n" + "\n"
+                + ("Teléfono:  " + inputPhone) + "\n" + "\n" + ("Consulta o comentario:  " + message);
+        simpleMailMessage.setText(body);
 
-       this.mailSender.send(simpleMailMessage);
-     
+        this.mailSender.send(simpleMailMessage);
 
     }
 
-    
+    public void save(EmailMessage emailNew) {
+        emailRepository.save(emailNew);
+    }
 
-    
 }

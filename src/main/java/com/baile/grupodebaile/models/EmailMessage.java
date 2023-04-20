@@ -1,27 +1,38 @@
 package com.baile.grupodebaile.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "emails")
 public class EmailMessage {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_email")
+    private Long id;
+    @Column(name = "inputname")
     private String inputName;
-
+    @Column(name = "inputphone")
     private String inputPhone;
-
-    // el to es el correo del admin de la página (David)
+    @Column(name = "para")
     private String to;
-
-    // el from sería el inputEmail de front formulario contacto
+    @Column(name = "desde")
     private String from;
-
-    // el subject sería el inputSubject en front
+    @Column(name = "subject")
     private String subject;
-
-    // el message sería el inputMessage en front
+    @Column(name = "message")
     private String message;
 
     public EmailMessage() {
     }
 
-    public EmailMessage(String inputName, String inputPhone, String to, String from, String subject, String message) {
+    public EmailMessage(Long id, String inputName, String inputPhone, String to, String from, String subject,
+            String message) {
+        this.id = id;
         this.inputName = inputName;
         this.inputPhone = inputPhone;
         this.to = to;
@@ -30,13 +41,8 @@ public class EmailMessage {
         this.message = message;
     }
 
-    
-
-    public EmailMessage(String inputName, String inputPhone, String from, String message) {
-        this.inputName = inputName;
-        this.inputPhone = inputPhone;
-        this.from = from;
-        this.message = message;
+    public Long getId() {
+        return id;
     }
 
     public String getInputName() {

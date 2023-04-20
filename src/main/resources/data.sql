@@ -42,3 +42,4 @@ INSERT INTO imageaboutus (id_imageaboutus, image) VALUES (default, "image-02.jpg
 
 INSERT INTO aboutus (id_aboutus, name, description, image_about_us_id_imageaboutus) VALUES (default, "Patata", "La más deseada.", 1)
 INSERT INTO aboutus (id_aboutus, name, description, image_about_us_id_imageaboutus) VALUES (default, "Tomate", "Rojo pasión.", 2)
+
