@@ -20,25 +20,32 @@ import { RouterLink } from "vue-router";
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/listausuario">Listado de Usuarios</RouterLink>
-          <br />
-            <RouterLink class="nav-link" to="/registrousuario">Alta de Usuarios</RouterLink>
+            <RouterLink class="nav-link" to="/listausuario"
+              >Listado de Usuarios</RouterLink
+            >
+            <br />
+            <RouterLink class="nav-link" to="/registrousuario"
+              >Alta de Usuarios</RouterLink
+            >
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/listasobrenosotros">Listado de secciones Sobre nosotros</RouterLink>
-          <br />
-            <RouterLink class="nav-link" to="/registrosobrenosotros">Alta de sección Sobre nosotros</RouterLink>
+            <RouterLink class="nav-link" to="/listasobrenosotros"
+              >Listado de secciones Sobre nosotros</RouterLink
+            >
+            <br />
+            <RouterLink class="nav-link" to="/registrosobrenosotros"
+              >Alta de sección Sobre nosotros</RouterLink
+            >
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/registronuestrosviajes">Alta de sección Nuestros viajes</RouterLink>
-          <br />
+            <RouterLink class="nav-link" to="/listaviajes"
+              >Listado de viajes</RouterLink
+            >
+            <br />
+            <RouterLink class="nav-link" to="/registronuestrosviajes"
+              >Alta de sección Nuestros viajes</RouterLink
+            >
           </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/listaviajes">Listado de viajes</RouterLink>
-          <br />
-          </li>
-       
-
         </ul>
       </div>
     </div>
