@@ -45,7 +45,7 @@ async function update(id) {
     .then((data) => {
       if (data.user != "") {
         userToModify.userObject = member;
-        alert(data.user + " actualizado correctamente.");
+        alert(member.name + " actualizado correctamente.");
       } else {
         alert("Se ha producido un error. \nPor favor, inténtalo más tarde.");
       }

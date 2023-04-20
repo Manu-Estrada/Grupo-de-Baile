@@ -38,11 +38,11 @@ public class AboutUsService {
         }
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        // ImageAboutUs fileNameExist = imageAboutUsRepository.findByImage(fileName);
+        ImageAboutUs fileNameExist = imageAboutUsRepository.findByImage(fileName);
 
-        // if (fileNameExist != null) {
-        //     return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        // }
+        if (fileNameExist != null) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
 
         String uploadDir = RouteFileUploadImage.pathToSaveImage("imageAboutUs");
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);

@@ -39,7 +39,7 @@ async function update(id) {
     .then((data) => {
       if (data.name) {
         aboutUsToModify.aboutUsObject = aboutUsEdit;
-        alert("Sección " + data.name + " actualizada correctamente.");
+        alert("Sección " + aboutUsEdit.name + " actualizada correctamente.");
       } else {
         alert("Se ha producido un error. \nPor favor, inténtalo más tarde.");
       }
