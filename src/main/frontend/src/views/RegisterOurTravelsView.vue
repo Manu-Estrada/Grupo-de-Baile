@@ -1,7 +1,7 @@
 <script setup>
-import RegisterOurTravelsForm from '../components/FormsComponents/RegisterOurTravelsForm.vue';
+import RegisterOurTravelsFormVue from '../components/FormsComponents/RegisterOurTravelsForm.vue';
 </script>
 
 <template>
-    <RegisterOurTravelsForm />
+    <RegisterOurTravelsFormVue />
 </template>
