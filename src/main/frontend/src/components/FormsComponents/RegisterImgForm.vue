@@ -26,6 +26,7 @@ async function uploadFile(id) {
 
   if (response.status == 200) {
     alert("Imagen subida satisfactoriamente.");
+    router.push('/listausuario');
   }
 }
 
@@ -48,8 +49,8 @@ async function deleteFile(id) {
   <div class="container">
     <div class="row">
       <div class="col-12 mt-4 mb-4">
-        <div v-if="userData.image">
-        <img :src="`http://localhost:8080/images/aboutus-photos/${userData.image.image}`" alt="..." />
+        <div v-if="userData.imageUser">
+        <img :src="`http://localhost:8080/images/user-photos/${userData.imageUser.image}`" alt="..." />
         <button
           @click="deleteFile(id)"
           type="button"
@@ -89,6 +90,13 @@ async function deleteFile(id) {
   font-weight: bold;
 }
 
+img {
+  width: 50%;
+  max-height: 25vh;
+  object-fit: cover;
+  margin: auto;
+  display: block;
+}
 .form-control {
   border-radius: 10px;
 }
