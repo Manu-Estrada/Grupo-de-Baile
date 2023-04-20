@@ -16,12 +16,11 @@ function update(id, aboutUs, imageAboutUs) {
 }
 
 function updateImage(imageAboutUs, aboutUs, id) {
-  imageAboutUsItem.AboutUsImageObject = imageAboutUs;
   aboutUsItem.aboutUsObject = aboutUs;
+  imageAboutUsItem.AboutUsImageObject = imageAboutUs;
   router.push("/registrofotosobrenosotros" + "/" + id);
 }
 
-// Api
 const repository = new ApiRepository("sobreNosotros");
 const api = repository.chooseApi();
 
@@ -59,7 +58,6 @@ async function deletePost(id) {
 }
 
 async function deleteThis(id) {
-  console.log(id)
   const response = fetch(`http://localhost:8080/api/aboutus/${id}`, {
     method: "DELETE",
     headers: {
@@ -80,19 +78,11 @@ async function deleteThis(id) {
 </script>
 <template>
   <main>
-    <div
-      class="card mb-3"
-      v-for="aboutUs in aboutUsToShow"
-      :key="aboutUs.id"
-      :member="aboutUs"
-    >
+    <div class="card mb-3" v-for="aboutUs in aboutUsToShow" :key="aboutUs.id" :member="aboutUs">
       <div class="row g-0">
         <div class="col-md-1" v-if="aboutUs.imageAboutUs">
-          <img
-            :src="`http://localhost:8080/images/aboutus-photos/${aboutUs.imageAboutUs.image}`"
-            class="img-fluid rounded-start"
-            alt="..."
-          />
+          <img :src="`http://localhost:8080/images/aboutus-photos/${aboutUs.imageAboutUs.image}`"
+            class="img-fluid rounded-start" alt="..." />
         </div>
         <div class="gap-3 col-md-9">
           <div class="text-name">
@@ -103,25 +93,14 @@ async function deleteThis(id) {
           </div>
           <div class="card-body">
             <p class="btnsUser">
-              <button
-                type="button"
-                class="btn btn-danger"
-                @click="deletePost(aboutUs.id)"
-              >
+              <button type="button" class="btn btn-danger" @click="deletePost(aboutUs.id)">
                 Borrar
               </button>
-              <button
-                type="button"
-                class="btn btn-warning"
-                @click="update(aboutUs.id, aboutUs, aboutUs.imageAboutUs)"
-              >
+              <button type="button" class="btn btn-warning" @click="update(aboutUs.id, aboutUs, aboutUs.imageAboutUs)">
                 Modificar
               </button>
-              <button
-                type="button"
-                class="btn btn-success"
-                @click="updateImage(aboutUs.imageAboutUs, aboutUs, aboutUs.id)"
-              >
+              <button type="button" class="btn btn-success"
+                @click="updateImage(aboutUs.id, aboutUs, aboutUs.imageAboutUs)">
                 Imagen
               </button>
             </p>
@@ -130,15 +109,8 @@ async function deleteThis(id) {
       </div>
     </div>
 
-    <Pagination
-      :pageSize="aboutUsCardxPage"
-      :start="start"
-      :end="end"
-      :maxLength="aboutUsList.length"
-      @change="page"
-      @prev="prev"
-      @next="next"
-    />
+    <Pagination :pageSize="aboutUsCardxPage" :start="start" :end="end" :maxLength="aboutUsList.length" @change="page"
+      @prev="prev" @next="next" />
   </main>
 </template>
 
@@ -151,23 +123,28 @@ async function deleteThis(id) {
   margin: auto;
   margin-top: 5vw;
 }
+
 img {
   aspect-ratio: 16/9;
   object-fit: cover;
 }
+
 .btn {
   margin: 0.3em;
   width: 5.4em;
 }
+
 .card-body {
   display: flex;
   justify-content: end;
   align-items: flex-end;
 }
+
 .col-md-1 {
   display: flex;
   justify-content: center;
 }
+
 .gap-3 {
   display: flex;
   padding: 0.7rem;
@@ -181,21 +158,25 @@ img {
     aspect-ratio: 16/9;
     object-fit: cover;
   }
+
   .btnsUser {
     display: flex;
     justify-content: space-around;
     // width: 100%;
     // justify-content: center;
   }
+
   .font-name {
     font-size: 1rem;
   }
+
   .gap-3 {
     display: block;
     width: 90%;
     margin: auto;
     margin-top: 1rem;
   }
+
   .card-body {
     display: flex;
     justify-content: center;

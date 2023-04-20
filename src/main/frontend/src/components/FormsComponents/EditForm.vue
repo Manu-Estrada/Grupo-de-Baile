@@ -1,7 +1,6 @@
 <script setup>
-import { useRouter } from "vue-router";
-import { userStore } from "../../stores/userStore"
 import { computed } from "@vue/reactivity";
+import { userStore } from "../../stores/userStore"
 
 const userToModify = userStore();
 const userData = computed(() => {
@@ -15,8 +14,6 @@ let member = {
   username: "",
   password: "",
 };
-
-const router = useRouter();
 
 async function update(id) {
   if (member.name === "") {
@@ -60,7 +57,7 @@ async function update(id) {
   <form>
     <div class="container mt-2">
       <div class="col-12 col-md-8">
-        <h2 class="mt-2">Modificar miembro {{ member.name }} {{ member.lastname }}</h2>
+        <h2 class="mt-2">Modificar miembro {{ userData.name }} {{ userData.lastname }}</h2>
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
           <input v-model="member.name" id="name" class="form-control" type="text" placeholder="Nombre" />
