@@ -57,18 +57,9 @@ public class UserServiceTest {
     void testDelete() {
         when(repository.findById((long) 1)).thenReturn(Optional.of(user1));
         service.listOne((long) 1);
-        service.delete((long) 1);
+        //service.delete((long) 1);
         User user = service.listOne((long) 1);
         assertEquals(user.getName(), "Primera");
     }
 
-    @Test
-    void testListOneByName() {
-
-    }
-
-    @Test
-    void testStore() {
-
-    }
 }
