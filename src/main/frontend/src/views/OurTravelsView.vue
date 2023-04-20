@@ -26,14 +26,17 @@ import CardAlbum from '../components/gallery/CardAlbum.vue';
 @import "../assets/sass/galleryStyles/gallerystyles.scss"; 
 
 #containerAlbums{
-    display: flex;
+  display: flex;
   flex-wrap:wrap;
   justify-content: space-around;
+  margin: 1.5em;
 }
 #headerH3 {
  width: 90%;
 }
 h3{
+  margin-left: 7%;
   font-weight: bold;
 }
+
 </style>
