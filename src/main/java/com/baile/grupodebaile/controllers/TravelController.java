@@ -1,6 +1,7 @@
 package com.baile.grupodebaile.controllers;
 
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import com.baile.grupodebaile.models.Travel;
 import com.baile.grupodebaile.services.TravelService;
@@ -34,19 +35,6 @@ public class TravelController {
 
     }
 
-    // @PostMapping("/travels/{id}/imagestravel")
-    // public void storeImageTravel(@RequestParam("image") MultipartFile
-    // multipartFile, @PathVariable Long id)
-    // throws IOException {
-    // service.saveImageTravel(multipartFile, id);
-    // }
-
-    // @DeleteMapping("/travels/{idtravel}/imagestravel")
-    // public void deleteImageTravel(@PathVariable Long idtravel) throws IOException
-    // {
-    // // service.deleteImageTravel(idtravel);
-    // }
-
     @GetMapping("/travels")
     public List<Travel> listAll() {
         return service.listAll();
@@ -58,7 +46,7 @@ public class TravelController {
     }
 
     @DeleteMapping("/travels/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) throws IOException {
         service.delete(id);
     }
 
@@ -66,4 +54,18 @@ public class TravelController {
     public Travel update(@PathVariable Long id, @RequestBody Travel travelNew) {
         return service.update(id, travelNew);
     }
+
+    @PostMapping("/travels/{id}/imagestravel")
+    public void storeImageTravel(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id)
+            throws IOException {
+        service.saveImageTravel(multipartFile, id);
+    }
+
+    @DeleteMapping("/travels/{idtravel}/imagestravel/{idimage}")
+    public void deleteImageTravel(@PathVariable Long idtravel, @PathVariable Long idimage)
+            throws IOException {
+        service.deleteImageTravel(idtravel, idimage);
+    }
+
+
 }
