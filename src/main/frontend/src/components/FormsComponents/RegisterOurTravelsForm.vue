@@ -18,14 +18,14 @@ async function save() {
   }
 
   if (OurTravels.description === "") {
-    alert("Se necesita añadir una desccripción.");
+    alert("Se necesita añadir una descripción.");
     return;
   }
 
   let resultados = {};
 
   const payload = JSON.stringify(Ourtravels);
-  const url = "http://localhost:8080/api/Ourtravels";
+  const url = "http://localhost:8080/api/travels";
   const response = fetch(url, {
     method: "POST",
     body: payload,
@@ -33,16 +33,18 @@ async function save() {
       "Content-type": "application/json",
       Accept: "application/json",
     },
+  
   })
     .then((response) => response.json())
     .then((data) => {
       if (data.OurTravels != "") {
-        router.push("/registrofotosobrenosotros/" + data.id);
+        router.push("/registrofotosviajes" + data.id);
         alert("Sección " + data.name + " añadida correctamente.");
       } else {
         alert(
           "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
         );
+     
       }
     });
 }
