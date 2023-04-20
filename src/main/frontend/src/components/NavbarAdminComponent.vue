@@ -33,6 +33,10 @@ import { RouterLink } from "vue-router";
             <RouterLink class="nav-link" to="/registronuestrosviajes">Alta de sección Nuestros viajes</RouterLink>
           <br />
           </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" to="/listaviajes">Listado de viajes</RouterLink>
+          <br />
+          </li>
        
 
         </ul>
