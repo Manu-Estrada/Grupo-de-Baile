@@ -96,6 +96,13 @@ const router = createRouter({
       name: "editaboutus",
       props: true,
       component: () => import("../views/EditAboutUsView.vue")
+    },
+
+    {
+      path: "/registronuestrosviajes",
+      name: "registerourtravels",
+      props: true,
+      component: () => import("../views/RegisterOurTravelsView.vue")
     }
   ],
 });
