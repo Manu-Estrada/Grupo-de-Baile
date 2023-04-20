@@ -34,19 +34,6 @@ public class TravelController {
 
     }
 
-    // @PostMapping("/travels/{id}/imagestravel")
-    // public void storeImageTravel(@RequestParam("image") MultipartFile
-    // multipartFile, @PathVariable Long id)
-    // throws IOException {
-    // service.saveImageTravel(multipartFile, id);
-    // }
-
-    // @DeleteMapping("/travels/{idtravel}/imagestravel")
-    // public void deleteImageTravel(@PathVariable Long idtravel) throws IOException
-    // {
-    // // service.deleteImageTravel(idtravel);
-    // }
-
     @GetMapping("/travels")
     public List<Travel> listAll() {
         return service.listAll();
@@ -58,7 +45,7 @@ public class TravelController {
     }
 
     @DeleteMapping("/travels/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) throws IOException {
         service.delete(id);
     }
 
@@ -66,4 +53,18 @@ public class TravelController {
     public Travel update(@PathVariable Long id, @RequestBody Travel travelNew) {
         return service.update(id, travelNew);
     }
+
+    @PostMapping("/travels/{id}/imagestravel")
+    public void storeImageTravel(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id)
+            throws IOException {
+        service.saveImageTravel(multipartFile, id);
+    }
+
+    @DeleteMapping("/travels/{idtravel}/imagestravel/{idimage}")
+    public void deleteImageTravel(@PathVariable Long idtravel, @PathVariable Long idimage)
+            throws IOException {
+        service.deleteImageTravel(idtravel, idimage);
+    }
+
+
 }

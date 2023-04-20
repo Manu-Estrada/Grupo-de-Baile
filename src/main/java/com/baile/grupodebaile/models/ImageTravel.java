@@ -15,14 +15,16 @@ public class ImageTravel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_imagetravel")
     private Long id;
-
+    @Column(nullable = false)
+    private String image;
+    
     public ImageTravel(Long id, String image) {
         this.id = id;
         this.image = image;
     }
-
-    @Column(nullable = false)
-    private String image;
+    
+    public ImageTravel() {
+    }
 
     public Long getId() {
         return id;
@@ -39,8 +41,4 @@ public class ImageTravel {
     public void setImage(String image) {
         this.image = image;
     }
-
-    public ImageTravel() {
-    }
-
 }

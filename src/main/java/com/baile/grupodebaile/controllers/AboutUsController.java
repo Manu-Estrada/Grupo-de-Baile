@@ -22,7 +22,6 @@ import com.baile.grupodebaile.models.AboutUs;
 import com.baile.grupodebaile.models.ImageAboutUs;
 import com.baile.grupodebaile.services.AboutUsService;
 
-
 @RestController
 @RequestMapping(path = "/api")
 
@@ -37,17 +36,6 @@ public class AboutUsController {
     @PostMapping(path = "/aboutus")
     public AboutUs store(@RequestBody AboutUs aboutUs) {
         return service.save(aboutUs);
-
-    }
-
-    @PostMapping("/aboutus/{id}/imagesaboutus")
-    public ResponseEntity<Object> saveImageAboutUs(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) throws IOException {
-        return service.saveImageAboutUs(multipartFile, id);
-    }
-
-    @DeleteMapping("/aboutus/{id}/imagesaboutus")
-    public void deleteImageAboutUs(@PathVariable Long id) throws IOException {
-        service.deleteImageAboutUs(id);
     }
 
     @GetMapping("/aboutus")
@@ -72,7 +60,7 @@ public class AboutUsController {
             aboutus.setId(id);
             aboutus.setImageAboutUs(imageActual);
             AboutUs aboutUsDB = service.save(aboutus);
-            String idNew =  aboutUsDB.getId() + "";
+            String idNew = aboutUsDB.getId() + "";
 
             Map<String, String> json = new HashMap<>();
             json.put("id", idNew);
@@ -84,4 +72,16 @@ public class AboutUsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PostMapping("/aboutus/{id}/imagesaboutus")
+    public ResponseEntity<Object> saveImageAboutUs(@RequestParam("image") MultipartFile multipartFile,
+            @PathVariable Long id) throws IOException {
+        return service.saveImageAboutUs(multipartFile, id);
+    }
+
+    @DeleteMapping("/aboutus/{id}/imagesaboutus")
+    public void deleteImageAboutUs(@PathVariable Long id) throws IOException {
+        service.deleteImageAboutUs(id);
+    }
+
 }
