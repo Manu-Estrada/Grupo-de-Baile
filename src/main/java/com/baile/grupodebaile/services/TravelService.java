@@ -57,8 +57,11 @@ public class TravelService {
     }
 
     public Travel update(Long id, Travel travelNew) {
+        Travel travelOld = listOne(id);
+        List<ImageTravel> imagesOld = travelOld.getImageTravel();
         Travel travelToUpdate = travelNew;
         travelToUpdate.setId(id);
+        travelToUpdate.setImageTravel(imagesOld);
         return repository.save(travelToUpdate);
     }
 
