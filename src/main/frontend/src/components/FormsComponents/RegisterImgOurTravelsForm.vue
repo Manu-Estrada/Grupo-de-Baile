@@ -30,9 +30,9 @@ async function uploadFile(id) {
   }
 }
 
-async function deleteFile(id) {
+async function deleteFile(id, idImage) {
   if (confirm("¿Está seguro de que quiere borrar esta imagen?") == true) {
-    fetch(`http://localhost:8080/api/travels/${id}/imagestravel`, {
+    fetch(`http://localhost:8080/api/travels/${id}/imagestravel/${idImage}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -48,10 +48,10 @@ async function deleteFile(id) {
   <div class="container">
     <div class="row">
       <div class="col-12 mt-4 mb-4">
-        <div v-if="ourTravelsData.imageTravel">
-        <img :src="`http://localhost:8080/images/travel-photos/${ourTravelsData.imageTravel.image}`" alt="..." />
+        <div v-if="ourTravelsData.imageTravel.length > 0" v-for="image in ourTravelsData.imageTravel"> 
+        <img :src="`http://localhost:8080/images/travel-photos/${image.image}`" alt="..." />
         <button
-          @click="deleteFile(id)"
+          @click="deleteFile(id, image.id)"
           type="button"
           class="btn btn-success me-2 w-50 mt-3"
         >
