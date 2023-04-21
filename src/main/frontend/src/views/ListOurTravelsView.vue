@@ -21,7 +21,7 @@ function updateImage(  id, ourTravels, imageOurTravels) {
   router.push("/registrofotosViajes" + "/" + id);
 }
 
-const repository = new ApiRepository("Viajes");
+const repository = new ApiRepository("nuestrosviajes");
 const api = repository.chooseApi();
 
 const travelsCardxPage = 2;
