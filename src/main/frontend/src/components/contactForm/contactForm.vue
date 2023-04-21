@@ -8,12 +8,7 @@ let usercontact = {
   message: "",
 };
 //onReset: Para borrar info de formulario después de enviar, pero no funciona...
-const onReset = () => {
-  (usercontact.inputName = ""),
-    (usercontact.from = ""),
-    (usercontact.inputPhone = ""),
-    (usercontact.message = "");
-};
+
 
 const router = useRouter();
 
@@ -53,7 +48,7 @@ async function save() {
     if (response.status == 200) {
       alert("Mensaje enviado satisfactoriamente.");
      
-     onReset();
+     document.getElementById("formContact").reset()
 
     } else {
       alert(
@@ -64,7 +59,7 @@ async function save() {
 }
 </script>
 <template>
-  <div class="container">
+  <div  class="container">
     <h1>Contáctanos</h1>
     <p class="titleDescrip">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci
@@ -75,7 +70,7 @@ async function save() {
   </div>
   <div class="container d-flex justify-content-center">
     <div id="formStyle">
-      <form class="row g-3">
+      <form id="formContact" class="row g-3">
         <div class="col-12">
           <label for="inputName" class="form-label">Nombre:</label>
           <input
@@ -119,6 +114,7 @@ async function save() {
           <button @click="save" type="button" class="btn btn-success">
             Enviar
           </button>
+          
         </div>
       </form>
     </div>

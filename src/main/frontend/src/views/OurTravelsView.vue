@@ -1,8 +1,9 @@
 <script setup>
-import CardAlbum from '../components/gallery/CardAlbum.vue';
+import CardAlbum from "../components/gallery/CardAlbum.vue";
 import Pagination from "../components/gallery/Pagination.vue";
 import { onBeforeMount, ref, computed } from "vue";
 import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
+
 
 // Api
 const repository = new ApiRepository("nuestrosviajes");
@@ -10,7 +11,9 @@ const api = repository.chooseApi();
 
 const travelCardxPage = 6;
 const start = ref(0);
-const end = computed(() => Math.min(start.value + travelCardxPage, travelsList.value.length));
+const end = computed(() =>
+  Math.min(start.value + travelCardxPage, travelsList.value.length)
+);
 
 let travelsList = ref([]);
 onBeforeMount(async () => {
@@ -32,39 +35,71 @@ const prev = () => {
 const page = (algo) => {
   start.value = algo;
 };
-
 </script>
 <template>
-<main>
-  <div class="mt-5">
-  <div class="container" id="headerH3">
-    <h3>Nuestros viajes</h3>
-  </div>
-<div id="containerAlbums">
- 
-<CardAlbum v-for="travel in travelsToShow" :key="travel.id" :travel="travel" />
+  <main>
+    <div class="mt-5">
+      <div class="container" id="headerH3">
+        <h3>Nuestros viajes</h3>
+      </div>
+      <div id="containerAlbums">
+        <CardAlbum
+          v-for="travel in travelsToShow"
+          :key="travel.id"
+          :travel="travel"
+        />
+      </div>
 
-</div>
-</div> 
-</main>
+    </div>
+    <Pagination
+      :pageSize="travelCardxPage"
+      :start="start"
+      :end="end"
+      :maxLength="travelsList.length"
+      @change="page"
+      @prev="prev"
+      @next="next"
+    />
+  </main>
 </template>
 <style scoped lang="scss">
 @import "../assets/sass/variables";
 @import "../assets/sass/styles.scss";
-@import "../assets/sass/galleryStyles/gallerystyles.scss"; 
+@import "../assets/sass/galleryStyles/gallerystyles.scss";
 
-#containerAlbums{
+// #containerAlbums{
+//   display: flex;
+//   flex-wrap:wrap;
+//   justify-content: space-around;
+//   margin: 1.5em;
+// }
+// #headerH3 {
+//  width: 90%;
+// }
+// h3{
+//   margin-left: 7%;
+//   font-weight: bold;
+// }
+.mt-5 {
   display: flex;
-  flex-wrap:wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+#containerAlbums {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  margin: 1.5em;
+  width: 90%;
 }
 #headerH3 {
- width: 90%;
+  width: 90%;
 }
-h3{
-  margin-left: 7%;
+h3 {
   font-weight: bold;
+  margin: 0.5em;
 }
-
+#color-pag {
+  color: black;
+}
 </style>

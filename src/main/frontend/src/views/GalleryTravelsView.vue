@@ -1,67 +1,108 @@
 <script setup>
-import NavbarComponent from '../components/NavbarComponent.vue';
+import CardGallery from "../components/gallery/CardGallery.vue";
+import Pagination from "../components/gallery/Pagination.vue";
+import { onBeforeMount, ref, computed } from "vue";
+import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
+import { ourTravels } from "../stores/ourTravels";
 
- 
+const travel = new ourTravels;
+
+const thistravel = computed(() =>  {
+  return travel.ourTravelsObject;
+});
+
+// // Api
+// const repository = new ApiRepository("nuestrosviajes");
+// const api = repository.chooseApi();
+
+const travelCardxPage = 6;
+const start = ref(0);
+const end = computed(() =>
+  Math.min(start.value + travelCardxPage, thistravel.imageTravel.length)
+);
+
+// let travelsList = ref([]);
+// onBeforeMount(async () => {
+//   travelsList.value = await api.getAll();
+// });
+
+const travelsToShow = computed(() => {
+  return thistravel.imageTravel;
+});
+
+const next = () => {
+  start.value += travelCardxPage;
+};
+
+const prev = () => {
+  start.value = Math.max(start.value - travelCardxPage, 0);
+};
+
+const page = (algo) => {
+  start.value = algo;
+};
 </script>
 <template>
-<main>
-  <div class="container">
-  <h1>-titulo del viaje-</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quae repellendus maiores iure, nemo quia nam suscipit delectus voluptates consectetur, placeat nulla cumque magni ipsam numquam eveniet distinctio, commodi facere.</p>
-    <!-- Button trigger modal -->
-  </div>
-<div class="container">
-  <div id="imgsContainer">
-<img id="mainImg" type="button" src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" data-bs-toggle="modal" data-bs-target="#exampleModal">
-<img id="mainImg" type="button" src="https://lh4.googleusercontent.com/iOzWDebmRtje-51JP8UabSutJN6mGuKtLdpQLOY1aJeDLhWjTthCw8bqlcA6Qsifvu8=w2400" data-bs-toggle="modal" data-bs-target="#exampleModal">
-<img id="mainImg" type="button" src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" data-bs-toggle="modal" data-bs-target="#exampleModal">
-<img id="mainImg" type="button" src="https://lh4.googleusercontent.com/iOzWDebmRtje-51JP8UabSutJN6mGuKtLdpQLOY1aJeDLhWjTthCw8bqlcA6Qsifvu8=w2400" data-bs-toggle="modal" data-bs-target="#exampleModal">
-<img id="mainImg" type="button" src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" data-bs-toggle="modal" data-bs-target="#exampleModal">
-<img id="mainImg" type="button" src="https://lh4.googleusercontent.com/iOzWDebmRtje-51JP8UabSutJN6mGuKtLdpQLOY1aJeDLhWjTthCw8bqlcA6Qsifvu8=w2400" data-bs-toggle="modal" data-bs-target="#exampleModal">
-<img id="mainImg" type="button" src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" data-bs-toggle="modal" data-bs-target="#exampleModal">
-<img id="mainImg" type="button" src="https://lh4.googleusercontent.com/iOzWDebmRtje-51JP8UabSutJN6mGuKtLdpQLOY1aJeDLhWjTthCw8bqlcA6Qsifvu8=w2400" data-bs-toggle="modal" data-bs-target="#exampleModal">
-<img id="mainImg" type="button" src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" data-bs-toggle="modal" data-bs-target="#exampleModal">
-
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" id="modalDialog">
-    <div class="modal-content bg-transparent" id="boxImg">
-        <div class="d-flex justify-content-end">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClosed"></button>
+  <main>
+    <div class="mt-5">
+      <div class="container" id="headerH3">
+        <h3>{{thistravel.name}}</h3>
       </div>
-        <img src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" class="img-thumbnail">
+      <p>
+        {{ thistravel.description }}
+      </p>
+      <div id="containerAlbums">
+        <CardGallery
+          v-for="image in thistravel.imageTravel"
+          :id="image.id"
+          :image="image.image"
+
+        />
+      </div>
+      <!-- <Pagination
+        :pageSize="travelCardxPage"
+        :start="start"
+        :end="end"
+        :maxLength="travelsList.length"
+        @change="page"
+        @prev="prev"
+        @next="next"
+      /> -->
     </div>
-  </div>
-</div>
-</div>
-</main>
+  </main>
 </template>
-<style scoped> 
+
+<style scoped lang="scss">
+@import "../assets/sass/variables";
 @import "../assets/sass/styles.scss";
-#mainImg{
-  /* width: 400px; */
-  height: 234px;
-  margin-bottom: 1em;
+@import "../assets/sass/galleryStyles/gallerystyles.scss";
+.mt-5 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  p  {
+    width: 86%;
+    margin: 0 auto 40px auto;
+    padding: 2vw;
+    background-color: white;
+  }
 }
-#imgsContainer{
+#containerAlbums {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  width: 90%;
 }
-#boxImg{
-  width: 84.7em;
-  border-style: none;
+#headerH3 {
+  width: 90%;
 }
-#modalDialog{
-  max-width: none;
-  margin-left: 5em;
-  margin-right: 5em;
+h3 {
+  font-weight: bold;
+  margin: 0.5em;
 }
-#btnClosed{
-  position: relative;
-  top: 25px;
-  background-color: #336644;
-  /* $btn-close-color: $white; */
+#color-pag {
+  color: black;
 }
 </style>
