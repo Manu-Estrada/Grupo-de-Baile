@@ -1,12 +1,12 @@
 <script setup>
 import router from "../../router";
-import {ourTravels} from "../.././stores/ourTravels";
+import { ourTravels } from "../.././stores/ourTravels";
 
 const ourTravelsToAdd = ourTravels();
 
 let OurTravelsAdd = {
   name: "",
-  date: "",
+  datetravel: "",
   description: "",
 };
 
@@ -17,7 +17,7 @@ async function save() {
     return;
   }
 
-  if (OurTravelsAdd.date === "") {
+  if (OurTravelsAdd.datetravel === "") {
     alert("Se necesita añadir la fecha.");
     return;
   }
@@ -27,7 +27,6 @@ async function save() {
     return;
   }
 
-  let resultados = {};
 
   const payload = JSON.stringify(OurTravelsAdd);
   const url = "http://localhost:8080/api/travels";
@@ -37,22 +36,22 @@ async function save() {
     headers: {
       "Content-type": "application/json",
       Accept: "application/json",
-    
+
     },
   })
     .then((response) => response.json())
     .then((data) => {
-
       if (data.name != "") {
         ourTravelsToAdd.ourTravelsObject = data;
         alert("Sección " + data.name + " añadida correctamente.");
         router.push("/registrofotosviajes/" + data.id );
+        console.log(ourTravelsToAdd.ourTravelsObject);
 
       } else {
         alert(
           "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
         );
-     
+
       }
 
     });
@@ -67,42 +66,22 @@ async function save() {
         <h2 class="mt-2">Añadir un nuevo viaje</h2>
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
-          <input
-            v-model="OurTravelsAdd.name"
-            id="name"
-            class="form-control"
-            type="text"
-            placeholder="Nombre"
-          />
+          <input v-model="OurTravelsAdd.name" id="name" class="form-control" type="text" placeholder="Nombre" />
         </div>
 
         <div class="mb-3">
-          <label for="Date" class="form-label">Fecha del viaje </label>
-          <input
-            v-model="OurTravelsAdd.date"
-            id="date"
-            class="form-control"
-            type="date"
-            placeholder="Fecha del viaje"
-          />
+          <label for="date" class="form-label">Fecha del viaje </label>
+          <input v-model="OurTravelsAdd.datetravel" id="datetravel" class="form-control" type="date"
+            placeholder="Fecha del viaje" />
         </div>
         <div class="mb-3">
           <label for="surname" class="form-label">Descripción</label>
-          <input
-            v-model="OurTravelsAdd.description"
-            id="description"
-            class="form-control"
-            type="rextarea"
-            placeholder="description"
-          />
+          <input v-model="OurTravelsAdd.description" id="description" class="form-control" type="rextarea"
+            placeholder="description" />
         </div>
       </div>
       <div class="d-flex w-80 mb-3 mt-3">
-        <button
-          @click.prevent="save"
-          type="submit"
-          class="btn btn-success me-2 w-50"
-        >
+        <button @click.prevent="save" type="submit" class="btn btn-success me-2 w-50">
           Enviar
         </button>
         <button type="reset" class="btn btn-danger w-50">Borrar</button>

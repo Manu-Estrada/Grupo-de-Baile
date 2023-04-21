@@ -106,7 +106,7 @@ const router = createRouter({
     },
 
     {
-      path: "/registrofotosviajes",
+      path: "/registrofotosviajes/:id",
       name: "registerourtravelsimg",
       props: true,
       component: () => import("../views/RegisterOurTravelsImgView.vue")

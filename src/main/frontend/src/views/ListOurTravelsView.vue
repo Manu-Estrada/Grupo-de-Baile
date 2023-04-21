@@ -15,13 +15,13 @@ function update(id, ourTravels, imageOurTravels) {
   router.push("/modificarnuestrosviajes" + "/" + id);
 }
 
-function updateImage(imageOurTravels, ourTravels, id) {
+function updateImage(  id, ourTravels, imageOurTravels) {
   ourTravelsItem.ourTravelsObject = ourTravels;
   imageOurTravelsItem.ourTravelsImageObject = imageOurTravels;
   router.push("/registrofotosViajes" + "/" + id);
 }
 
-const repository = new ApiRepository("viajes");
+const repository = new ApiRepository("Viajes");
 const api = repository.chooseApi();
 
 const travelsCardxPage = 2;
@@ -40,11 +40,11 @@ const ourTravelsToShow = computed(() => {
 });
 
 const next = () => {
-  start.value += ourTravelsCardxPage;
+  start.value += travelsCardxPage;
 };
 
 const prev = () => {
-  start.value = Math.max(start.value - ourTravelsCardxPage, 0);
+  start.value = Math.max(start.value - travelsCardxPage, 0);
 };
 
 const page = (algo) => {
@@ -71,7 +71,7 @@ async function deleteThis(id) {
       } else {
         alert(
           "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
-        );
+        ); 
       }
     });
 }
@@ -80,8 +80,8 @@ async function deleteThis(id) {
   <main>
     <div class="card mb-3" v-for="ourTravels in ourTravelsToShow" :key="ourTravels.id" :member="ourTravels">
       <div class="row g-0">
-        <div class="col-md-1" v-if="ourTravels.imageourTravels">
-          <img :src="`http://localhost:8080/images/ourTravels-photos/${ourTravels.imageourTravels.image}`"
+        <div class="col-md-1" v-if="ourTravels.imageTravel.length > 0">
+          <img :src="`http://localhost:8080/images/travel-photos/${ourTravels.imageTravel[0].image}`"
             class="img-fluid rounded-start" alt="..." />
         </div>
         <div class="gap-3 col-md-9">
@@ -94,20 +94,19 @@ async function deleteThis(id) {
           <div class="gap-3 col-md-9">
             <div class="text-date">
               <p class="font-date">
-                <b>{{ ourTravels.date }}</b>
+                <b>{{ ourTravels.datetravel }}</b>
               </p>
-              <p class="font-italic">{{ ourTravels.description }}</p>
             </div>
           <div class="card-body">
             <p class="btnsUser">
               <button type="button" class="btn btn-danger" @click="deletePost(ourTravels.id)">
                 Borrar
               </button>
-              <button type="button" class="btn btn-warning" @click="update(ourTravels.id, ourTravels, ourTravels.imageOurTravels)">
+              <button type="button" class="btn btn-warning" @click="update(ourTravels.id, ourTravels, ourTravels.imageTravel)">
                 Modificar
               </button>
               <button type="button" class="btn btn-success"
-                @click="updateImage(ourTravels.id, ourTravels, ourTravels.imageourTravels)">
+                @click="updateImage(ourTravels.id, ourTravels, ourTravels.imageTravel)">
                 Imagen
               </button>
             </p>
@@ -117,7 +116,7 @@ async function deleteThis(id) {
     </div>
     </div>
 
-    <Pagination :pageSize="ourTravelsCardxPage" :start="start" :end="end" :maxLength="ourTravelsList.length" @change="page"
+    <Pagination :pageSize="travelsCardxPage" :start="start" :end="end" :maxLength="ourTravelsList.length" @change="page"
       @prev="prev" @next="next" />
   </main>
 </template>
