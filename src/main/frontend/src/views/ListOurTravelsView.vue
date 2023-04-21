@@ -11,7 +11,7 @@ const imageOurTravelsItem = imageOurTravels();
 
 function update(id, ourTravels, imageOurTravels) {
   ourTravelsItem.ourTravelsObject = ourTravels;
-  imageourTravelsItem.ourTravelsImageObject = imageourTravels;
+  imageOurTravelsItem.ourTravelsImageObject = imageOurTravels;
   router.push("/modificarnuestrosviajes" + "/" + id);
 }
 
