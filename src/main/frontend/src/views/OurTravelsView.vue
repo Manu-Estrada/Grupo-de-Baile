@@ -1,5 +1,37 @@
 <script setup>
 import CardAlbum from '../components/gallery/CardAlbum.vue';
+import Pagination from "../components/gallery/Pagination.vue";
+import { onBeforeMount, ref, computed } from "vue";
+import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
+
+// Api
+const repository = new ApiRepository("nuestrosviajes");
+const api = repository.chooseApi();
+
+const travelCardxPage = 6;
+const start = ref(0);
+const end = computed(() => Math.min(start.value + travelCardxPage, travelsList.value.length));
+
+let travelsList = ref([]);
+onBeforeMount(async () => {
+  travelsList.value = await api.getAll();
+});
+
+const travelsToShow = computed(() => {
+  return travelsList.value.slice(start.value, end.value);
+});
+
+const next = () => {
+  start.value += travelCardxPage;
+};
+
+const prev = () => {
+  start.value = Math.max(start.value - travelCardxPage, 0);
+};
+
+const page = (algo) => {
+  start.value = algo;
+};
 
 </script>
 <template>
@@ -10,12 +42,8 @@ import CardAlbum from '../components/gallery/CardAlbum.vue';
   </div>
 <div id="containerAlbums">
  
-<CardAlbum/>
-<CardAlbum/>
-<CardAlbum/>
-<CardAlbum/>
-<CardAlbum/>
-<CardAlbum/>
+<CardAlbum v-for="travel in travelsToShow" :key="travel.id" :travel="travel" />
+
 </div>
 </div> 
 </main>
