@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "@vue/reactivity";
-import {ourTravels}  from "../.././stores/ourTravels";
+import { ourTravels } from "../.././stores/ourTravels";
 import router from "../../router";
 
 const ourTravelsToModify = ourTravels();
@@ -12,21 +12,21 @@ const ourTravelsData = computed(() => {
 const props = defineProps({
   id: {
     type: String,
-  }
-})
+  },
+});
 
 async function uploadFile(id) {
   let formData = new FormData();
   let url = `http://localhost:8080/api/travels/${id}/imagestravel`;
   formData.append("image", image.files[0]);
   let response = await fetch(url, {
-    method: "POST", 
-    body: formData
+    method: "POST",
+    body: formData,
   });
 
   if (response.status == 200) {
     alert("Imagen subida satisfactoriamente.");
-    router.push('/listaviajes');
+    router.push("/listaviajes");
   }
 }
 
@@ -39,34 +39,50 @@ async function deleteFile(id, idImage) {
       },
     });
     alert("Imagen borrada satisfactoriamente");
-    router.push('/listaviajes');
+    router.push("/listaviajes");
   }
 }
 </script>
 
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-12 mt-4 mb-4">
-        <div v-if="ourTravelsData.imageTravel.length > 0" v-for="image in ourTravelsData.imageTravel"> 
-        <img :src="`http://localhost:8080/images/travel-photos/${image.image}`" alt="..." />
-        <button
-          @click="deleteFile(id, image.id)"
-          type="button"
-          class="btn btn-success me-2 w-50 mt-3"
+    <div class="d-flex flex-wrap wrap w-100">
+        <div
+          class="w-25 d-flex flex-column align-center justify-content-center align-items-center"
+          v-if="ourTravelsData.imageTravel.length > 0"
+          v-for="image in ourTravelsData.imageTravel"
         >
-          Eliminar imagen
-        </button>
+          <img
+            :src="`http://localhost:8080/images/travel-photos/${image.image}`"
+            alt="..."
+          />
+          <button
+            @click="deleteFile(id, image.id)"
+            type="button"
+            class="btn btn-success me-2 w-50 mt-3"
+          >
+            Eliminar imagen
+          </button>
       </div>
-        <label for="imagen" class="form-label">Imagen</label>
-        <input type="file" id="image" class="form-control" placeholder="añade foto">
-        <button
-          @click="uploadFile(id)"
-          type="button"
-          class="btn btn-success me-2 w-50 mt-3"
-        >
-          Enviar
-        </button>
+    </div>
+    <div class="row">
+      <div class="col-12 mt-4 mb-4 d-flex">
+        <div>
+          <label for="imagen" class="form-label">Imagen</label>
+          <input
+            type="file"
+            id="image"
+            class="form-control"
+            placeholder="añade foto"
+          />
+          <button
+            @click="uploadFile(id)"
+            type="button"
+            class="btn btn-success me-2 w-50 mt-3"
+          >
+            Enviar
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -77,14 +93,17 @@ async function deleteFile(id, idImage) {
 @import "../../assets/sass/global.scss";
 
 .container {
-  height: 60vh; 
+  min-height: 60vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  margin: 40px auto;
 }
 
 .form-label {
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
   font-weight: bold;
 }
 
@@ -103,4 +122,23 @@ button {
   display: block;
   margin-bottom: 30px;
 }
+
+@media (max-width: 1024px) {
+  .w-25 {
+    width: 33% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .w-25 {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .w-25 {
+    width: 100% !important;
+  }
+}
+
 </style>
