@@ -17,7 +17,7 @@ const props = defineProps({
 
 async function uploadFile(id) {
   let formData = new FormData();
-  let url = `http://localhost:8080/api/travels/${id}/imagestravels`;
+  let url = `http://localhost:8080/api/travels/${id}/imagestravel`;
   formData.append("image", image.files[0]);
   let response = await fetch(url, {
     method: "POST", 
@@ -26,20 +26,20 @@ async function uploadFile(id) {
 
   if (response.status == 200) {
     alert("Imagen subida satisfactoriamente.");
-    router.push('/listasobrenosotros');
+    router.push('/listaviajes');
   }
 }
 
 async function deleteFile(id) {
   if (confirm("¿Está seguro de que quiere borrar esta imagen?") == true) {
-    fetch(`http://localhost:8080/api/travels/${id}/imagestravels`, {
+    fetch(`http://localhost:8080/api/travels/${id}/imagestravel`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     });
     alert("Imagen borrada satisfactoriamente");
-    router.push('/listasobrenosotros');
+    router.push('/listaviajes');
   }
 }
 </script>
@@ -48,8 +48,8 @@ async function deleteFile(id) {
   <div class="container">
     <div class="row">
       <div class="col-12 mt-4 mb-4">
-        <div v-if="OurTravelsData.imageOurTravels">
-        <!-- <img :src="`http://localhost:8080/images/aboutus-photos/${aboutUsData.imageAboutUs.image}`" alt="..." /> -->
+        <div v-if="ourTravelsData.imageTravel">
+        <img :src="`http://localhost:8080/images/travel-photos/${ourTravelsData.imageTravel.image}`" alt="..." />
         <button
           @click="deleteFile(id)"
           type="button"
