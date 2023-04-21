@@ -116,6 +116,12 @@ const router = createRouter({
       name: "travellist",
       props: true,
       component: () => import("../views/ListOurTravelsView.vue")
+    },
+    {
+      path: "/modificarnuestrosviajes/:id",
+      name: "editourtravels",
+      props: true,
+      component: () => import("../views/EditOurTravelsView.vue"),
     }
   ],
 });
