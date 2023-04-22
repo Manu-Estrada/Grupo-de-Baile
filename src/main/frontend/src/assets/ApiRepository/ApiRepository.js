@@ -2,7 +2,6 @@ import QuienesSomosPublicRepository from "./xareuApi/QuienesSomosPublicRepositor
 import EventosPublicRepository from "./xareuApi/EventosPublicRepository";
 import SobreNosotrosPublicRepository from "./xareuApi/SobreNosotrosPublicRepository";
 import NuestrosViajesPublicRepository from "./xareuApi/NuestrosViajesPublicRepository";
-import GaleriaViajesPublicRepository from "./xareuApi/GaleriaViajesPublicRepository";
 
 export default class ApiRepository {
 
@@ -18,7 +17,6 @@ export default class ApiRepository {
         if(this.api === "eventos") return new EventosPublicRepository;
         if(this.api === "sobreNosotros") return new SobreNosotrosPublicRepository;
         if(this.api === "nuestrosviajes") return new NuestrosViajesPublicRepository;
-        if(this.api === "galeriaviajes") return new GaleriaViajesPublicRepository;
 
     }
 }

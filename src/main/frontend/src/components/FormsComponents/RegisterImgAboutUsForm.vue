@@ -31,7 +31,7 @@ async function uploadFile(id) {
   if (response.status == 406) {
     alert("Ya existe una imagen con ese nombre.\nNo puede haber dos que se llamen igual.");
   }
-  if (response.status != 406 && response.status != 406) {
+  if (response.status != 200 && response.status != 406) {
     alert("Se ha producido un error.\nPor favor, inténtelo más trade.");
   }
 
