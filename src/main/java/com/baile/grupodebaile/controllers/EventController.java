@@ -29,8 +29,8 @@ public class EventController {
     }
 
     @PostMapping(path = "/events")
-    public void store(@RequestBody Event event) {
-        service.save(event);
+    public Event store(@RequestBody Event event) {
+        return service.save(event);
 
     }
 
@@ -42,7 +42,7 @@ public class EventController {
 
     @DeleteMapping("/events/{idevent}/imagesevent")
     public void deleteImageEvent(@PathVariable Long idevent) throws IOException {
-        // service.deleteImageEvent(idevent);
+        service.deleteImageEvent(idevent);
     }
 
     @GetMapping("/events")
@@ -56,7 +56,7 @@ public class EventController {
     }
 
     @DeleteMapping("/events/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) throws IOException {
         service.delete(id);
     }
 
