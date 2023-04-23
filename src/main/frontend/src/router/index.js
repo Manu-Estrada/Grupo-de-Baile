@@ -21,8 +21,9 @@ const router = createRouter({
       component: () => import("../views/OurTravelsView.vue"),
     },
     {
-      path: "/galeriaviajes",
+      path: "/galeriaviajes/:id",
       name: "gallerytravels",
+      props: true,
       component: () => import("../views/GalleryTravelsView.vue"),
     },
     {
@@ -45,6 +46,36 @@ const router = createRouter({
       name: "login",
       component: () => import("../views/FormLoginView.vue"),
     },
+
+
+    {
+      path: "/listanuestroseventos",
+      name: "listourevents",
+      component: () => import("../views/ListOurEventsView.vue"),
+    },
+    {
+      path: "/registronuestroseventos",
+      name: "registerourEvents",
+      component: () => import("../views/RegisterOurEventsView.vue"),
+    },
+    {
+      path: "/registrofotonuestroseventos/:id",
+      name: "registerimgOurEvents",
+      props: true,
+      component: () => import("../views/RegisterImgOurEventsView.vue"),
+    },
+    {
+      path: "/modificarnuestroseventos/:id",
+      name: "editourevents",
+      props: true,
+      component: () => import("../views/EditOurEventsView.vue"),
+    },
+
+    {
+      path: "/listausuario",
+      name: "listuser",
+      component: () => import("../views/ListUserView.vue"),
+    },
     {
       path: "/registrousuario",
       name: "registeruser",
@@ -57,22 +88,13 @@ const router = createRouter({
       component: () => import("../views/RegisterImgUserView.vue"),
     },
     {
-      path: "/listausuario",
-      name: "listuser",
-      component: () => import("../views/ListUserView.vue"),
-    },
-    {
       path: "/modificarusuario/:id",
       name: "edituser",
       props: true,
       component: () => import("../views/EditUserView.vue"),
     },
-    {
-      path: "/modificarimagenusuario",
-      name: "editimageuser",
-      props: true,
-      component: () => import("../views/EditUserImage.vue")
-    },
+
+
     {
       path: "/listasobrenosotros",
       name: "listaboutus",
@@ -98,24 +120,31 @@ const router = createRouter({
       component: () => import("../views/EditAboutUsView.vue")
     },
 
+
+
+    {
+      path: "/listaviajes",
+      name: "travellist",
+      props: true,
+      component: () => import("../views/ListOurTravelsView.vue")
+    },
     {
       path: "/registronuestrosviajes",
       name: "registerourtravels",
       props: true,
       component: () => import("../views/RegisterOurTravelsView.vue")
     },
-
     {
       path: "/registrofotosviajes/:id",
       name: "registerourtravelsimg",
       props: true,
-      component: () => import("../views/RegisterOurTravelsImgView.vue")
+      component: () => import("../views/RegisterImgOurTravelsView.vue")
     },
     {
-      path: "/listaviajes",
-      name: "travellist",
+      path: "/modificarnuestrosviajes/:id",
+      name: "editourtravels",
       props: true,
-      component: () => import("../views/ListOurTravelsView.vue")
+      component: () => import("../views/EditOurTravelsView.vue"),
     }
   ],
 });

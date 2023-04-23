@@ -1,9 +1,14 @@
 package com.baile.grupodebaile.services;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +31,19 @@ public class EventService {
         this.repository = repository;
     }
 
-    public void saveImageEvent(MultipartFile multipartFile, Long id) throws IOException {
+    public ResponseEntity<Object> saveImageEvent(MultipartFile multipartFile, Long id) throws IOException {
+        ImageEvent imageExist = listOneImage(id);
+        if (imageExist != null) {
+            deleteImageEvent(id);
+        }
+
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        ImageEvent fileNameExist = imageEventRepository.findByImage(fileName);
+
+        if (fileNameExist != null) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
         String uploadDir = RouteFileUploadImage.pathToSaveImage("imageEvent");
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
@@ -38,21 +54,28 @@ public class EventService {
         Event eventToAddImage = repository.findById(id).orElseThrow();
         eventToAddImage.setImageevent(imageEventNew);
         repository.save(eventToAddImage);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
-    public void save(Event eventNew) {
-        repository.save(eventNew);
+    public Event save(Event eventNew) {
+       return  repository.save(eventNew);
     }
 
     public List<Event> listAll() {
-        return repository.findAllByOrderByDateeventAsc();
+        return repository.findAllByOrderByDateeventDesc();
     }
 
     public Event listOne(Long id) {
         return repository.findById(id).orElseThrow(null);
     }
 
-    public void delete(Long id) {
+    public void delete(Long id) throws IOException {
+        ImageEvent imageExist = listOneImage(id);
+        if (imageExist != null) {
+            deleteImageEvent(id);
+        }
         repository.deleteById(id);
     }
 
@@ -62,5 +85,23 @@ public class EventService {
         return repository.save(eventToUpdate);
     }
 
+    public void deleteImageEvent(Long idaboutus) throws IOException {
+        Event aboutUsToDeleteImage = repository.findById(idaboutus).orElseThrow(null);
+        ImageEvent imageToDelete = aboutUsToDeleteImage.getImageevent();
+        aboutUsToDeleteImage.setImageevent(null);
+        imageEventRepository.delete(imageToDelete);
+        String uploadDir = RouteFileUploadImage.pathToSaveImage("imageEvent");
+        Path fileToDeletePath = Paths.get(uploadDir + imageToDelete.getImage());
+        Files.delete(fileToDeletePath);
+    }
 
+    public ImageEvent listOneImage(Long id) {
+        Event eventImage = repository.findById(id).orElseThrow(null);
+        ImageEvent imageEvent = eventImage.getImageevent();
+        if (imageEvent == null) {
+            return null;
+        }
+        Long idImage = imageEvent.getId();
+        return imageEventRepository.findById(idImage).orElseThrow(null);
+    }
 }

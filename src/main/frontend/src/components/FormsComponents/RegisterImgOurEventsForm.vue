@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from "@vue/reactivity";
-import { userStore } from "../../stores/userStore";
+import { ourEvents } from "../../stores/ourEvents";
 import router from "../../router";
 
-const userToModify = userStore();
+const ourEventsToModify = ourEvents();
 
-const userData = computed(() => {
-  return userToModify.userObject;
+const ourEventsData = computed(() => {
+  return ourEventsToModify.ourEventsObject;
 });
 
 const props = defineProps({
@@ -17,7 +17,7 @@ const props = defineProps({
 
 async function uploadFile(id) {
   let formData = new FormData();
-  let url = `http://localhost:8080/api/register/${id}/imagesuser`;
+  let url = `http://localhost:8080/api/events/${id}/imagesevent`;
   formData.append("image", image.files[0]);
   let response = await fetch(url, {
     method: "POST", 
@@ -26,7 +26,7 @@ async function uploadFile(id) {
 
   if (response.status == 200) {
     alert("Imagen subida satisfactoriamente.");
-    router.push('/listausuario');
+    router.push('/listanuestroseventos');
   }
   if (response.status == 406) {
     alert("Ya existe una imagen con ese nombre.\nNo puede haber dos que se llamen igual.");
@@ -39,14 +39,14 @@ async function uploadFile(id) {
 
 async function deleteFile(id) {
   if (confirm("¿Está seguro de que quiere borrar esta imagen?") == true) {
-    fetch(`http://localhost:8080/api/register/${id}/imagesuser`, {
+    fetch(`http://localhost:8080/api/events/${id}/imagesevent`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     });
     alert("Imagen borrada satisfactoriamente.");
-    router.push('/listausuario');
+    router.push('/listanuestroseventos');
   }
 }
 </script>
@@ -56,8 +56,8 @@ async function deleteFile(id) {
   <div class="container">
     <div class="row">
       <div class="col-12 mt-4 mb-4">
-        <div v-if="userData.imageUser">
-        <img :src="`http://localhost:8080/images/user-photos/${userData.imageUser.image}`" alt="..." />
+        <div v-if="ourEventsData.imageevent">
+        <img :src="`http://localhost:8080/images/event-photos/${ourEventsData.imageevent.image}`" alt="..." />
         <button
           @click="deleteFile(id)"
           type="button"
