@@ -25,7 +25,7 @@ public class MyBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoi
 
     @Override
     public void afterPropertiesSet() {
-        setRealmName("Xareu D'Ochobre");
+        setRealmName("Xaréu D'Ochobre");
         super.afterPropertiesSet();
     }
 }

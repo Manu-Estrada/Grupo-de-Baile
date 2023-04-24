@@ -1,5 +1,18 @@
 <script setup>
-import FormLoginView from "../views/FormLoginView.vue";
+import { useAuthStore } from "../stores/auth-storage"
+import AuthService from "../assets/ApiRepository/authentication/authService";
+import router from "../router";
+
+let userName = "";
+let password = "";
+const store = useAuthStore();
+
+const submitData = async () => {
+  const authService = new AuthService();
+  const response = await authService.login(userName, password);
+  router.push("/");
+};
+
 </script>
 
 <template>
@@ -9,18 +22,19 @@ import FormLoginView from "../views/FormLoginView.vue";
       <label for="exampleInputEmail1" class="form-label">Usuario:</label>
       <input
         type="email"
+        v-model="userName"
         class="form-control"
-        id="exampleInputEmail1"
+        id="email"
         aria-describedby="emailHelp"
       />
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" />
+      <input v-model="password" type="password" class="form-control" id="password" />
     </div>
     <div class="btn-container">
       <button type="submit" id="btn-delete" class="btn btn">Borrar</button>
-      <button type="submit" id="btn-send" class="btn btn">Enviar</button>
+      <button type="submit" id="btn-send" class="btn btn" @click="submitData">Enviar</button>
     </div>
   </form>
 </template>
