@@ -21,6 +21,14 @@ function updateImage(id, ourEvents, imageOurEvents) {
   router.push("/registrofotonuestroseventos" + "/" + id);
 }
 
+const ourEventsData = {
+  dateevent: '2023/04/24' 
+};
+
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
+
 const repository = new ApiRepository("eventos");
 const api = repository.chooseApi();
 
@@ -101,7 +109,7 @@ async function deleteThis(id) {
         <div class="text">
           <div class="text-name">
             <p class="font-date">
-              <b>{{ ourEvents.dateevent }}</b>
+              <b>{{ formatDate(ourEvents.dateevent) }}</b>
             </p>
             <p class="font-name">
               <b>{{ ourEvents.name }}</b>
@@ -123,7 +131,7 @@ async function deleteThis(id) {
                   type="button"
                   class="btn btn-warning"
                   @click="
-                    update(ourEvents.id, ourEvents, ourEvents.imageTravel)
+                    update(ourEvents.id, ourEvents, ourEvents.imageOurEvents)
                   "
                 >
                   Modificar
@@ -132,7 +140,7 @@ async function deleteThis(id) {
                   type="button"
                   class="btn btn-success"
                   @click="
-                    updateImage(ourEvents.id, ourEvents, ourEvents.imageTravel)
+                    updateImage(ourEvents.id, ourEvents, ourEvents.imageOurEvents)
                   "
                 >
                   Imagen
