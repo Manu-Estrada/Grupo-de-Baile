@@ -76,7 +76,7 @@ async function save() {
         </div>
         <div class="mb-3">
           <label for="surname" class="form-label">Descripción</label>
-          <input v-model="OurTravelsAdd.description" id="description" class="form-control" type="rextarea"
+          <textarea v-model="OurTravelsAdd.description" id="description" class="form-control" type="rextarea"
             placeholder="description" />
         </div>
       </div>
@@ -126,6 +126,9 @@ input {
 
 .btn {
   width: 100%;
+}
+textarea {
+  height: 250px;
 }
 
 @media (min-width: 768px) {
