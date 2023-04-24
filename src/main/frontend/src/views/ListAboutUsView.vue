@@ -63,54 +63,84 @@ async function deleteThis(id) {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((response) => {
-      if (response.status == 200) {
-        alert("Sección borrada correctamente.");
-        location.reload();
-      } else {
-        alert(
-          "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
-        );
-      }
-    });
+  }).then((response) => {
+    if (response.status == 200) {
+      alert("Sección borrada correctamente.");
+      location.reload();
+    } else {
+      alert(
+        "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
+      );
+    }
+  });
 }
 </script>
 <template>
   <main>
-    <div class="card mb-3" v-for="aboutUs in aboutUsToShow" :key="aboutUs.id" :member="aboutUs">
+    <div
+      class="card mb-3"
+      v-for="aboutUs in aboutUsToShow"
+      :key="aboutUs.id"
+      :member="aboutUs"
+    >
       <div class="row g-0">
-        <div class="col-md-1" v-if="aboutUs.imageAboutUs">
-          <img :src="`http://localhost:8080/images/aboutus-photos/${aboutUs.imageAboutUs.image}`"
-            class="img-fluid rounded-start" alt="..." />
+        <div v-if="aboutUs.imageAboutUs">
+          <img
+            :src="`http://localhost:8080/images/aboutus-photos/${aboutUs.imageAboutUs.image}`"
+            class="img-fluid"
+            alt="..."
+          />
         </div>
-        <div class="gap-3 col-md-9">
+        <div class="text">
           <div class="text-name">
             <p class="font-name">
               <b>{{ aboutUs.name }}</b>
             </p>
-            <p class="font-italic">{{ aboutUs.description }}</p>
           </div>
-          <div class="card-body">
-            <p class="btnsUser">
-              <button type="button" class="btn btn-danger" @click="deletePost(aboutUs.id)">
-                Borrar
-              </button>
-              <button type="button" class="btn btn-warning" @click="update(aboutUs.id, aboutUs, aboutUs.imageAboutUs)">
-                Modificar
-              </button>
-              <button type="button" class="btn btn-success"
-                @click="updateImage(aboutUs.id, aboutUs, aboutUs.imageAboutUs)">
-                Imagen
-              </button>
-            </p>
+        </div>
+        <div class="options">
+          <div class="text-date">
+            <div class="card-body">
+              <p class="btnsUser">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  @click="deletePost(aboutUs.id)"
+                >
+                  Borrar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  @click="update(aboutUs.id, aboutUs, aboutUs.imageAboutUs)"
+                >
+                  Modificar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  @click="
+                    updateImage(aboutUs.id, aboutUs, aboutUs.imageAboutUs)
+                  "
+                >
+                  Imagen
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <Pagination :pageSize="aboutUsCardxPage" :start="start" :end="end" :maxLength="aboutUsList.length" @change="page"
-      @prev="prev" @next="next" />
+    <Pagination
+      :pageSize="aboutUsCardxPage"
+      :start="start"
+      :end="end"
+      :maxLength="aboutUsList.length"
+      @change="page"
+      @prev="prev"
+      @next="next"
+    />
   </main>
 </template>
 
@@ -118,15 +148,27 @@ async function deleteThis(id) {
 @import "../assets/sass/styles.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss";
 
+main {
+  padding-top: 5vw;
+}
 .row {
   width: 90%;
+  max-width: none;
   margin: auto;
-  margin-top: 5vw;
+  background: #feffd7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row > * {
+  max-width: none;
+  width: auto;
 }
 
 img {
   aspect-ratio: 16/9;
   object-fit: cover;
+  width: 200px;
 }
 
 .btn {
@@ -139,48 +181,30 @@ img {
   justify-content: end;
   align-items: flex-end;
 }
-
-.col-md-1 {
-  display: flex;
-  justify-content: center;
+.text,
+.text-date {
+  padding: 10px;
 }
 
-.gap-3 {
-  display: flex;
-  padding: 0.7rem;
-  background-color: $background-card;
+.options {
+  justify-self: end;
+  align-self: self-end;
 }
 
-@media (max-width: 767px) {
-  img {
-    width: 90%;
-    margin-top: 5vw;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
 
-  .btnsUser {
-    display: flex;
-    justify-content: space-around;
-    // width: 100%;
-    // justify-content: center;
+    img {
+      width: 100%;
+    }
+    .options {
+      justify-self: start;
+      align-self: center;
+    }
   }
-
-  .font-name {
-    font-size: 1rem;
-  }
-
-  .gap-3 {
-    display: block;
-    width: 90%;
-    margin: auto;
-    margin-top: 1rem;
-  }
-
-  .card-body {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.7rem;
-  }
+}
+.card {
+  background-color: $background-component;
 }
 </style>

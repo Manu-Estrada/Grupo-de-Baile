@@ -18,7 +18,7 @@ function update(id, member, memberImage) {
 function updateImage(id, member, memberImage) {
   userItem.userObject = member;
   imageUserItem.userImageObject = memberImage;
-  router.push("/registrofotousuario" + "/" + id)
+  router.push("/registrofotousuario" + "/" + id);
 }
 const ourEventsData = {
   dateevent: '2023/04/24' 
@@ -80,40 +80,72 @@ async function deleteThis(id) {
     }
   });
 }
-
 </script>
 <template>
   <main>
-    <div class="card mb-3" v-for="member in membersToShow" :key="member.id" :member="member">
+    <div
+      class="card mb-3"
+      v-for="member in membersToShow"
+      :key="member.id"
+      :member="member"
+    >
       <div class="row g-0">
         <div v-if="member.imageUser">
-          <img :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`" class="img-fluid" alt="..." />
+          <img
+            :src="`http://localhost:8080/images/user-photos/${member.imageUser.image}`"
+            class="img-fluid"
+            alt="..."
+          />
         </div>
 
-        <div class="gap-3">
+        <div class="text">
           <div class="text-name">
             <p class="font-name"><b>{{ member.lastname }}</b>, {{ member.name }}</p>
 
             <p class="font-italic">Fecha admisión: {{ formatDate(member.dateadmission) }}</p>
 
           </div>
-          <div class="card-body">
-            <p class="btnsUser">
-              <button type="button" class="btn btn-danger" @click="deletePost(member.id)">
+          <div class="options">
+          <div class="text-date">
+            <div class="card-body">
+              <p class="btnsUser">
+                <button
+                type="button"
+                class="btn btn-danger"
+                @click="deletePost(member.id)"
+              >
                 Borrar
               </button>
-              <button type="button" class="btn btn-warning"
-                @click="update(member.id, member, member.imageUser)">Modificar</button>
-              <button type="button" class="btn btn-success"
-                @click="updateImage(member.id, member, member.imageUser)">Imagen</button>
-            </p>
+              <button
+                type="button"
+                class="btn btn-warning"
+                @click="update(member.id, member, member.imageUser)"
+              >
+                Modificar
+              </button>
+              <button
+                type="button"
+                class="btn btn-success"
+                @click="updateImage(member.id, member, member.imageUser)"
+              >
+              Imagen
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <Pagination :pageSize="memberCardxPage" :start="start" :end="end" :maxLength="membersList.length" @change="page"
-      @prev="prev" @next="next" />
+    <Pagination
+      :pageSize="memberCardxPage"
+      :start="start"
+      :end="end"
+      :maxLength="membersList.length"
+      @change="page"
+      @prev="prev"
+      @next="next"
+    />
   </main>
 </template>
 
@@ -121,12 +153,21 @@ async function deleteThis(id) {
 @import "../assets/sass/styles.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss";
 
+main {
+  padding-top: 5vw;
+}
 .row {
   width: 90%;
+  max-width: none;
   margin: auto;
-  margin-top: 5vw;
-  display: grid;
-  grid-template-columns: 2fr 8fr;
+  background: #feffd7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row > * {
+  max-width: none;
+  width: auto;
 }
 
 img {
@@ -145,58 +186,30 @@ img {
   justify-content: end;
   align-items: flex-end;
 }
-
-.col-md-1 {
-  display: flex;
-  justify-content: center;
+.text,
+.text-date {
+  padding: 10px;
 }
 
-.gap-3 {
-  width: 90%;
-  display: flex;
-  padding: 0.7rem;
-  background-color: $background-card;
+.options {
+  justify-self: end;
+  align-self: self-end;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .row {
-    grid-template-columns: 1fr;
-  }
+    flex-direction: column;
 
-  img {
-    width: 100%;
-    margin-top: 5vw;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-
-  .btnsUser {
-    display: flex;
-    justify-content: space-around;
-    // width: 100%;
-    // justify-content: center;
-  }
-
-  .font-name {
-    font-size: 1rem;
-
-  }
-
-  .gap-3 {
-    display: block;
-    width: 100%;
-    margin: auto;
-    margin-top: 1rem;
-  }
-
-  .card-body {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.7rem;
+    img {
+      width: 100%;
+    }
+    .options {
+      justify-self: start;
+      align-self: center;
+    }
   }
 }
-
 .card {
-  background-color: $background-component
+  background-color: $background-component;
 }
 </style>
