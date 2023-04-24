@@ -1,9 +1,10 @@
 <script setup>
+import ContactForm from '../components/contactForm/contactForm.vue';
 
 </script>
 
 <template>
   <main>
-   <h1>Contactame con tacto</h1>
+   <ContactForm/>
   </main>
 </template>

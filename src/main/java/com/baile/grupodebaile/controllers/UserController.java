@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.baile.grupodebaile.models.ImageUser;
 import com.baile.grupodebaile.models.User;
 import com.baile.grupodebaile.services.UserService;
 
@@ -39,9 +40,12 @@ public class UserController {
                 user.setPassword("1");
             }
             User userDB = service.store(user);
+            String iduser = userDB.getId() + "";
             Map<String, String> json = new HashMap<>();
 
-            json.put("user", userDB.getName());
+            json.put("id", iduser);
+            json.put("name", userDB.getName());
+            json.put("image", null);
             json.put("message", "successful sign up");
             return ResponseEntity.status(HttpStatus.CREATED).body(json);
         } catch (Exception e) {
@@ -54,36 +58,54 @@ public class UserController {
     }
 
     @PostMapping("/register/{id}/imagesuser")
-    public void storeImageUser(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) throws IOException {
-        service.saveImageUser(multipartFile, id);
+    public ResponseEntity<Object> storeImageUser(@RequestParam("image") MultipartFile multipartFile, @PathVariable Long id) throws IOException {
+        return service.saveImageUser(multipartFile, id);
     }
-
+    
     @DeleteMapping("/register/{iduser}/imagesuser")
     public void deleteImageUser(@PathVariable Long iduser) throws IOException {
         service.deleteImageUser(iduser);
     }
 
+    @GetMapping("/quienessomos")
+    public List<User> listAllPublic() {
+        return service.listAll();
+    }    
+
     @GetMapping("/users")
     public List<User> listAll() {
         return service.listAll();
-    }
+    }    
 
     @GetMapping("/users/{id}")
     public User listOne(@PathVariable Long id) {
         return service.listOne(id);
-    }
+    }    
+
+    @GetMapping("/users/{id}/image")
+    public ImageUser listOneImage(@PathVariable Long id) {
+        return service.listOneImage(id);
+    }    
 
     @DeleteMapping("/users/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) throws IOException {
         service.delete(id);
-    }
+    }    
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<Map<String, String>> update(@PathVariable Long id, @RequestBody User user) {
         try {
+            ImageUser imageActual = service.listOneImage(id);
             user.setId(id);
-            service.store(user);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            user.setImageUser(imageActual);
+            User userDB = service.store(user);
+            String idNew = userDB.getId() + "";
+
+            Map<String, String> json = new HashMap<>();
+            json.put("id", idNew);
+            json.put("name", userDB.getName());
+            json.put("message", "successful sign up");
+            return ResponseEntity.status(HttpStatus.OK).body(json);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

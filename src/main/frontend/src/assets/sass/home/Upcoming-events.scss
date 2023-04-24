@@ -4,16 +4,21 @@ aside {
   background-color: #ddbb44;
   font-family: $font-text;
   width: 30%;
-  display: flex;
-  justify-content: center;
+  padding: 20px;
   .event-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 90%;
+
+    
     h2 {
       color: $text-red;
       margin-top: 10px;
+      margin-bottom: 10px;
+      a {
+        color: $background-green;
+        text-decoration: none;
+      }
     }
     span {
       font-size: 15px;
@@ -21,50 +26,20 @@ aside {
     }
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-  aside {
+@media (max-width: 768px) {
+  aside{
+    width: 90%;
     .event-container {
-      h2 {
-        font-size: 1.5rem;
-      }
-      span {
-        font-size: 12px;
-      }
-    }
-  }
-}
-@media (min-width: 426px) and (max-width: 768px) {
-  aside {
-    .event-container {
+
       h2 {
         font-size: 1rem;
       }
       span {
-        font-size: 11px;
+        font-size: 1rem;
       }
     }
   }
 }
-@media (max-width: 425px) {
-  aside {
-    margin-top: 15px;
-    background-color: #ddbb44;
-    font-family: $font-text;
-    width: 70%;
-    display: flex;
-    .event-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 90%;
-      h2 {
-        color: $text-red;
-        margin-top: 10px;
-      }
-      span {
-        font-size: 13px;
-        font-style: italic;
-      }
-    }
-  }
+.modal-content{
+background-color: black;
 }

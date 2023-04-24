@@ -8,6 +8,7 @@
       Evento tercero
     </button>
     <!-- Modal -->
+  
     <div
       class="modal fade"
       id="exampleModal"
@@ -43,6 +44,6 @@
     </div>
   </template>
   <style lang="scss" scoped>
-  @import "../../../assets/sass/home/popUp.scss";
+  @import "../../../assets/sass/home/popUp-Upcoming-events.scss";
   </style>
   

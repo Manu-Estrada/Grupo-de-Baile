@@ -1,28 +1,78 @@
 <script setup>
+import { ourTravels } from "../../stores/ourTravels";
+import router from "../../router";
 
+const ourTravelsItem = ourTravels();
+
+function oneOurTravels(id, ourTravels) {
+  ourTravelsItem.ourTravelsObject = ourTravels;
+  router.push("/galeriaviajes" + "/" + id);
+}
+
+const props = defineProps({
+  travel: {
+    type: Object,
+    required: true,
+  },
+});
 </script>
 
 <template>
-  <main>
+  <!-- <main> -->
+   <div :id="`card-size${travel.id}`" class="card-container">
    <div class="card">
-    <img src="https://lh5.googleusercontent.com/_T4ZV2_ZON54aqxKpkWqnwVa8u43Sfe0c0aM5PWoktF_vGqp5xDmVCR_Fpfys_UQmtM=w1200-h630-p" alt="Imagen" id="imgCards" />
+    <figure  v-if="travel.imageTravel.length > 0">
+    <img class="imgCard" :src="`http://localhost:8080/images/travel-photos/${travel.imageTravel[0].image}`" alt="Imagen" id="imgCards"/>
+    </figure>
   <div class="card-body pt-1">
-    <p class="card-text"><small class="text-muted">01-01-2023</small></p>
-    <h5 class="card-title">Primer Viaje</h5>
+    <p class="card-text"><small class="text-muted">{{ travel.datetravel }}</small></p>
+    <h5 class="card-title" >{{ travel.name }}</h5>
     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
     <div id="containerBtn">
-      <a href="#" class="btn btn-primary" id="Btn-see">Ver más</a>
+      <a @click="oneOurTravels(travel.id, travel)"  class="btn btn-primary" id="Btn-see"> 
+            Ver más
+      </a>
     </div>
   </div>
+  </div>
 </div>
-  </main>
+  <!-- </main> -->
 </template>
 <style lang="scss" scoped>
 @import "../../assets/sass/_variables.scss";
 @import "../../assets/sass/galleryStyles/gallerystyles.scss";
-#imgCards{
-  height:13.8em;
-  width: 100%;
-  object-fit: cover;
+// #imgCards{
+//   height:17.2em;
+//   width: 100%;
+//   object-fit: cover;
+// }
+
+.card-container {
+ 
+  width: 30%;
+  .card {
+    
+    .imgCard {
+      aspect-ratio: 16/9;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .btn btn-primary {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    width: 45%;
+  }
+}
+@media (max-width: 576px) {
+  .card-container {
+    width: 90%;
+  }
 }
 </style>

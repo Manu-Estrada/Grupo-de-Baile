@@ -1,0 +1,107 @@
+@import "../variables";
+.card-container {
+  display: flex;
+  width: 90%;
+  background-color: $background-card;
+  margin-bottom: 2em;
+  max-height: 15em;
+
+  img {
+    
+    height: 15em;
+    width: 20em;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+
+      
+  }
+  h4{
+    font-weight: bold;
+  }
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    padding: 1em;
+  
+    span {
+      font-style: italic;
+      font-size: 1.2em;
+      
+    }
+    .event-popup {
+      display: flex;
+      justify-content: end;
+      width: 100%;
+      
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .card-container {
+  img {
+    width: 100%;
+    
+  }
+  .text-container {
+    p{
+      font-size: 70%;
+    }
+    div {
+      button {
+        width: 12rem;
+        height: 2.5rem;
+      }
+    }
+  }
+}
+}
+
+
+@media (max-width: 768px) {
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    
+  img {
+    width:12em;
+   
+  }
+  .text-container {
+   
+    p{
+      font-size: 60%;
+    }
+    div {
+     
+      button {
+        width: 10rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+}
+@media (max-width: 426px) {
+  .card-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  img {
+    width: 100%;
+  }
+  .text-container {
+    p{
+      font-size: 60%;
+    }
+    div {
+      button {
+        width: 6rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+}

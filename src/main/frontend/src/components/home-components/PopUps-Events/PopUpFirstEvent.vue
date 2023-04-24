@@ -1,41 +1,48 @@
+<script setup>
+const props = defineProps({
+  event: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
 <template>
+  <p class="m-0">{{ event.dateevent }}</p>
   <button
     type="button"
     data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
+    :data-bs-target="`#exampleModal${event.id}`"
     class="popUp-button"
   >
-    Evento primero
+    {{ event.name }}
   </button>
   <!-- Modal -->
   <div
     class="modal fade"
-    id="exampleModal"
+    :id="`exampleModal${event.id}`"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <button
           type="button"
-          class="btn-close"
+          class="close p-2"
           data-bs-dismiss="modal"
           aria-label="Close"
-        ></button>
+        >X</button>
         <div>
           <div class="event-container">
-            <img src="../../../assets/images/folk.svg" alt="" />
+            <img
+              :src="`http://localhost:8080/images/event-photos/${event.imageevent.image}`"
+              alt=""
+            />
             <div class="text-container">
-              <span>01-01-2023</span>
-              <h3>Evento primero</h3>
+              <span> {{ event.dateevent }}</span>
+              <h3>{{ event.name }}</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                laoreet facilisis dapibus. Donec aliquet ligula ipsum, tincidunt
-                viverra risus malesuada ac. Curabitur fringilla sapien sit amet
-                ex mollis finibus. Praesent molestie lectus sit amet tortor
-                condimentum consectetur. Orci varius natoque penatibus et magnis
-                dis parturient montes, nascetur ridiculus mus.
+                {{ event.description }}
               </p>
             </div>
           </div>
@@ -45,5 +52,5 @@
   </div>
 </template>
 <style lang="scss" scoped>
-@import "../../../assets/sass/home/popUp.scss";
+@import "../../../assets/sass/home/popUp-Upcoming-events.scss";
 </style>

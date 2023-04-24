@@ -1,21 +1,39 @@
 <script setup>
 import WhoWeAre from "../components/WhoWeAre.vue";
-import { onBeforeMount, ref } from 'vue';
-import ApiRepository from  './../assets/ApiRepository/ApiRepository.js'
-import { computed } from "@vue/reactivity";
+import Pagination from "../components/gallery/Pagination.vue";
+import { onBeforeMount, ref, computed } from "vue";
+import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
 
+// Api
 const repository = new ApiRepository("quienesSomos");
 const api = repository.chooseApi();
+
+const memberCardxPage = 6;
+const start = ref(0);
+const end = computed(() => Math.min(start.value + memberCardxPage, membersList.value.length));
 
 let membersList = ref([]);
 onBeforeMount(async () => {
   membersList.value = await api.getAll();
-})
-const showThisMember = computed(() => {
-    return membersList;
-  });
-</script>
+});
 
+const membersToShow = computed(() => {
+  return membersList.value.slice(start.value, end.value);
+});
+
+const next = () => {
+  start.value += memberCardxPage;
+};
+
+const prev = () => {
+  start.value = Math.max(start.value - memberCardxPage, 0);
+};
+
+const page = (algo) => {
+  start.value = algo;
+};
+
+</script>
 <template>
   <main>
     <div class="mt-5">
@@ -23,17 +41,18 @@ const showThisMember = computed(() => {
         <h3>Quiénes somos</h3>
       </div>
       <div id="containerAlbums">
-        <WhoWeAre v-for="member in showThisMember.value" :member="member"/>
-     
+        <WhoWeAre v-for="member in membersToShow" :key="member.id" :member="member" />
       </div>
+      <Pagination :pageSize="memberCardxPage" :start="start" :end="end" :maxLength="membersList.length" @change="page" @prev="prev" @next="next" />
     </div>
   </main>
 </template>
-<style scoped lang="scss" >
+
+<style scoped lang="scss">
 @import "../assets/sass/variables";
 @import "../assets/sass/styles.scss";
-@import "../assets/sass/galleryStyles/gallerystyles.scss"; 
-.mt-5  {
+@import "../assets/sass/galleryStyles/gallerystyles.scss";
+.mt-5 {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -47,10 +66,13 @@ const showThisMember = computed(() => {
 }
 #headerH3 {
   width: 90%;
-  // margin: 0px 50px 10px 53px;
 }
 h3 {
   font-weight: bold;
   margin: 0.5em;
 }
+#color-pag  {
+  color: black;
+}
+
 </style>

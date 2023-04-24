@@ -61,6 +61,7 @@ nav {
   .container {
     img.logo {
       width: 13vw;
+      min-width: 200px;
     }
   }
 }

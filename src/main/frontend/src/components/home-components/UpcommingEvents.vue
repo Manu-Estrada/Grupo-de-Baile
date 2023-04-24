@@ -1,18 +1,39 @@
 <script setup>
+import ApiRepository from "../../assets/ApiRepository/ApiRepository";
 import PopUpFirstEvent from "./PopUps-Events/PopUpFirstEvent.vue";
-import PopUpSecondEvent from "./PopUps-Events/PopUpSecondEvent.vue";
-import PopUpThirdEvent from "./PopUps-Events/PopUpThirdEvent.vue";
+import { onBeforeMount, ref, computed } from "vue";
+
+const repository = new ApiRepository("eventos");
+const api = repository.chooseApi();
+
+let eventsList = ref([]);
+onBeforeMount(async () => {
+  eventsList.value = await api.getAll();
+});
+
+const filterDates = computed(() => {
+  let eventFuture = ref([]);
+  eventFuture.value = eventsList.value.filter(
+    (eventsList) => eventsList.dateevent >= actualdte
+  );
+  return eventFuture;
+});
+
+let fecha = new Date();
+let year = fecha.getFullYear();
+let month = ("0" + (fecha.getMonth() + 1)).slice(-2);
+let day = ("0" + fecha.getDate()).slice(-2);
+let actualdte = year + "-" + month + "-" + day;
 </script>
 <template>
   <aside>
     <div class="event-container">
-      <h2>Próximos eventos</h2>
-      <span>01-01-2023</span>
-      <PopUpFirstEvent />
-      <span>01-01-2023</span>
-      <PopUpSecondEvent/>
-      <span>01-01-2023</span>
-      <PopUpThirdEvent/>
+      <h2><RouterLink to="/nuestroseventos">Próximos eventos</RouterLink></h2>
+      <PopUpFirstEvent
+        v-for="event in filterDates.value"
+        :key="event.id"
+        :event="event"
+      />
     </div>
   </aside>
 </template>

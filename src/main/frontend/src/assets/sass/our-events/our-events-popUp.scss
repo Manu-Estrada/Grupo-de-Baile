@@ -1,0 +1,96 @@
+@import "../variables";
+.popUp-button {
+  width: 14rem;
+  border-radius: 10px;
+  border: none;
+  background-color: $background-green;
+  color: white;
+  height: 3rem;
+}
+.modal.show .modal-dialog {
+  .modal-content {
+    padding-bottom: 30px;
+    .btn-close {
+      background-color: #336644;
+      opacity: 1;
+      align-self: flex-end;
+      margin: 10px 10px 0 0;
+    }
+    div {
+      .event-container {
+        background-color: $background-card;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+        img {
+          margin: 30px auto 0 auto;
+          width: 50%;
+          object-fit: scale-down;
+        }
+        .text-container {
+          display: flex;
+          flex-direction: column;
+          padding: 40px;
+          p {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .text-container {
+    p {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .popUp-button {
+    width: 10rem;
+    
+  }
+  .modal.show .modal-dialog {
+    .modal-content {
+      div {
+        .event-container {
+          .text-container {
+            p {
+              width: 100%;
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  .popUp-button {
+    width: 6rem;
+  }
+  .event-container {
+    img {
+      margin-top: 56px;
+    }
+  }
+  .text-container {
+    padding-bottom: 0px;
+  }
+}
+@media (max-width: 320px) {
+  .modal.show .modal-dialog {
+    .modal-content {
+      div {
+        .event-container {
+          img {
+            margin-top: 56px;
+          }
+        }
+      }
+    }
+  }
+}

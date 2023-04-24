@@ -1,16 +1,15 @@
 <script setup>
-import NavbarComponent from '../components/NavbarComponent.vue';
-import FooterComponent from '.././components/componentsVue/FooterComponent.vue' ;
+import { useRouter } from 'vue-router';
+
 import RegisterForm from '../components/FormsComponents/RegisterForm.vue';
+
 </script>
 
 <template>
-<NavbarComponent />
+
 
 <RegisterForm />
 
-
-<FooterComponent />
 
 
 
