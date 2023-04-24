@@ -5,6 +5,13 @@ const props = defineProps({
     required: true,
   },
 });
+const ourEventsData = {
+  dateevent: '2023/04/24' 
+};
+
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
 </script>
 <template>
   <div :id="`card-size${member.id}`" class="card-container">
@@ -23,7 +30,7 @@ const props = defineProps({
       />
       <div class="card-body pt-1" id="hg-size">
         <p class="card-text">
-          <small class="text-muted"> {{ member.dateadmission }}</small>
+          <small class="text-muted"> {{formatDate( member.dateadmission) }}</small>
         </p>
         <h5 class="card-title">{{ member.name }} {{ member.lastname }}</h5>
         <div id="containerBtnMemebrs">
