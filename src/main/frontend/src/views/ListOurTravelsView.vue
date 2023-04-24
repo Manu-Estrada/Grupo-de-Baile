@@ -21,6 +21,14 @@ function updateImage(  id, ourTravels, imageOurTravels) {
   router.push("/registrofotosViajes" + "/" + id);
 }
 
+
+const ourEventsData = {
+  datetravel: '2023/04/24' 
+};
+
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
 const repository = new ApiRepository("nuestrosviajes");
 const api = repository.chooseApi();
 
@@ -94,7 +102,7 @@ async function deleteThis(id) {
           <div class="gap-3 col-md-9">
             <div class="text-date">
               <p class="font-date">
-                <b>{{ ourTravels.datetravel }}</b>
+                <b>{{ formatDate(ourTravels.datetravel) }}</b>
               </p>
             </div>
           <div class="card-body">
