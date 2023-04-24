@@ -7,10 +7,6 @@ const props = defineProps({
   },
 });
 
-const ourEventsData = {
-  dateevent: '2023/04/24' 
-};
-
 function formatDate(date) {
   return date.split(/[-/]/).reverse().join('-');
 }

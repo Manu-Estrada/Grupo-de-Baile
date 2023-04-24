@@ -20,13 +20,11 @@ function updateImage(id, member, memberImage) {
   imageUserItem.userImageObject = memberImage;
   router.push("/registrofotousuario" + "/" + id);
 }
-const ourEventsData = {
-  dateevent: '2023/04/24' 
-};
 
 function formatDate(date) {
-  return date.split(/[-/]/).reverse().join('-');
+  return date.split(/[-/]/).reverse().join("-");
 }
+
 const repository = new ApiRepository("quienesSomos");
 const api = repository.chooseApi();
 
@@ -88,7 +86,7 @@ async function deleteThis(id) {
       v-for="member in membersToShow"
       :key="member.id"
       :member="member"
-    />
+    >
       <div class="row g-0">
         <div v-if="member.imageUser">
           <img
@@ -97,38 +95,48 @@ async function deleteThis(id) {
             alt="..."
           />
         </div>
-
+        <div v-else>
+          <img
+            src="http://localhost:8080/images/xareu-d-ochobre-logo.jpg"
+            class="img-fluid"
+            alt="..."
+          />
+        </div>
         <div class="text">
           <div class="text-name">
-            <p class="font-name"><b>{{ member.lastname }}</b>, {{ member.name }}</p>
-
-            <p class="font-italic">Fecha admisión: {{ formatDate(member.dateadmission) }}</p>
-
+            <p class="font-date">
+              Fecha admisión: {{ formatDate(member.dateadmission) }}
+            </p>
+            <p class="font-name">
+              <b>{{ member.lastname }}</b
+              >, {{ member.name }}
+            </p>
           </div>
-          <div class="options">
+        </div>
+        <div class="options">
           <div class="text-date">
             <div class="card-body">
               <p class="btnsUser">
                 <button
-                type="button"
-                class="btn btn-danger"
-                @click="deletePost(member.id)"
-              >
-                Borrar
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning"
-                @click="update(member.id, member, member.imageUser)"
-              >
-                Modificar
-              </button>
-              <button
-                type="button"
-                class="btn btn-success"
-                @click="updateImage(member.id, member, member.imageUser)"
-              >
-              Imagen
+                  type="button"
+                  class="btn btn-danger"
+                  @click="deletePost(member.id)"
+                >
+                  Borrar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  @click="update(member.id, member, member.imageUser)"
+                >
+                  Modificar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  @click="updateImage(member.id, member, member.imageUser)"
+                >
+                  Imagen
                 </button>
               </p>
             </div>

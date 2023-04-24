@@ -9,9 +9,6 @@ function oneOurTravels(id, ourTravels) {
   router.push("/galeriaviajes" + "/" + id);
 }
 
-const ourTravelsData = {
-  dateevent: '2023/04/24' 
-};
 
 function formatDate(date) {
   return date.split(/[-/]/).reverse().join('-');
@@ -32,7 +29,7 @@ const props = defineProps({
         <img class="imgCard" :src="`http://localhost:8080/images/travel-photos/${travel.imageTravel[0].image}`" alt="Imagen" id="imgCards"/>
       </figure>
       <div class="card-body pt-1">
-        <p class="card-text"><small class="text-muted">{{ formatDate(ourTravelsData.dateevent) }}</small></p>
+        <p class="card-text"><small class="text-muted">{{ formatDate(travel.datetravel) }}</small></p>
         <h5 class="card-title">{{ travel.name }}</h5>
         <div id="containerBtn">
           <a @click="oneOurTravels(travel.id, travel)" class="btn btn-primary" id="Btn-see">Ver más</a>

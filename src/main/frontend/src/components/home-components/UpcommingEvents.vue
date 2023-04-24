@@ -24,6 +24,7 @@ let year = fecha.getFullYear();
 let month = ("0" + (fecha.getMonth() + 1)).slice(-2);
 let day = ("0" + fecha.getDate()).slice(-2);
 let actualdte = year + "-" + month + "-" + day;
+
 </script>
 <template>
   <aside>

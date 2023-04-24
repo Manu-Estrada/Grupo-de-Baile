@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.baile.grupodebaile.models.Travel;
 
 public interface TravelRepository extends JpaRepository<Travel, Long> {
-    List<Travel> findAllByOrderByDatetravelAsc();
+    List<Travel> findAllByOrderByDatetravelDesc();
 }
