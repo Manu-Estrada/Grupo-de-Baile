@@ -1,5 +1,27 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { useAuthStore } from "../stores/auth-storage"
+import router from '../router/index';
+
+
+const isAuthenticated = useAuthStore()
+
+async function closeSession() {
+    const url = "http://localhost:8080/api/logout";
+    const r = fetch(url, {
+        method: "GET",
+    });
+    const response = await r;
+    if (response.status == 204) {
+      isAuthenticated.isAuthenticate = false;
+      isAuthenticated.username = "";
+      isAuthenticated.roles = [];
+      router.push("/");
+    } else {
+        alert("Ha ocurrido un error.\nPor favor, inténtelo pasado unos minutos.");
+    }
+}
+
 </script>
 
 <template>
@@ -48,7 +70,8 @@ import { RouterLink } from "vue-router";
             <RouterLink class="nav-link" to="/contacto">Contacto</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/login">Login</RouterLink>
+            <a href="#" class="nav-link" @click="closeSession()" v-if="isAuthenticated.roles=='ROLE_ADMIN'">Logout</a>
+            <RouterLink class="nav-link" to="/login" v-if="!isAuthenticated.isAuthenticate">Login</RouterLink>
           </li>
         </ul>
       </div>

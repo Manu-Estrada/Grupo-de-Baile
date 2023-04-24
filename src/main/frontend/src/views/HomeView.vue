@@ -1,5 +1,4 @@
 <script setup>
-import NavbarComponent from "../components/NavbarComponent.vue";
 import SliderComponent from "../components/home-components/SliderComponent.vue";
 import UpcommingEvents from "../components/home-components/UpcommingEvents.vue";
 import Welcome from "../components/home-components/Welcome.vue";
