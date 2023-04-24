@@ -169,8 +169,7 @@ async function deleteThis(id) {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      
     <Pagination
       :pageSize="travelsCardxPage"
       :start="start"

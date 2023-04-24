@@ -88,7 +88,7 @@ async function deleteThis(id) {
       v-for="member in membersToShow"
       :key="member.id"
       :member="member"
-    >
+    />
       <div class="row g-0">
         <div v-if="member.imageUser">
           <img
