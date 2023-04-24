@@ -1,33 +1,36 @@
 <script setup>
 import { RouterLink } from "vue-router";
-import { useAuthStore } from "../stores/auth-storage"
-import router from '../router/index';
+import { useAuthStore } from "../stores/auth-storage";
+import router from "../router/index";
 
-
-const isAuthenticated = useAuthStore()
+const isAuthenticated = useAuthStore();
 
 async function closeSession() {
-    const url = "http://localhost:8080/api/logout";
-    const r = fetch(url, {
-        method: "GET",
-    });
-    const response = await r;
-    if (response.status == 204) {
-      isAuthenticated.isAuthenticate = false;
-      isAuthenticated.username = "";
-      isAuthenticated.roles = [];
-      router.push("/");
-    } else {
-        alert("Ha ocurrido un error.\nPor favor, inténtelo pasado unos minutos.");
-    }
+  const url = "http://localhost:8080/api/logout";
+  const r = fetch(url, {
+    method: "GET",
+  });
+  const response = await r;
+  if (response.status == 204) {
+    isAuthenticated.isAuthenticate = false;
+    isAuthenticated.username = "";
+    isAuthenticated.roles = [];
+    router.push("/");
+  } else {
+    alert("Ha ocurrido un error.\nPor favor, inténtelo pasado unos minutos.");
+  }
 }
-
 </script>
 
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a href="/" class="navbar-brand"><img src="../assets/images/xareu-d-ochobre-vainilla.png" alt="Xaréu d'Ochobre" class="logo"></a>
+      <a href="/" class="navbar-brand"
+        ><img
+          src="../assets/images/xareu-d-ochobre-vainilla.png"
+          alt="Xaréu d'Ochobre"
+          class="logo"
+      /></a>
       <i class="bi bi-wechat"></i>
       <button
         class="navbar-toggler"
@@ -67,11 +70,24 @@ async function closeSession() {
             >
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/contacto">Contacto</RouterLink>
+            <RouterLink class="nav-link border" to="/contacto"
+              >Contacto</RouterLink
+            >
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link" @click="closeSession()" v-if="isAuthenticated.roles=='ROLE_ADMIN'">Logout</a>
-            <RouterLink class="nav-link" to="/login" v-if="!isAuthenticated.isAuthenticate">Login</RouterLink>
+            <a
+              href="#"
+              class="nav-link"
+              @click="closeSession()"
+              v-if="isAuthenticated.roles == 'ROLE_ADMIN'"
+              >Logout</a
+            >
+            <RouterLink
+              class="nav-link"
+              to="/login"
+              v-if="!isAuthenticated.isAuthenticate"
+              >Login</RouterLink
+            >
           </li>
         </ul>
       </div>
@@ -89,7 +105,8 @@ nav {
   }
 }
 .navbar {
-  background-color: #336644;
+  background-color: $background-green;
+
   a {
     color: $background-card;
     transition: all 0.4s;
@@ -98,6 +115,10 @@ nav {
   a:hover {
     color: $background-upcomingEvents;
     letter-spacing: 1px;
+  }
+  .border {
+    border-radius: 5px;
+    border: 2px solid $background-upcomingEvents !important;
   }
 }
 </style>
