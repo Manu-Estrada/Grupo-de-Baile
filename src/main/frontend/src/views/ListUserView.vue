@@ -20,7 +20,13 @@ function updateImage(id, member, memberImage) {
   imageUserItem.userImageObject = memberImage;
   router.push("/registrofotousuario" + "/" + id);
 }
+const ourEventsData = {
+  dateevent: '2023/04/24' 
+};
 
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
 const repository = new ApiRepository("quienesSomos");
 const api = repository.chooseApi();
 
@@ -82,7 +88,7 @@ async function deleteThis(id) {
       v-for="member in membersToShow"
       :key="member.id"
       :member="member"
-    >
+    />
       <div class="row g-0">
         <div v-if="member.imageUser">
           <img
@@ -94,14 +100,10 @@ async function deleteThis(id) {
 
         <div class="text">
           <div class="text-name">
-            <p class="font-date">
-              Fecha admisión: {{ member.dateadmission }}
-            </p>
-            <p class="font-name">
-              <b>{{ member.lastname }}</b
-              >, {{ member.name }}
-            </p>
-          </div>
+            <p class="font-name"><b>{{ member.lastname }}</b>, {{ member.name }}</p>
+
+            <p class="font-italic">Fecha admisión: {{ formatDate(member.dateadmission) }}</p>
+
           </div>
           <div class="options">
           <div class="text-date">

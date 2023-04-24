@@ -9,6 +9,14 @@ function oneOurTravels(id, ourTravels) {
   router.push("/galeriaviajes" + "/" + id);
 }
 
+const ourTravelsData = {
+  dateevent: '2023/04/24' 
+};
+
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
+
 const props = defineProps({
   travel: {
     type: Object,
@@ -18,47 +26,36 @@ const props = defineProps({
 </script>
 
 <template>
-  <!-- <main> -->
-   <div :id="`card-size${travel.id}`" class="card-container">
-   <div class="card">
-    <figure  v-if="travel.imageTravel.length > 0">
-    <img class="imgCard" :src="`http://localhost:8080/images/travel-photos/${travel.imageTravel[0].image}`" alt="Imagen" id="imgCards"/>
-    </figure>
-  <div class="card-body pt-1">
-    <p class="card-text"><small class="text-muted">{{ travel.datetravel }}</small></p>
-    <h5 class="card-title" >{{ travel.name }}</h5>
-    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-    <div id="containerBtn">
-      <a @click="oneOurTravels(travel.id, travel)"  class="btn btn-primary" id="Btn-see"> 
-            Ver más
-      </a>
+  <div :id="`card-size${travel.id}`" class="card-container">
+    <div class="card">
+      <figure v-if="travel.imageTravel.length > 0">
+        <img class="imgCard" :src="`http://localhost:8080/images/travel-photos/${travel.imageTravel[0].image}`" alt="Imagen" id="imgCards"/>
+      </figure>
+      <div class="card-body pt-1">
+        <p class="card-text"><small class="text-muted">{{ formatDate(ourTravelsData.dateevent) }}</small></p>
+        <h5 class="card-title">{{ travel.name }}</h5>
+        <div id="containerBtn">
+          <a @click="oneOurTravels(travel.id, travel)" class="btn btn-primary" id="Btn-see">Ver más</a>
+        </div>
+      </div>
     </div>
   </div>
-  </div>
-</div>
-  <!-- </main> -->
 </template>
+
 <style lang="scss" scoped>
 @import "../../assets/sass/_variables.scss";
 @import "../../assets/sass/galleryStyles/gallerystyles.scss";
-// #imgCards{
-//   height:17.2em;
-//   width: 100%;
-//   object-fit: cover;
-// }
 
 .card-container {
- 
   width: 30%;
   .card {
-    
     .imgCard {
       aspect-ratio: 16/9;
       width: 100%;
       object-fit: cover;
     }
 
-    .btn btn-primary {
+    .btn-primary {
       display: flex;
       justify-content: center;
     }
@@ -70,6 +67,7 @@ const props = defineProps({
     width: 45%;
   }
 }
+
 @media (max-width: 576px) {
   .card-container {
     width: 90%;

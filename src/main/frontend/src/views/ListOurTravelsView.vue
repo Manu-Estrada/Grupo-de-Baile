@@ -21,6 +21,14 @@ function updateImage(id, ourTravels, imageOurTravels) {
   router.push("/registrofotosViajes" + "/" + id);
 }
 
+
+const ourEventsData = {
+  datetravel: '2023/04/24' 
+};
+
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
 const repository = new ApiRepository("nuestrosviajes");
 const api = repository.chooseApi();
 
@@ -100,6 +108,29 @@ async function deleteThis(id) {
               <b>{{ ourTravels.name }}</b>
             </p>
           </div>
+          <div class="gap-3 col-md-9">
+            <div class="text-date">
+              <p class="font-date">
+                <b>{{ formatDate(ourTravels.datetravel) }}</b>
+              </p>
+            </div>
+          <div class="card-body">
+            <p class="btnsUser">
+              <button type="button" class="btn btn-danger" @click="deletePost(ourTravels.id)">
+                Borrar
+              </button>
+              <button type="button" class="btn btn-warning" @click="update(ourTravels.id, ourTravels, ourTravels.imageTravel)">
+                Modificar
+              </button>
+              <button type="button" class="btn btn-success"
+                @click="updateImage(ourTravels.id, ourTravels, ourTravels.imageTravel)">
+                Imagen
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
         </div>
         <div class="options">
           <div class="text-date">
@@ -138,8 +169,7 @@ async function deleteThis(id) {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      
     <Pagination
       :pageSize="travelsCardxPage"
       :start="start"
