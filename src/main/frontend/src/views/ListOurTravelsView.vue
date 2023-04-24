@@ -3,7 +3,7 @@ import Pagination from "../components/gallery/Pagination.vue";
 import { onBeforeMount, ref, computed } from "vue";
 import ApiRepository from "../assets/ApiRepository/ApiRepository.js";
 import { ourTravels } from "../stores/ourTravels";
-import {imageOurTravels} from "../stores/imageOurTravels";
+import { imageOurTravels } from "../stores/imageOurTravels";
 import router from "../router/index";
 
 const ourTravelsItem = ourTravels();
@@ -15,7 +15,7 @@ function update(id, ourTravels, imageOurTravels) {
   router.push("/modificarnuestrosviajes" + "/" + id);
 }
 
-function updateImage(  id, ourTravels, imageOurTravels) {
+function updateImage(id, ourTravels, imageOurTravels) {
   ourTravelsItem.ourTravelsObject = ourTravels;
   imageOurTravelsItem.ourTravelsImageObject = imageOurTravels;
   router.push("/registrofotosViajes" + "/" + id);
@@ -63,61 +63,92 @@ async function deleteThis(id) {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((response) => {
-      if (response.status == 200) {
-        alert("Viaje borrado correctamente.");
-        location.reload();
-      } else {
-        alert(
-          "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
-        ); 
-      }
-    });
+  }).then((response) => {
+    if (response.status == 200) {
+      alert("Viaje borrado correctamente.");
+      location.reload();
+    } else {
+      alert(
+        "Se ha producido un error. \nPor favor, inténtelo de nuevo en unos minutos."
+      );
+    }
+  });
 }
 </script>
 <template>
   <main>
-    <div class="card mb-3" v-for="ourTravels in ourTravelsToShow" :key="ourTravels.id" :member="ourTravels">
+    <div
+      class="card mb-3"
+      v-for="ourTravels in ourTravelsToShow"
+      :key="ourTravels.id"
+      :member="ourTravels"
+    >
       <div class="row g-0">
-        <div class="col-md-1" v-if="ourTravels.imageTravel.length > 0">
-          <img :src="`http://localhost:8080/images/travel-photos/${ourTravels.imageTravel[0].image}`"
-            class="img-fluid rounded-start" alt="..." />
+        <div v-if="ourTravels.imageTravel.length > 0">
+          <img
+            :src="`http://localhost:8080/images/travel-photos/${ourTravels.imageTravel[0].image}`"
+            class="img-fluid"
+            alt="..."
+          />
         </div>
-        <div class="gap-3 col-md-9">
+        <div class="text">
           <div class="text-name">
+            <p class="font-date">
+              <b>{{ ourTravels.datetravel }}</b>
+            </p>
             <p class="font-name">
               <b>{{ ourTravels.name }}</b>
             </p>
-            <p class="font-italic">{{ ourTravels.description }}</p>
           </div>
-          <div class="gap-3 col-md-9">
-            <div class="text-date">
-              <p class="font-date">
-                <b>{{ ourTravels.datetravel }}</b>
+        </div>
+        <div class="options">
+          <div class="text-date">
+            <div class="card-body">
+              <p class="btnsUser">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  @click="deletePost(ourTravels.id)"
+                >
+                  Borrar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  @click="
+                    update(ourTravels.id, ourTravels, ourTravels.imageTravel)
+                  "
+                >
+                  Modificar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  @click="
+                    updateImage(
+                      ourTravels.id,
+                      ourTravels,
+                      ourTravels.imageTravel
+                    )
+                  "
+                >
+                  Imagen
+                </button>
               </p>
             </div>
-          <div class="card-body">
-            <p class="btnsUser">
-              <button type="button" class="btn btn-danger" @click="deletePost(ourTravels.id)">
-                Borrar
-              </button>
-              <button type="button" class="btn btn-warning" @click="update(ourTravels.id, ourTravels, ourTravels.imageTravel)">
-                Modificar
-              </button>
-              <button type="button" class="btn btn-success"
-                @click="updateImage(ourTravels.id, ourTravels, ourTravels.imageTravel)">
-                Imagen
-              </button>
-            </p>
           </div>
         </div>
       </div>
     </div>
-    </div>
-
-    <Pagination :pageSize="travelsCardxPage" :start="start" :end="end" :maxLength="ourTravelsList.length" @change="page"
-      @prev="prev" @next="next" />
+    <Pagination
+      :pageSize="travelsCardxPage"
+      :start="start"
+      :end="end"
+      :maxLength="ourTravelsList.length"
+      @change="page"
+      @prev="prev"
+      @next="next"
+    />
   </main>
 </template>
 
@@ -125,15 +156,27 @@ async function deleteThis(id) {
 @import "../assets/sass/styles.scss";
 @import "../assets/sass/galleryStyles/gallerystyles.scss";
 
+main {
+  padding-top: 5vw;
+}
 .row {
   width: 90%;
+  max-width: none;
   margin: auto;
-  margin-top: 5vw;
+  background: #feffd7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row > * {
+  max-width: none;
+  width: auto;
 }
 
 img {
   aspect-ratio: 16/9;
   object-fit: cover;
+  width: 200px;
 }
 
 .btn {
@@ -146,48 +189,30 @@ img {
   justify-content: end;
   align-items: flex-end;
 }
-
-.col-md-1 {
-  display: flex;
-  justify-content: center;
+.text,
+.text-date {
+  padding: 10px;
 }
 
-.gap-3 {
-  display: flex;
-  padding: 0.7rem;
-  background-color: $background-card;
+.options {
+  justify-self: end;
+  align-self: self-end;
 }
 
-@media (max-width: 767px) {
-  img {
-    width: 90%;
-    margin-top: 5vw;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
 
-  .btnsUser {
-    display: flex;
-    justify-content: space-around;
-    // width: 100%;
-    // justify-content: center;
+    img {
+      width: 100%;
+    }
+    .options {
+      justify-self: start;
+      align-self: center;
+    }
   }
-
-  .font-date {
-    font-size: 1rem;
-  }
-
-  .gap-3 {
-    display: block;
-    width: 90%;
-    margin: auto;
-    margin-top: 1rem;
-  }
-
-  .card-body {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.7rem;
-  }
+}
+.card {
+  background-color: $background-component;
 }
 </style>
