@@ -20,7 +20,13 @@ function updateImage(id, member, memberImage) {
   imageUserItem.userImageObject = memberImage;
   router.push("/registrofotousuario" + "/" + id)
 }
+const ourEventsData = {
+  dateevent: '2023/04/24' 
+};
 
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
 const repository = new ApiRepository("quienesSomos");
 const api = repository.chooseApi();
 
@@ -88,7 +94,7 @@ async function deleteThis(id) {
           <div class="text-name">
             <p class="font-name"><b>{{ member.lastname }}</b>, {{ member.name }}</p>
 
-            <p class="font-italic">Fecha admisión: {{ member.dateadmission }}</p>
+            <p class="font-italic">Fecha admisión: {{ formatDate(member.dateadmission) }}</p>
 
           </div>
           <div class="card-body">
