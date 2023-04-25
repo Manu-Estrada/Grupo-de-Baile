@@ -42,4 +42,9 @@ public class SendMailServiceImpl implements SendMailService {
         emailRepository.save(emailNew);
     }
 
+    @Override
+    public EmailMessage listOne(Long id) {
+        return emailRepository.findById(id).orElseThrow(null);
+    }
+
 }
