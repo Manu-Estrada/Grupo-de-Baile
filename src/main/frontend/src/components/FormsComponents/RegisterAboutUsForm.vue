@@ -7,6 +7,7 @@ const aboutUsToAdd = aboutUs();
 let aboutUsAdd = {
   name: "",
   description: "",
+  position: "",
 };
 
 async function save() {
@@ -17,6 +18,11 @@ async function save() {
 
   if (aboutUsAdd.description === "") {
     alert("Se necesita añadir una desccripción.");
+    return;
+  }
+
+  if (aboutUsAdd.position === "") {
+    alert("Se necesita indicar la posición en el listado.");
     return;
   }
 
@@ -60,6 +66,18 @@ async function save() {
             placeholder="Nombre"
           />
         </div>
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Posición en la página</label>
+          <input
+            v-model="aboutUsAdd.position"
+            id="position"
+            class="form-control"
+            type="text"
+            placeholder="Posición"
+          />
+        </div>
+
         <div class="mb-3">
           <label for="surname" class="form-label">Descripción</label>
           <textarea
