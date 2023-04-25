@@ -5,6 +5,11 @@ const props = defineProps({
     required: true,
   },
 });
+
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
+
 </script>
 <template>
   <button
@@ -47,7 +52,7 @@ const props = defineProps({
                 v-else
               />
             <div class="text-container">
-              <span> {{ eventThis.dateevent }}</span>
+              <span> {{ formatDate(eventThis.dateevent) }}</span>
               <h4>{{ eventThis.name }}</h4>
               <p>
                 {{ eventThis.description }}

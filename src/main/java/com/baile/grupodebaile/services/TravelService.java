@@ -37,7 +37,7 @@ public class TravelService {
     }
 
     public List<Travel> listAll() {
-        return repository.findAllByOrderByDatetravelAsc();
+        return repository.findAllByOrderByDatetravelDesc();
     }
 
     public Travel listOne(Long id) {

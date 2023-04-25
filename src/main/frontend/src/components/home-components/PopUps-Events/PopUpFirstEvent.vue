@@ -5,9 +5,15 @@ const props = defineProps({
     required: true,
   },
 });
+
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join("-");
+}
+
 </script>
+
 <template>
-  <p class="m-0">{{ event.dateevent }}</p>
+  <p class="m-0">{{ formatDate(event.dateevent) }}</p>
   <button
     type="button"
     data-bs-toggle="modal"
@@ -39,7 +45,7 @@ const props = defineProps({
               alt=""
             />
             <div class="text-container">
-              <span> {{ event.dateevent }}</span>
+              <span> {{ formatDate(event.dateevent) }}</span>
               <h3>{{ event.name }}</h3>
               <p>
                 {{ event.description }}

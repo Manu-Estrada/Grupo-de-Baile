@@ -11,6 +11,7 @@ let aboutUsEdit = {
   name: aboutUsToModify.aboutUsObject.name,
   description: aboutUsToModify.aboutUsObject.description,
   id: aboutUsToModify.aboutUsObject.id,
+  position: aboutUsToModify.aboutUsObject.position,
 };
 
 async function update(id) {
@@ -68,7 +69,7 @@ async function update(id) {
         </div>
 
         <div class="mb-3">
-          <label for="surname" class="form-label">Apellidos</label>
+          <label for="surname" class="form-label">Descripción</label>
           <textarea v-model="aboutUsEdit.description" id="description" class="form-control" placeholder="Descripción" />
         </div>
       </div>

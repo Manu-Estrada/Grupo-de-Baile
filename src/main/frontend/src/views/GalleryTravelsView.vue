@@ -4,6 +4,8 @@ import Pagination from "../components/gallery/Pagination.vue";
 import { onBeforeMount, ref, computed } from "vue";
 import ApiRepository from "./../assets/ApiRepository/ApiRepository.js";
 import { ourTravels } from "../stores/ourTravels";
+import { RouterLink } from "vue-router";
+
 
 const travel = new ourTravels;
 
@@ -11,20 +13,20 @@ const thistravel = computed(() =>  {
   return travel.ourTravelsObject;
 });
 
-// // Api
-// const repository = new ApiRepository("nuestrosviajes");
-// const api = repository.chooseApi();
+// Api
+const repository = new ApiRepository("nuestrosviajes");
+const api = repository.chooseApi();
 
 const travelCardxPage = 6;
 const start = ref(0);
 const end = computed(() =>
-  Math.min(start.value + travelCardxPage, thistravel.imageTravel.length)
+  Math.min(start.value + travelCardxPage, travel.ourTravelsObject.imageTravel.length)
 );
 
-// let travelsList = ref([]);
-// onBeforeMount(async () => {
-//   travelsList.value = await api.getAll();
-// });
+let travelsList = ref([]);
+onBeforeMount(async () => {
+  travelsList.value = await api.getAll();
+});
 
 const travelsToShow = computed(() => {
   return thistravel.imageTravel;
@@ -41,14 +43,19 @@ const prev = () => {
 const page = (algo) => {
   start.value = algo;
 };
+
+function formatDate(date) {
+  return date.split(/[-/]/).reverse().join('-');
+}
+
 </script>
 <template>
   <main>
     <div class="mt-5">
       <div class="container" id="headerH3">
-        <h3>{{thistravel.name}}</h3>
+        <h3><RouterLink to="/nuestrosviajes">Volver a Nuestros viajes</RouterLink> &lt; {{thistravel.name}}</h3>
       </div>
-      <p>
+      <p><em>{{ formatDate(thistravel.datetravel) }}</em><br />
         {{ thistravel.description }}
       </p>
       <div id="containerAlbums">
@@ -59,7 +66,7 @@ const page = (algo) => {
 
         />
       </div>
-      <!-- <Pagination
+      <Pagination
         :pageSize="travelCardxPage"
         :start="start"
         :end="end"
@@ -67,7 +74,7 @@ const page = (algo) => {
         @change="page"
         @prev="prev"
         @next="next"
-      /> -->
+      />
     </div>
   </main>
 </template>
@@ -104,5 +111,14 @@ h3 {
 }
 #color-pag {
   color: black;
+}
+
+a {
+  text-decoration: none;
+  color: $background-green;
+  transition: all 0.4s;
+  &:hover {
+    letter-spacing: 1px;
+  }
 }
 </style>
