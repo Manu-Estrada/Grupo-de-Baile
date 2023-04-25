@@ -64,7 +64,7 @@ public class AboutUsService {
     }
 
     public List<AboutUs> listAll() {
-        return repository.findAll();
+        return repository.findAllByOrderByPositionAsc();
     }
 
     public AboutUs listOne(Long id) {

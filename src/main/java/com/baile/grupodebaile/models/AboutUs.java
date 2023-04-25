@@ -17,19 +17,24 @@ public class AboutUs {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_aboutus")
     private Long id;
+
     @Column(nullable = false)
     private String name;
+    
     @Column(nullable = false, columnDefinition="TEXT")
     private String description;
+    
+    @Column(nullable = false)
+    private Long position;
 
     @OneToOne
     private ImageAboutUs imageAboutUs;
 
-    public AboutUs(Long id, String name, String description, ImageAboutUs imageAboutUs) {
+    public AboutUs(Long id, Long position, String name, String description, ImageAboutUs imageAboutUs) {
         this.id = id;
         this.name = name;
+        this.position = position;
         this.description = description;
-
     }
 
     public AboutUs() {
@@ -49,6 +54,14 @@ public class AboutUs {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getPosition() {
+        return position;
+    }
+
+    public void setPosition(Long position) {
+        this.position = position;
     }
 
     public String getDescription() {
