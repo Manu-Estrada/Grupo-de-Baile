@@ -162,7 +162,14 @@ const router = createRouter({
       props: true,
       component: () => import("../views/EditOurTravelsView.vue"),
       meta: { requiresAuth: true },
-    }
+    },
+    {
+      path: "/listacorreos",
+      name: "listacorreos",
+      props: true,
+      component: () => import("../views/ListOurMailView.vue"),
+      meta: { requiresAuth: true },
+    },
   ],
 });
 

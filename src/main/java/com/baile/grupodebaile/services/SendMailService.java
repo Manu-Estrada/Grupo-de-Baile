@@ -8,6 +8,8 @@ public interface SendMailService {
     //Método que pide crear el controlador
     void save(EmailMessage emailMessage);
 
+    EmailMessage listOne(Long id);
+
 
 
  
