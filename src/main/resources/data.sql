@@ -57,8 +57,12 @@ INSERT INTO imagetravel (id_imagetravel, image, id_travel) VALUES (default, "ima
 INSERT INTO imagetravel (id_imagetravel, image, id_travel) VALUES (default, "image-09.jpg", 7)
 INSERT INTO imagetravel (id_imagetravel, image, id_travel) VALUES (default, "image-10.jpg", 8)
 
--- INSERT INTO imageaboutus (id_imageaboutus, image) VALUES (default, "image-01.jpg")
--- INSERT INTO imageaboutus (id_imageaboutus, image) VALUES (default, "image-02.jpg")
+INSERT INTO imageaboutus (id_imageaboutus, image) VALUES (default, "image-01.jpg")
+INSERT INTO imageaboutus (id_imageaboutus, image) VALUES (default, "image-02.jpg")
+
+INSERT INTO aboutus (id_aboutus, name, description, position, image_about_us_id_imageaboutus) VALUES (default, "Xaréu D'Ochobre", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", 1, 1)
+INSERT INTO aboutus (id_aboutus, name, description, position, image_about_us_id_imageaboutus) VALUES (default, "Actividades", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", 3, 2)
+INSERT INTO aboutus (id_aboutus, name, description, position, image_about_us_id_imageaboutus) VALUES (default, "Cosas varias", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", 2, 2)
 
 -- INSERT INTO aboutus (id_aboutus, name, description, image_about_us_id_imageaboutus) VALUES (default, "Xaréu D'Ochobre", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", 1)
 -- INSERT INTO aboutus (id_aboutus, name, description, image_about_us_id_imageaboutus) VALUES (default, "Actividades", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.", 2)
