@@ -23,20 +23,20 @@ public class SendMailController {
 
     @PostMapping(path = "/api/sendemail")
     public ResponseEntity<?> sendMail(@RequestBody EmailMessage emailMessage) {
-        emailMessage.setFrom("xareudochobre35@gmail.com");
+        // emailMessage.setFrom("xareudochobre35@gmail.com");
         emailMessage.setTo("jehisel.rrp@gmail.com");
         emailMessage.setSubject("Mensaje para Xaréu D´Ochobre");
 
         this.sendMailService.SendMail(emailMessage.getFrom(), emailMessage.getTo(), emailMessage.getSubject(), emailMessage.getInputName(),
                 emailMessage.getInputPhone(),  emailMessage.getMessage());
+                sendMailService.save(emailMessage);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping(path = "/api/mail")
-    public void store(@RequestBody EmailMessage email) {
-        sendMailService.save(email);
+    // @PostMapping(path = "/api/mail")
+    // public void store(@RequestBody EmailMessage email) {
 
-    }
+    // }
 
     @GetMapping("/api/sendemail")
     public EmailMessage listOne(@PathVariable Long id) {
