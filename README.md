@@ -106,6 +106,7 @@ El grupo de Baile Regional Xaréu D'Ochobre , nos encarga crear una página web 
 ![Diagrama DB](https://user-images.githubusercontent.com/116894398/231455794-b45b692d-61f5-4bd5-8fd8-9c34acd75aeb.png)
 
 
+![196F7312-061D-4C96-8940-EEE5BEDA8842](https://user-images.githubusercontent.com/116894398/234612114-27d118ad-bbae-4690-bf8a-9eeebdd91ecd.png)
 
 ### Autoras/es
 - [Jehisel Ruth] (https://github.com/JehiselRuth)
